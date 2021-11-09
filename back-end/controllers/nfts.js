@@ -43,7 +43,7 @@ export const getSingleNft = async (req, res) => {
 export const updateNft = async (req, res) => {
   try {
     const { id } = req.params
-    const updatedNft = await Nft.findOneAndUpdate({ _id: id }, { ...req.body }, {new: true })
+    const updatedNft = await Nft.findOneAndUpdate({ _id: id }, { ...req.body }, { new: true })
     if (!updatedNft) throw new Error()
     return res.status(202).json(updatedNft)
   } catch (err) {
