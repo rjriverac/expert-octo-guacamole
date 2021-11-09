@@ -1,4 +1,6 @@
 # expert-octo-guacamole
 
-team members
+Team members
+
+Ricardo
 Gayatri
