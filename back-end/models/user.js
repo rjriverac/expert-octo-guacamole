@@ -8,6 +8,12 @@ const userSchema = new mongoose.Schema({
   password: { type: String, required: true }
 })
 
+userSchema.virtual('owned', {
+  ref: 'Nft',
+  localField: '_id',
+  foreignField: 'owner'
+})
+
 userSchema.set('toJSON', {
   virtuals: true,
   transform(_doc,json) {
