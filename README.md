@@ -2,5 +2,6 @@
 
 Team members
 
-Ricardo
 Gayatri
+Ricardo
+Lukacs
