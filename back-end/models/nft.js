@@ -2,7 +2,7 @@ import mongoose from 'mongoose'
 
 const transactionSchema = new mongoose.Schema({
   type: { type: String, required: true },
-  from: { type: mongoose.Schema.ObjectId, ref: 'User', required: true },
+  from: { type: mongoose.Schema.ObjectId, ref: 'User' },
   to: { type: mongoose.Schema.ObjectId, ref: 'User', required: true },
   price: { type: Number, required: true }
 },
@@ -15,6 +15,7 @@ const nftSchema = new mongoose.Schema({
   image: { type: String, required: true, unique: true },
   category: { type: String },
   name: { type: String, required: true, unique: true },
+  owner: { type: mongoose.Schema.ObjectId, ref: 'User', required: true },
   transactions: [transactionSchema]
 })
 
