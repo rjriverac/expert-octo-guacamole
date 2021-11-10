@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from 'react'
-import { Button, Container, Form, Header } from 'semantic-ui-react'
+import { Button, Container, Form, Header, Segment } from 'semantic-ui-react'
 import axios from 'axios'
 import { useHistory } from 'react-router-dom'
 
@@ -41,54 +41,56 @@ const Register = () => {
   return (
     <>
       <Container>
+        <Segment>
 
-        <Header 
-          as='h1'
-          content='Register'
-          textAlign='center'
-        />
+          <Header 
+            as='h1'
+            content='Register'
+            textAlign='center'
+          />
 
-        <Form onSubmit={handleSubmit}>
-          <Form.Field>
-            <label>Username</label>
-            <input 
-              name="username"
-              value={formData.username}
-              onChange={handleChange}
-              placeholder='Enter a username'
-            />
-          </Form.Field>
-          <Form.Field>
-            <label>Email</label>
-            <input 
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              placeholder='Enter your email'
-            />
-          </Form.Field>
-          <Form.Field>
-            <label>Password</label>
-            <input
-              name="password"
-              value={formData.password}
-              onChange={handleChange} 
-              placeholder='Enter password'
-              type="password"
-            />
-          </Form.Field>
-          <Form.Field>
-            <label>Re-Enter Password</label>
-            <input
-              name="passwordConfirmation"
-              value={formData.passwordConfirmation}
-              onChange={handleChange} 
-              placeholder='Enter password again'
-              type="password"
-            />
-          </Form.Field>
-          <Button type='submit'>Click to Register!</Button>
-        </Form>
+          <Form onSubmit={handleSubmit} size='big'>
+            <Form.Field>
+              <label>Username</label>
+              <input 
+                name="username"
+                value={formData.username}
+                onChange={handleChange}
+                placeholder='Enter a username'
+              />
+            </Form.Field>
+            <Form.Field>
+              <label>Email</label>
+              <input 
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                placeholder='Enter your email'
+              />
+            </Form.Field>
+            <Form.Field>
+              <label>Password</label>
+              <input
+                name="password"
+                value={formData.password}
+                onChange={handleChange} 
+                placeholder='Enter password'
+                type="password"
+              />
+            </Form.Field>
+            <Form.Field>
+              <label>Re-Enter Password</label>
+              <input
+                name="passwordConfirmation"
+                value={formData.passwordConfirmation}
+                onChange={handleChange} 
+                placeholder='Enter password again'
+                type="password"
+              />
+            </Form.Field>
+            <Button type='submit'>Click to Register!</Button>
+          </Form>
+        </Segment>
 
       </Container>
     </>
