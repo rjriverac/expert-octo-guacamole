@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from 'react'
-import { Button, Container, Form, Header, Message, Segment } from 'semantic-ui-react'
+import { Button, Container, Form, Header, Icon, Message, Segment } from 'semantic-ui-react'
 import axios from 'axios'
 import { useHistory } from 'react-router-dom'
 
@@ -41,17 +41,16 @@ const Register = () => {
   return (
     <>
       <Container>
-        <Segment>
-
+        <Segment textAlign='center' style={{ width: '70vw' }}>
+      
           <Header 
             as='h1'
             content='Register'
-            textAlign='center'
           />
 
           <Form onSubmit={handleSubmit} size='big' success>
             <Form.Field>
-              <label>Username</label>
+              <label> <Icon name='user'/> Username </label>
               <input 
                 name="username"
                 value={formData.username}
@@ -59,9 +58,9 @@ const Register = () => {
                 placeholder='Enter a username'
               />
             </Form.Field>
-            {errors.username && <p>Username is required</p>}
+            {/* {errors.username && <p>Username is required</p>} */}
             <Form.Field>
-              <label>Email</label>
+              <label> <Icon name='mail'/> Email </label>
               <input 
                 name="email"
                 value={formData.email}
@@ -70,7 +69,7 @@ const Register = () => {
               />
             </Form.Field>
             <Form.Field>
-              <label>Password</label>
+              <label> <Icon name='lock'/> Password </label>
               <input
                 name="password"
                 value={formData.password}
@@ -80,7 +79,7 @@ const Register = () => {
               />
             </Form.Field>
             <Form.Field>
-              <label>Re-Enter Password</label>
+              <label> <Icon name='lock'/> Re-Enter Password </label>
               <input
                 name="passwordConfirmation"
                 value={formData.passwordConfirmation}
@@ -96,8 +95,11 @@ const Register = () => {
               content='You have successfully registered'
             />  */}
             
-            <Button type='submit'>Click to Register!</Button>
+            <Button color='teal' type='submit'>Click to Register!</Button>
           </Form>
+          <Message>
+            already have an account? <a href='/login'>Login</a>
+          </Message>
         </Segment>
 
       </Container>
