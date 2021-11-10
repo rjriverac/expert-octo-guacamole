@@ -2,6 +2,7 @@ import React from 'react'
 import { Card, Container, Grid, Icon, Image, Label, Segment } from 'semantic-ui-react'
 import axios from 'axios'
 import { useState,useEffect } from 'react'
+import { format } from 'date-fns'
 
 const ProductIndex = () => {
 
@@ -33,7 +34,10 @@ const ProductIndex = () => {
             { nft.length ? 
               nft.map((item,index)=> {
                 const transactions = item.transactions
-                console.log('***',transactions.slice(-1)[0].type)
+                const date = new Date(transactions.slice(-1)[0].createdAt)
+                const formattedDate = format(date, 'dd MMMM yy H: mm')
+                const transactionText = transactions.slice(-1)[0].type
+                const formattedText = transactionText.charAt(0).toUpperCase() + transactionText.slice(1)
                 return (
                   <Card key={index}>
                     <Image
@@ -48,7 +52,7 @@ const ProductIndex = () => {
                     <Card.Content extra>
                       <Label>
                         <Icon name='barcode' />
-                        <Label.Detail>Last transaction: {transactions.slice(-1)[0].type} at {transactions.slice(-1)[0].createdAt}</Label.Detail> 
+                        <Label.Detail>Last transaction: {formattedText} at {formattedDate}</Label.Detail> 
                       </Label>
                     </Card.Content>
                   </Card>
