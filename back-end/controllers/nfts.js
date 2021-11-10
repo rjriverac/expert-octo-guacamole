@@ -28,3 +28,43 @@ export const addNft = async(req, res) => {
   }
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+export const deleteAnNft = async (req, res) => {
+  try {
+    const { id } = req.params
+    const nftToDelete = await Nft.findOneAndDelete({ _id: id })
+    if (!nftToDelete) throw new Error()
+    return res.sendStatus(204)
+  } catch (err) {
+    console.log(err)
+    return res.status(404).json({ 'message': 'not found' })
+  }
+}
+
+
