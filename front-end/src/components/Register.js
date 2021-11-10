@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from 'react'
-import { Button, Container, Form, Header, Segment } from 'semantic-ui-react'
+import { Button, Container, Form, Header, Message, Segment } from 'semantic-ui-react'
 import axios from 'axios'
 import { useHistory } from 'react-router-dom'
 
@@ -49,7 +49,7 @@ const Register = () => {
             textAlign='center'
           />
 
-          <Form onSubmit={handleSubmit} size='big'>
+          <Form onSubmit={handleSubmit} size='big' success>
             <Form.Field>
               <label>Username</label>
               <input 
@@ -59,6 +59,7 @@ const Register = () => {
                 placeholder='Enter a username'
               />
             </Form.Field>
+            {errors.username && <p>Username is required</p>}
             <Form.Field>
               <label>Email</label>
               <input 
@@ -88,6 +89,13 @@ const Register = () => {
                 type="password"
               />
             </Form.Field>
+
+            <Message 
+              success
+              header='Registration complete!'
+              content='You have successfully registered'
+            /> 
+            
             <Button type='submit'>Click to Register!</Button>
           </Form>
         </Segment>
