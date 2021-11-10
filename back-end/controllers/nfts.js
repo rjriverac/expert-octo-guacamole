@@ -28,31 +28,17 @@ export const addNft = async(req, res) => {
   }
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+export const getSingleNft = async (req, res) => {
+  try {
+    const { id } = req.params
+    const singleNft = await Nft.findById(id).populate('owner')
+    if (!singleNft) throw new Error()
+    return res.status(200).json(singleNft)
+  } catch (err) {
+    console.log(err)
+    return res.status(404).json({ 'message': 'not found' })
+  }
+}
 
 
 export const deleteAnNft = async (req, res) => {
@@ -67,4 +53,14 @@ export const deleteAnNft = async (req, res) => {
   }
 }
 
+export const updateNft = async (req, res) => {
+  try {
+    const { id } = req.params
+    const updatedNft = await Nft.findOneAndUpdate({ _id: id }, { ...req.body }, { new: true })
+    if (!updatedNft) throw new Error()
+    return res.status(202).json(updatedNft)
+  } catch (err) {
+    return res.status(404).json({ 'message': 'not found' })
+  }
+}
 
