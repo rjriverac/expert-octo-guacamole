@@ -2,10 +2,15 @@ import mongoose from 'mongoose'
 import bcrypt from 'bcrypt'
 import uniqueValidator from 'mongoose-unique-validator'
 
+const cartItem = new mongoose.Schema({
+  item: { type: mongoose.Schema.ObjectId, ref: 'Nft', required: true }
+})
+
 const userSchema = new mongoose.Schema({
   username: { type: String, required: true, unique: true, maxlength: 30 },
   email: { type: String, required: true, unique: true },
-  password: { type: String, required: true }
+  password: { type: String, required: true },
+  cart: [cartItem]
 })
 
 userSchema.virtual('owned', {

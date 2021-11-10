@@ -16,6 +16,7 @@ const nftSchema = new mongoose.Schema({
   category: { type: String },
   name: { type: String, required: true, unique: true },
   owner: { type: mongoose.Schema.ObjectId, ref: 'User', required: true },
+  available: { type: Boolean, required: true },
   transactions: [transactionSchema]
 })
 

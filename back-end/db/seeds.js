@@ -25,6 +25,7 @@ const seedDB = async () => {
         to: users[0]._id,
         price: 0
       }
+      nft.available = true
       return nft
     })
 
