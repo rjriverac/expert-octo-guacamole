@@ -9,7 +9,7 @@ const Home = () => {
         <Segment inverted>
           <Header 
             as='h1'
-            content='Welcome to Home!'
+            content='Welcome to Tokenizer!'
             textAlign='center'/>
         </Segment>
         

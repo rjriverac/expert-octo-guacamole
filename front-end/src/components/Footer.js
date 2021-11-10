@@ -57,7 +57,7 @@ const Footer = () => {
                 <List.Item as='a' href='https://www.facebook.com/'><Icon className='facebookicon' name='facebook' size='big' /></List.Item>
               </List.Item>
             </List>
-            <p style={{ margin: '5px 0em 5px 0em' }}>© 2021, The Website Name.com, General Assembely Porject 3</p>
+            <p style={{ margin: '5px 0em 5px 0em' }}>© 2021, Tokenizer.com, General Assembely Porject 3</p>
           </Segment>
         </Container>
       </Container>

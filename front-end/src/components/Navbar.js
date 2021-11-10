@@ -11,14 +11,14 @@ const Navbar = () => {
 
 
   return (
-    <Menu size='large' inverted>
+    <Menu size='mini' inverted>
       <Container>
-        <Menu.Item as='a' header>
-          <Image style={{ marginRight: '10px' }} circular size='tiny' src='https://i.insider.com/5d001393b7640142011751c9?width=1000&format=jpeg&auto=webp'/>
+        <Menu.Item as='a' href='/' header>
+          <Image style={{ marginRight: '10px' }} size='mini' src='https://i.imgur.com/QC1O8bP.png'/>
+          <h1 style={{ marginTop: 'unset' }}>Tokenizer</h1>
         </Menu.Item>
-        <Menu.Item as='a' href='/'>Home</Menu.Item>
         <Menu.Item as='a' href='/browse'>Browse</Menu.Item>
-        <Menu.Item as='a' href='/register'>Register</Menu.Item>
+        <Menu.Item as='a' position='right' href='/register'>Register</Menu.Item>
         <Menu.Item as='a'>Login</Menu.Item>
       </Container>
     </Menu>
