@@ -90,11 +90,11 @@ const Register = () => {
               />
             </Form.Field>
 
-            <Message 
+            {/* <Message 
               success
               header='Registration complete!'
               content='You have successfully registered'
-            /> 
+            />  */}
             
             <Button type='submit'>Click to Register!</Button>
           </Form>
