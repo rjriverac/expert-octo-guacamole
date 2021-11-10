@@ -6,21 +6,21 @@ import { Segment, Grid, Image, Button, List, Icon, Divider, Container, Header } 
 const Footer = () => {
 
   return (
-    <Segment inverted horizontal style={{ padding: '2em 0em 0 0' }}>
-      <Container>
-        <Grid divided inverted stackable>
-          <Grid.Row>
-            <Grid.Column width={5}>
+    <Segment inverted horizontal style={{ padding: '20px 0em 0 0' }}>
+      <Container >
+        <Grid inverted stackable>
+          <Grid.Row centered>
+            <Grid.Column width={5} textAlign='center'>
               <Header inverted as='h4' content='Get To Know Us' />
               <List link inverted>
                 <List.Item as='a' href='https://github.com/gayatrirajgor'>Gayatri</List.Item>
                 <List.Item as='a' href='https://github.com/rjriverac'>Ricardo</List.Item>
                 <List.Item as='a' href='https://github.com/lukacspapp'>Lukacs</List.Item>
-                <List.Item as='a'>Project <Icon name='github' size='large' /></List.Item>
+                <List.Item as='a'>Project <Icon name='github' /></List.Item>
                 <List.Item as='a' href='https://sustainability.aboutamazon.com/modern-slavery-statement-2020.pdf'>UK Modern Slavery Statment</List.Item>
               </List>
             </Grid.Column>
-            <Grid.Column width={5}>
+            <Grid.Column width={5} textAlign='center'>
               <Header inverted as='h4' content='Make Money With Us' />
               <List link inverted>
                 <List.Item as='a' href='/register'>Register</List.Item>
@@ -28,12 +28,13 @@ const Footer = () => {
                 <List.Item as='a'>Upload Your Nft</List.Item>
               </List>
             </Grid.Column>
-            <Grid.Column width={5}>
+            <Grid.Column width={5} textAlign='center'>
               <Header inverted as='h4' content='Marketplace' />
               <List link inverted>
                 <List.Item as='a' href='/browse'>All Nfts</List.Item>
                 <List.Item as='a' href='/browse'>New</List.Item>
                 <List.Item as='a'>Trending</List.Item>
+                <List.Item as='a' href='https://cryptonews.com/news/nft-news/'>Nft News</List.Item>
               </List>
             </Grid.Column>
           </Grid.Row>
