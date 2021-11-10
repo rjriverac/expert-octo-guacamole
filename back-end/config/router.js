@@ -1,6 +1,6 @@
 import express from 'express'
 import { loginUser, registeredUser } from '../controllers/auth.js'
-import { addNft, getAllNft } from '../controllers/nfts.js'
+import { addNft, getAllNft, deleteAnNft, getSingleNft, updateNft } from '../controllers/nfts.js'
 import { getUserInfo } from '../controllers/users.js'
 import { secureRoute } from './secureRoute.js'
 
@@ -10,6 +10,10 @@ router.route('/all')
   .get(getAllNft)
   .post(secureRoute, addNft)
 
+router.route('/all/:id')
+  .get(getSingleNft)
+  .put(secureRoute, updateNft)
+
 router.route('/register')
   .post(registeredUser)
 
@@ -18,5 +22,8 @@ router.route('/login')
 
 router.route('/profile')
   .get(secureRoute,getUserInfo)
+
+router.route('/all/:id')  
+  .delete(secureRoute,deleteAnNft)
 
 export default router
