@@ -33,17 +33,13 @@ const ProductIndex = () => {
         <Grid.Column width={13} color='teal'>
           <Card.Group>
             { nft.length ? 
-              nft.map((item,index)=> {
-
-                return (
-
-                  <ProductCard
-                    key={ index }
-                    item = { item }
-                  />
-                  
-                )
-              })
+              nft.map((item,index) => (
+                <ProductCard
+                  key={ index }
+                  item = { item }
+                />
+              )
+              )
               :
               <Dimmer inverted active>
                 <Loader content='Loading'/>

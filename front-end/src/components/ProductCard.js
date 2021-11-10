@@ -10,9 +10,9 @@ const ProductCard = ({ index, item }) => {
   const formattedDate = format(date, 'dd MMMM yy H: mm')
   const transactionText = transactions.slice(-1)[0].type
   const formattedText = transactionText.charAt(0).toUpperCase() + transactionText.slice(1)
-  
+  const address = item._id
   return (
-    <Card key={index}>
+    <Card as='a' href={`/browse/${address}`} key={index}>
       <Image
         src={item.image}
         rounded
