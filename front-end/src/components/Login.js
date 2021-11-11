@@ -80,7 +80,8 @@ const Login = () => {
 
           <Grid.Column>
             <Header 
-              as='h1'
+              as='h2'
+              textAlign='center'
               content='Not registered yet? Click here to register!'
             />
             <Container textAlign='center'>
