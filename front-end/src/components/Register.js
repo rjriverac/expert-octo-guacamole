@@ -91,13 +91,14 @@ const Register = () => {
 
             {/* <Message 
               success
-              header='Registration complete!'
-              content='You have successfully registered'
+              header='Registration successful!'
+              content='You may now login with the email you just signed up with'
             />  */}
             
             <Button color='teal' type='submit'>Click to Register!</Button>
           </Form>
-          <Message>
+          <Message color='yellow'>
+            <Icon name='help' />
             already have an account? <a href='/login'>Login</a>
           </Message>
         </Segment>
