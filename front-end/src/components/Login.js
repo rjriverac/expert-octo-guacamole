@@ -37,8 +37,8 @@ const Login = () => {
   return (
     <Container>
       <Segment>
-        <Grid columns={2} each>
-          <Grid.Column>
+        <Grid columns={2} each style={{ height: '50vh' }} verticalAlign='middle' divided>
+          <Grid.Column textAlign='center' style={{ maxWidth: 800 }}>
             <Header 
               as='h1'
               content='Login'
@@ -47,7 +47,7 @@ const Login = () => {
 
             <Form onSubmit={handleSubmit} size='big'>
               <Form.Field>
-                <label>Email</label>
+                <label> <Icon name='user'/> Email </label>
                 <input 
                   name='email'
                   value={formData.email} 
@@ -57,7 +57,7 @@ const Login = () => {
               </Form.Field>
 
               <Form.Field>
-                <label>Password</label>
+                <label> <Icon name='lock'/> Password </label>
                 <input
                   name="password"
                   value={formData.password} 
@@ -69,7 +69,12 @@ const Login = () => {
 
               {error && <p>Your email or password is incorrect, please try again!</p> }
             
-              <Button type='submit'>Log In!</Button>
+              <Button color='teal' type='submit' animated>
+                <Button.Content visible>Log In!</Button.Content>
+                <Button.Content hidden>
+                  <Icon name='sign in'/>
+                </Button.Content>
+              </Button>
             </Form>
           </Grid.Column>
 
@@ -79,7 +84,7 @@ const Login = () => {
               content='Not registered yet? Click here to register!'
             />
             <Container textAlign='center'>
-              <Button as='a' href='/register' animated>
+              <Button color='teal' as='a' href='/register' animated>
                 <Button.Content visible>Register</Button.Content>
                 <Button.Content hidden>
                   <Icon name='arrow right'/>
