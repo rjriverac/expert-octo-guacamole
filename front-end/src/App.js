@@ -7,6 +7,7 @@ import Navbar from './components/Navbar'
 import ProductDetail from './components/ProductDetail'
 import ProductIndex from './components/ProductIndex'
 import Register from './components/Register'
+import UserProfile from './components/UserProfile'
 
 const App = () => {
 
@@ -20,7 +21,7 @@ const App = () => {
         <Route exact path='/login' component={Login}/>
         <Route exact path='/register' component={Register}/>
         <Route exact path='/' component={Home}/>
-
+        <Route exact path='/loggedin' component={UserProfile}/>
       </Switch>
       <Footer />
     </BrowserRouter>

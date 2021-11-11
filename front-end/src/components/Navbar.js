@@ -21,8 +21,9 @@ const Navbar = () => {
           <h3 style={{ marginTop: 'unset' }}>Tokenizer</h3>
         </Menu.Item>
         <Menu.Item as='a' href='/browse'>Browse</Menu.Item>
+        <Menu.Item as='a' href='/loggedin'>Loggedin</Menu.Item>
         <Menu.Item position='right'><Button as='a' basic inverted href='/register'>Register</Button></Menu.Item>
-        <Menu.Item as='a'><Icon name='user circle' size='large' /></Menu.Item>
+        <Menu.Item as='a' href='/login'><Icon name='user circle' size='large' /></Menu.Item>
       </Container>
     </Menu>
   )
