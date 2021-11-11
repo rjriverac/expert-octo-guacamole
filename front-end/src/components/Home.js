@@ -18,6 +18,13 @@ const Home = () => {
           content='Discover the world of NFTs'
           textAlign='center'
         />
+
+        {/* <Container textAlign='center'>
+          <Button.Group>
+
+          </Button.Group>
+        </Container> */}
+
         <Container textAlign='center'>
           <Button as='a' href='/browse'>
             <Icon name='search'/>
