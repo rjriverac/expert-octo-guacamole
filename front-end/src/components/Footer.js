@@ -7,7 +7,7 @@ const Footer = () => {
 
   return (
     <Segment inverted style={{ padding: '20px 0em 0 0' }}>
-      <Container >
+      <Container>
         <Grid inverted stackable>
           <Grid.Row centered>
             <Grid.Column width={5} textAlign='center'>
@@ -61,7 +61,7 @@ const Footer = () => {
                 <List.Item as='a' href='https://www.youtube.com/'><Icon  name='youtube' size='big' color='red' /></List.Item>
               </List.Item>
             </List>
-            <p style={{ margin: '5px 0em 5px 0em' }}>© 2021, Tokenizer.com, General Assembely Porject 3</p>
+            <p style={{ margin: '5px 0em 5px 0em' }}>© 2021, Tokenizer.com, General Assembely Project 3</p>
           </Segment>
         </Container>
       </Container>
