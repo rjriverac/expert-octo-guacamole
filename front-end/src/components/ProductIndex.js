@@ -1,8 +1,9 @@
 import React from 'react'
-import { Card, Container, Grid, Icon, Image, Label, Segment } from 'semantic-ui-react'
+import { Card, Container, Dimmer, Grid, Loader, Segment } from 'semantic-ui-react'
 import axios from 'axios'
 import { useState,useEffect } from 'react'
-import { format } from 'date-fns'
+
+import ProductCard from './ProductCard'
 
 const ProductIndex = () => {
 
@@ -32,34 +33,17 @@ const ProductIndex = () => {
         <Grid.Column width={13} color='teal'>
           <Card.Group>
             { nft.length ? 
-              nft.map((item,index)=> {
-                const transactions = item.transactions
-                const date = new Date(transactions.slice(-1)[0].createdAt)
-                const formattedDate = format(date, 'dd MMMM yy H: mm')
-                const transactionText = transactions.slice(-1)[0].type
-                const formattedText = transactionText.charAt(0).toUpperCase() + transactionText.slice(1)
-                return (
-                  <Card key={index}>
-                    <Image
-                      src={item.image}
-                      rounded
-                      size='medium'
-                    />
-                    <Card.Content>
-                      <Card.Header>{item.name}</Card.Header>
-                      <Card.Meta>{item.category}</Card.Meta>
-                    </Card.Content>
-                    <Card.Content extra>
-                      <Label>
-                        <Icon name='barcode' />
-                        <Label.Detail>Last transaction: {formattedText} at {formattedDate}</Label.Detail> 
-                      </Label>
-                    </Card.Content>
-                  </Card>
-                )
-              })
+              nft.map((item,index) => (
+                <ProductCard
+                  key={ index }
+                  item = { item }
+                />
+              )
+              )
               :
-              <h1>something went wrong</h1>
+              <Dimmer inverted active>
+                <Loader content='Loading'/>
+              </Dimmer>
             }
           </Card.Group>
         </Grid.Column>
