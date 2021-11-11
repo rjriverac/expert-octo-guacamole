@@ -76,5 +76,40 @@ export default [
   {
     name: 'Skullx',
     image: 'https://lh3.googleusercontent.com/dp1gLyWgaZVCxYPEickcAoGEMOcX1wU6T1pfPy-wdcIGBJx3EutFjhEhNmEt3e1iTzWmZNbc4R7-IGDZdwJADJNltpiN5TX2WQBYuw=w600'
+  },
+  {
+    name: 'Creepy Cream',
+    image: 'https://lh3.googleusercontent.com/fceO8M9E3qCuS0W4UThCINeLOZ8DrE1w_dciLvXKeuq0kEGQL_9232dHjxa2Y0X138_IdAkD302JvgMwCHgqRuOKOEtzxAOhDVTG=w600',
+    category: 'Utility'
+  },
+  {
+    name: 'PEKMAN, Card 30',
+    image: 'https://lh3.googleusercontent.com/gc5ig4FrvVGkV8nbIB-tDc0Putp3bnp318OFcQOBoTDIQK-gblhabZnfnUmZtAZ_9__mUYZz45lc0nc4j9aUHnkz6g5fpefSARwrjQ=w600',
+    category: 'Utility'
+  },
+  {
+    name: 'Chicken 31764',
+    image: 'https://lh3.googleusercontent.com/068KOgQN55njS6MIULXZki_PQa4gXBcwzd9epIgMlSPU2plO9h_C-Z3bS9_z2xa1H5O8zhC3zr9BfpUfcXdD1Dg6aF3fSHxBnSDM9rA=w600',
+    category: 'Utility'
+  },
+  {
+    name: 'The Terminator',
+    image: 'https://lh3.googleusercontent.com/Kbts_7WluP3XEPp25jaYQER-dwLUxl3qH1gF4tb2Ds210ZWHGmdA4v8xKmqETXHY_7vr9KrettVGk-YVIRV6PcBB30HoVdGRwc3t=w600',
+    category: 'Utility'
+  },
+  {
+    name: 'PixelBeast',
+    image: 'https://lh3.googleusercontent.com/nwtfqREY8ZogzrwR8OYd3v0R83270l1_Yo6I1dntVwSyOeNS1utKdYqAFPMZE_iynY1mQC3lDsH6_fySDIsjZ7NZdQVa4ZDgIck7mg=w600',
+    category: 'Utility'
+  },
+  {
+    name: 'Blackout Drinking',
+    image: 'https://lh3.googleusercontent.com/VEhWk7wZv5s9jMxXHUi5O4K6m07XfrU8HEpuXWrkM0phDHtuBOVfbCP6x3-UE3B5PpHcAt26G-14gpTAHlkU45qFswYXHab0j84anw=w600',
+    category: 'Sports'
+  },
+  {
+    name: 'BOONJI',
+    image: 'https://lh3.googleusercontent.com/34ns4iZnuOEgwHrCPrKkLBlfKRfZ0uHLvq7sv1DueANdzRMc0CBdHe9jdFnZvUKUfRHiqtlpTe3VBtqfsqNbsLoWtqp_PknseGy-D4M=w600',
+    category: 'Art'
   }
 ]
