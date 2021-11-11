@@ -13,6 +13,7 @@ router.route('/all')
 router.route('/all/:id')
   .get(getSingleNft)
   .put(secureRoute, updateNft)
+  .delete(secureRoute,deleteAnNft)
 
 router.route('/register')
   .post(registeredUser)
@@ -22,8 +23,5 @@ router.route('/login')
 
 router.route('/profile')
   .get(secureRoute,getUserInfo)
-
-router.route('/all/:id')  
-  .delete(secureRoute,deleteAnNft)
 
 export default router
