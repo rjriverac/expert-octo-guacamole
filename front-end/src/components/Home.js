@@ -31,7 +31,7 @@ const Home = () => {
 
         <Divider hidden/>
 
-        <Grid columns={2} each>
+        <Grid columns={2}>
           <Grid.Column>
             <Segment>
               <Header 
