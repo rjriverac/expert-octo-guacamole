@@ -2,7 +2,8 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import { Container, Divider, Grid, Header, Image, Label, Placeholder, Segment, Table } from 'semantic-ui-react'
+import { Grid, Header, Image, Label, Placeholder, Segment, Table } from 'semantic-ui-react'
+import PricingDetails from './PricingDetail'
 
 const ProductDetail = () => {
   const { id } = useParams()
@@ -20,7 +21,8 @@ const ProductDetail = () => {
     }
     getData()
   },[id])
-  console.log(item)
+
+  
   return (
     
     <>
@@ -29,11 +31,11 @@ const ProductDetail = () => {
         content='Token Detail'
         textAlign='center'
       />
-      <Grid 
-        divided 
+      <Grid  
         columns={2}
         container={true}
         stackable
+        relaxed={'very'}
       >
         <Grid.Row>
           <Grid.Column>
@@ -42,6 +44,8 @@ const ProductDetail = () => {
               <Image
                 src={item.image}
                 size='large'
+                rounded
+                inline
               />
               :
               <Placeholder style={{ height: 150, width: 150 }}>
@@ -51,13 +55,10 @@ const ProductDetail = () => {
           </Grid.Column>
           <Grid.Column>
             <Placeholder>
-              <Placeholder.Paragraph>
-                <Placeholder.Line />
-                <Placeholder.Line />
-                <Placeholder.Line />
-                <Placeholder.Line />
-                <Placeholder.Line />
-              </Placeholder.Paragraph>
+              <Segment raised>
+                
+                <PricingDetails { ...item }/>
+              </Segment>
               <Placeholder.Paragraph>
                 <Placeholder.Line />
                 <Placeholder.Line />
@@ -73,13 +74,13 @@ const ProductDetail = () => {
               content={item && `${item.name}`}
               textAlign='justified'
             />
-            <Segment raised>
+            <Segment raised attached compact>
               <Label attached='top'>Details</Label>
-              <Table definition>
+              <Table definition compact columns={2} color='grey'>
                 <Table.Body>
                   <Table.Row>
-                    <Table.Cell width={2}>Name</Table.Cell>
-                    <Table.Cell>{item && item.name}</Table.Cell>
+                    <Table.Cell>Contract ID</Table.Cell>
+                    <Table.Cell>{item && item.token}</Table.Cell>
                   </Table.Row>
                   <Table.Row>
                     <Table.Cell>Current Owner</Table.Cell>
