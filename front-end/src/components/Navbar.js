@@ -16,7 +16,7 @@ const Navbar = () => {
   return (
     <Menu color='grey' secondary inverted size='large' >
       <Container>
-        <Menu.Item as='a' href='/' header>
+        <Menu.Item header as='a' href='/'>
           <Image style={{ marginRight: '10px' }} size='mini' src='https://i.imgur.com/QC1O8bP.png'/>
           <h3 style={{ marginTop: 'unset' }}>Tokenizer</h3>
         </Menu.Item>
