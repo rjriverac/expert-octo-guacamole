@@ -56,6 +56,22 @@ export const deleteAnNft = async (req, res) => {
 export const updateNft = async (req, res) => {
   try {
     const { id } = req.params
+    // const newInfo = req.body
+    const { transactions: transactionToAdd } = req.body
+    const findNft = await Nft.findById(id)
+    if (!findNft) throw new Error()
+    if (transactionToAdd.type) {
+      await Nft.findOneAndUpdate(
+        { _id: id },
+        { $push: {
+          transactions: { 
+            transactionToAdd 
+          }
+        }
+        },
+        { returnDocument: 'after' }
+      )
+    }
     const updatedNft = await Nft.findOneAndUpdate({ _id: id }, { ...req.body }, { new: true })
     if (!updatedNft) throw new Error()
     return res.status(202).json(updatedNft)

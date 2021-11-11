@@ -7,7 +7,7 @@ import { format } from 'date-fns'
 const PricingDetails = ({ transactions }) => {
 
 
-  const priceData = transactions.filter(item => item.type === 'sale')
+  // const priceData = transactions.filter(item => item.type === 'sale')
 
   // transactions.map(item => {
   //   const date = new Date(item.createdAt)
@@ -15,7 +15,7 @@ const PricingDetails = ({ transactions }) => {
   //   const price = 
   // })
 
-  console.log(priceData)
+  console.log(transactions)
   return (
     <>
       <h1>hello world</h1>
