@@ -3,7 +3,7 @@ import bcrypt from 'bcrypt'
 import uniqueValidator from 'mongoose-unique-validator'
 
 const cartItem = new mongoose.Schema({
-  item: { type: mongoose.Schema.ObjectId, ref: 'Nft', required: true }
+  item: { type: mongoose.Schema.ObjectId, ref: 'Nft', required: true, unique: true }
 })
 
 const userSchema = new mongoose.Schema({

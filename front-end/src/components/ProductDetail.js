@@ -6,10 +6,12 @@ import { Button, Divider, Grid, Header, Icon, Image, Label, Placeholder, Segment
 import PricingDetails from './PricingDetail'
 import { getTokenFromLocalStorage,getPayload } from './helpers/auth'
 
+
 const ProductDetail = () => {
   const { id } = useParams()
   const [item,setItem] = useState(null)
   // const token = getTokenFromLocalStorage()
+  const [added,setAdded] = useState(false)
 
   const userIsAuthenticated = () => {
     const payload = getPayload()
@@ -17,6 +19,7 @@ const ProductDetail = () => {
     const now = Math.round(Date.now() / 1000)
     return now < payload.exp
   }
+  const [thecart,settheCart] = useState()
 
 
   useEffect(() => {
@@ -28,22 +31,49 @@ const ProductDetail = () => {
         console.log(error)
       }
     }
+    const getUser = async () => {
+      try {
+        const { data: { cart } } = await axios.get('/api/profile',
+          {
+            headers: { Authorization: `Bearer ${getTokenFromLocalStorage()}` }
+          }
+        ) 
+        settheCart(cart)
+      } catch (error) {
+        console.log(error)
+      }
+    }
     getData()
+    getUser()
   },[id])
 
+  useEffect(() => {
+    if (thecart) {
+      if (thecart.map(item=> item.item).filter(item => item === id).length) {
+        setAdded(true)
+      } else setAdded(false)
+    }
+  },[thecart])
+
+
+  // console.log('added',thecart.map(item=> item.item).filter(item => item === id).length)
+
   const handleClick = async () => {
-    try {
-      const addToCart = await axios.put('/api/profile/cart',
-        {
-          'cart': {
-            'id': id
-          }
-        },
-        {
-          headers: { Authorization: `Bearer ${getTokenFromLocalStorage()}` }
-        })
-    } catch (error) {
-      console.log(error)
+    if (!added){
+      try {
+        const addToCart = await axios.put('/api/profile/cart',
+          {
+            'cart': {
+              item
+            }
+          },
+          {
+            headers: { Authorization: `Bearer ${getTokenFromLocalStorage()}` }
+          })
+        setAdded(true)
+      } catch (error) {
+        console.log(error)
+      }
     }
   }
 
@@ -85,13 +115,14 @@ const ProductDetail = () => {
               </Segment>
               <Divider horizontal/>
               <Segment raised>
-                <Button 
+                <Button
+                  className={!added ? 'positive' : 'disabled' }
                   animated 
                   fluid
                   color='red'
                   onClick={handleClick}
                 >
-                  <Button.Content visible>Add to Cart</Button.Content>
+                  <Button.Content visible>{!added ? 'Add to Cart' : 'Already in Cart'}</Button.Content>
                   <Button.Content hidden>
                     <Icon name='shopping cart' />
                   </Button.Content>
