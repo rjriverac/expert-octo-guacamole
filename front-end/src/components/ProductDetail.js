@@ -56,8 +56,6 @@ const ProductDetail = () => {
   },[thecart])
 
 
-  // console.log('added',thecart.map(item=> item.item).filter(item => item === id).length)
-
   const handleClick = async () => {
     if (!added){
       try {
