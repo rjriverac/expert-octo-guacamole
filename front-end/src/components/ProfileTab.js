@@ -1,8 +1,9 @@
 /* eslint-disable no-unused-vars */
 import React, { Component, useState, useEffect } from 'react'
 import axios from 'axios'
-import { Menu, Grid, Image, Header, Container, Segment, Card, Icon, Label, Tab, List } from 'semantic-ui-react'
+import { Menu, Grid, Image, Header, Container, Segment, Card, Icon, Label, Tab, List, Dimmer, Loader } from 'semantic-ui-react'
 import { getTokenFromLocalStorage } from './helpers/auth'
+import ProductCard from './ProductCard'
 
 const ProfileTab = () => {
 
@@ -26,17 +27,37 @@ const ProfileTab = () => {
   }, [token])
   console.log(userInfo)
 
+  const panes = [
+    { menuItem: 'Owned', render: () => <Tab.Pane>
+      <Card.Group centered>
+        {userInfo.owned.length ?
+          userInfo.owned.map((item, index) => (
+            <ProductCard
+              key={index}
+              item={item}
+            />
+          )
+          )
+          :
+          <Dimmer inverted active>
+            <Loader content='Loading' />
+          </Dimmer>
+        }
+      </Card.Group>
+    </Tab.Pane> },
+    {
+      menuItem: 'Cart', render: () => <Tab.Pane>
+        <Card.Group>
+          <h1>cart will go here</h1>
+        </Card.Group>
+      </Tab.Pane>
+    }
+  ]
+
   return (
     <Grid.Column>
-      <Menu
-        items={[
-          { key: '1', name: 'link-1', content: 'Created' },
-          { key: '2', name: 'link-2', content: 'Liked' },
-          { key: '3', name: 'link-3', content: 'Bought' }
-        ]}
-        tabular
-      />
       <h3>{userInfo.image}</h3>
+      <Tab panes={panes}/>
     </Grid.Column>
   )
 }
