@@ -15,11 +15,11 @@ const Cart = () => {
   useEffect(() => {
     const getData = async () => {
       try {
-        const { data } = await axios.get('/api/profile',
+        const { data: { cart } } = await axios.get('/api/profile',
           {
             headers: { Authorization: `Bearer ${token}` }
           })
-        setuserInfo(data)
+        setuserInfo(cart)
       } catch (error) {
         console.log(error)
       }
