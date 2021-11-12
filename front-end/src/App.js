@@ -1,5 +1,6 @@
 import React from 'react'
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
+import Cart from './components/Cart'
 import Footer from './components/Footer'
 import Home from './components/Home'
 import Login from './components/Login'
@@ -22,6 +23,7 @@ const App = () => {
         <Route exact path='/register' component={Register}/>
         <Route exact path='/' component={Home}/>
         <Route exact path='/loggedin' component={UserProfile}/>
+        <Route exact path='/cart' component={Cart}/>
       </Switch>
       <Footer />
     </BrowserRouter>
