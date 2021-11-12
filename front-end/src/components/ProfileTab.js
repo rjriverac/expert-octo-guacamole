@@ -24,13 +24,13 @@ const ProfileTab = () => {
       }
     }
     getData()
-  }, [token])
-  console.log(userInfo)
+  }, [])
+
 
   const panes = [
     { menuItem: 'Owned', render: () => <Tab.Pane>
       <Card.Group centered>
-        {userInfo.owned.length ?
+        {userInfo.owned ?
           userInfo.owned.map((item, index) => (
             <ProductCard
               key={index}
