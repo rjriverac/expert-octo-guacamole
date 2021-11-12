@@ -11,6 +11,8 @@ const ProductCard = ({ index, item }) => {
   const transactionText = transactions.slice(-1)[0].type
   const formattedText = transactionText.charAt(0).toUpperCase() + transactionText.slice(1)
   const address = item._id
+  
+  
   return (
     <Card as='a' href={`/browse/${address}`} key={index}>
       <Image

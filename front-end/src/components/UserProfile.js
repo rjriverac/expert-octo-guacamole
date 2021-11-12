@@ -1,15 +1,33 @@
 /* eslint-disable no-unused-vars */
-import React, { Component } from 'react'
+import React, { Component, useEffect, useState, useHistory } from 'react'
+import axios from 'axios'
 import { Menu, Grid, Image, Header, Container, Segment, Card, Icon, Label, Tab } from 'semantic-ui-react'
 import ProfileTab from './ProfileTab'
 import { getTokenFromLocalStorage } from './helpers/auth'
 
 const UserProfile = () => {
 
-  
-  
 
-  
+  const token = getTokenFromLocalStorage()
+
+  const [userInfo, setuserInfo] = useState([])
+
+  useEffect(() => {
+    const getData = async () => {
+      try {
+        const { data } = await axios.get('/api/profile',
+          {
+            headers: { Authorization: `Bearer ${token}` }
+          })
+        setuserInfo(data)
+      } catch (error) {
+        console.log(error)
+      }
+    }
+    getData()
+  }, [token])
+  console.log(userInfo)
+
 
 
 
@@ -24,7 +42,7 @@ const UserProfile = () => {
             </Grid.Column>
             <Grid.Column width={8}>
               <Header as='h3' style={{ fontSize: '2em' }}>
-                User Name
+                {userInfo.username}
               </Header>
               <p style={{ fontSize: '1.33em' }}>
                 Joined Nov 2021
@@ -35,7 +53,9 @@ const UserProfile = () => {
           </Grid.Row>
         </Grid>
         <Container >
+          
           <ProfileTab />
+          
         </Container>
       </div>
     </div>
