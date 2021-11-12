@@ -11,6 +11,7 @@ const startServer = async () => {
     console.log('🚀 database connected')
     app.use((req,_res,next) => {
       console.log(`🚨🚨 Incoming request ${req.method} = ${req.url}`)
+      console.log(`body is ${req.body}`)
       next()
     })
     app.use(express.json())

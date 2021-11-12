@@ -27,6 +27,16 @@ userSchema.set('toJSON', {
   }
 })
 
+cartItem.virtual('details', {
+  ref: 'Nft',
+  localField: 'cartItem',
+  foreignField: '_id'
+})
+
+cartItem.set('toJson',{
+  virtuals: true
+})
+
 userSchema
   .virtual('passwordConfirmation')
   .set(function(passwordConfirmation) {

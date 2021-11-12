@@ -2,12 +2,21 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import { Grid, Header, Image, Label, Placeholder, Segment, Table } from 'semantic-ui-react'
+import { Button, Divider, Grid, Header, Icon, Image, Label, Placeholder, Segment, Table } from 'semantic-ui-react'
 import PricingDetails from './PricingDetail'
+import { getTokenFromLocalStorage,getPayload } from './helpers/auth'
 
 const ProductDetail = () => {
   const { id } = useParams()
   const [item,setItem] = useState(null)
+  // const token = getTokenFromLocalStorage()
+
+  const userIsAuthenticated = () => {
+    const payload = getPayload()
+    if (!payload) return false
+    const now = Math.round(Date.now() / 1000)
+    return now < payload.exp
+  }
 
 
   useEffect(() => {
@@ -21,6 +30,22 @@ const ProductDetail = () => {
     }
     getData()
   },[id])
+
+  const handleClick = async () => {
+    try {
+      const addToCart = await axios.put('/api/profile/cart',
+        {
+          'cart': {
+            'id': id
+          }
+        },
+        {
+          headers: { Authorization: `Bearer ${getTokenFromLocalStorage()}` }
+        })
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
   
   return (
@@ -40,7 +65,6 @@ const ProductDetail = () => {
         <Grid.Row>
           <Grid.Column>
             {item ? 
-
               <Image
                 src={item.image}
                 size='large'
@@ -59,11 +83,20 @@ const ProductDetail = () => {
                 
                 <PricingDetails { ...item }/>
               </Segment>
-              <Placeholder.Paragraph>
-                <Placeholder.Line />
-                <Placeholder.Line />
-                <Placeholder.Line />
-              </Placeholder.Paragraph>
+              <Divider horizontal/>
+              <Segment raised>
+                <Button 
+                  animated 
+                  fluid
+                  color='red'
+                  onClick={handleClick}
+                >
+                  <Button.Content visible>Add to Cart</Button.Content>
+                  <Button.Content hidden>
+                    <Icon name='shopping cart' />
+                  </Button.Content>
+                </Button>
+              </Segment>
             </Placeholder>
           </Grid.Column>
         </Grid.Row>

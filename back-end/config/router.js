@@ -1,7 +1,7 @@
 import express from 'express'
 import { loginUser, registeredUser } from '../controllers/auth.js'
 import { addNft, getAllNft, deleteAnNft, getSingleNft, updateNft } from '../controllers/nfts.js'
-import { getUserInfo } from '../controllers/users.js'
+import { addToCart, getUserInfo } from '../controllers/users.js'
 import { secureRoute } from './secureRoute.js'
 
 const router = express.Router()
@@ -23,5 +23,8 @@ router.route('/login')
 
 router.route('/profile')
   .get(secureRoute,getUserInfo)
+
+router.route('/profile/cart')
+  .put(secureRoute,addToCart)
 
 export default router
