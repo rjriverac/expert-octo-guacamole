@@ -42,19 +42,22 @@ const Home = () => {
           <CarouselProvider 
             naturalSlideWidth={100}
             naturalSlideHeight={125}
-            totalSlides={3}
+            totalSlides={4}
           >
             <Slider>
-              {nftData.filter((_item, index) => index < 4).map(product => {
-                <Slide>
-                  <Card>
-                    <Image src={product.image}></Image>
-                    <Card.Content>
-                      <Card.Header>{product.name}</Card.Header>
-                    </Card.Content>
-                  </Card>
-                </Slide>
+              {nftData.filter((_item, index) => index < 4).map((product, index) => {
+                return (
+                  <Slide key={index}>
+                    <Card>
+                      <Image src={product.image}></Image>
+                      <Card.Content>
+                        <Card.Header>{product.name}</Card.Header>
+                      </Card.Content>
+                    </Card>
+                  </Slide>
+                )
               })}
+
               {/* <Slide index={0}>
                 <Card>
                   <Image src='https://lh3.googleusercontent.com/zm5apJVmz2qLkwBsUfd4ZYBuyatp3SDvWwZVQyj2waG2OKNjFbGfWkM9ohVPgF8w_G0I0oJj6rxOM4D2WqEgAl9GigAbrAhadLAL=w600' />
