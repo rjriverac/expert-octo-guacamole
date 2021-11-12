@@ -45,7 +45,7 @@ const ProfileTab = () => {
 
 
 
-console.log(getTokenFromLocalStorage())
+
 
 
 
