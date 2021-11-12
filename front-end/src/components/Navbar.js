@@ -41,14 +41,16 @@ const Navbar = () => {
           <h3 style={{ marginTop: 'unset' }}>Tokenizer</h3>
         </Menu.Item>
         <Menu.Item as='a' href='/browse'>Browse</Menu.Item>
-        <Menu.Item as='a' href='/loggedin'>Loggedin</Menu.Item>
         {!userIsAuthenticated() ? 
           <>
             <Menu.Item position='right'><Button as='a' basic inverted href='/register'>Register</Button></Menu.Item>
-            <Menu.Item as='a' href='/login'><Icon name='user circle' size='large' /></Menu.Item>
+            <Menu.Item><Button as='a' basic inverted href='/login'>Login</Button></Menu.Item>
           </>
           :
-          <Menu.Item as='a' onClick={handleLogout}>Log Out</Menu.Item>
+          <>
+            <Menu.Item position='right' as='a' onClick={handleLogout}>Log Out</Menu.Item>
+            <Menu.Item as='a' href='/profile'><Icon name='user circle' size='large' /></Menu.Item>
+          </>
         }
         
       </Container>
