@@ -2,8 +2,15 @@
 import React, { Component } from 'react'
 import { Menu, Grid, Image, Header, Container, Segment, Card, Icon, Label, Tab } from 'semantic-ui-react'
 import ProfileTab from './ProfileTab'
+import { getTokenFromLocalStorage } from './helpers/auth'
 
 const UserProfile = () => {
+
+  
+  
+
+  
+
 
 
   return (

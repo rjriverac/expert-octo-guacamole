@@ -1,12 +1,15 @@
 /* eslint-disable no-unused-vars */
 import React, { Component } from 'react'
 import { Menu, Grid, Image, Header, Container, Segment, Card, Icon, Label, Tab, List } from 'semantic-ui-react'
+import { getTokenFromLocalStorage } from './helpers/auth'
 
-
+const ProfileTab = (index, name) => (
+  <Tab panes={panes} renderActiveOnly={false} />
+)
 const panes = [
   {
     menuItem: 'Collected',
-    pane: { key: 'tab1', content: 'Here comes what NFT the User has Ourchased', size: 'massive' }
+    pane: { key: 'tab1', content: 'Here comes what NFT the User has Purchased', size: 'massive' }
   },
   {
     menuItem: 'Tab 2',
@@ -22,16 +25,15 @@ const panes = [
       key: 'tab3',
       content: (
         <div>
-          This tab contains a <Label>JSX</Label> element
+          This tab contains a <Label>Liked</Label> element
         </div>
       )
     }
   }
 ]
 
-const ProfileTab = () => (
-  <Tab panes={panes} renderActiveOnly={false} />
-)
+console.log(getTokenFromLocalStorage())
+
 
 
 export default ProfileTab
