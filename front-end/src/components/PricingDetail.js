@@ -15,7 +15,7 @@ const PricingDetails = ({ transactions }) => {
   //   const price = 
   // })
 
-  console.log(transactions)
+  // console.log(transactions)
   return (
     <>
       <h1>hello world</h1>
