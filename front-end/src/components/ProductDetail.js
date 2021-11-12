@@ -5,13 +5,14 @@ import { useParams } from 'react-router-dom'
 import { Button, Divider, Grid, Header, Icon, Image, Label, Placeholder, Segment, Table } from 'semantic-ui-react'
 import PricingDetails from './PricingDetail'
 import { getTokenFromLocalStorage,getPayload } from './helpers/auth'
+import { useHistory } from 'react-router-dom'
 
 
 const ProductDetail = () => {
   const { id } = useParams()
   const [item,setItem] = useState(null)
-  // const token = getTokenFromLocalStorage()
   const [added,setAdded] = useState(false)
+  const history = useHistory()
 
   const userIsAuthenticated = () => {
     const payload = getPayload()
@@ -57,6 +58,9 @@ const ProductDetail = () => {
 
 
   const handleClick = async () => {
+    if (!userIsAuthenticated()) {
+      history.push('/login')
+    }
     if (!added){
       try {
         const addToCart = await axios.put('/api/profile/cart',
@@ -74,7 +78,7 @@ const ProductDetail = () => {
       }
     }
   }
-
+  console.log(userIsAuthenticated())
   
   return (
     
