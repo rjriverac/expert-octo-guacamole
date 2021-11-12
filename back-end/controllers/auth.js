@@ -22,7 +22,7 @@ export const loginUser = async (req, res) => {
     }
 
     //generate a token for the user
-    const token = jwt.sign({ sub: userToLogin._id }, secret, { expiresIn: '1 day' })
+    const token = jwt.sign({ sub: userToLogin._id }, secret, { expiresIn: '20 day' })
     // console.log('TOKEN -> ', token)
     return res.status(200).json({ 'message': `Welcome back ${userToLogin.username}`, token })
     
