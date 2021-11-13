@@ -42,12 +42,19 @@ const Navbar = () => {
           :
           <>
             <Menu.Item position='right' as='a' onClick={handleLogout}>Log Out</Menu.Item>
-            <Dropdown icon='user circle' floating closeOnChange >
+            {/* <Dropdown icon='user circle' floating closeOnChange >
               <Dropdown.Menu>
                 <Dropdown.Item as='a' icon='add' text='Add NFT'/>
               </Dropdown.Menu>
-            </Dropdown>
-            <Menu.Item as='a' href='/profile'><Icon name='user circle' size='large' /></Menu.Item>
+            </Dropdown> */}
+            <Menu.Item><Icon name='user circle' size='large' />
+              <Dropdown>
+                <Dropdown.Menu>
+                  <Dropdown.Item as='a' href='/profile' icon='user circle' text='Go to your profile'/>
+                  <Dropdown.Item as='a' href='/profile/add' icon='add' text='Add NFT'/>
+                </Dropdown.Menu>
+              </Dropdown>
+            </Menu.Item>
           </>
         }
         
