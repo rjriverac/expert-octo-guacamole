@@ -6,6 +6,7 @@ import NftForm from './NftForm'
 
 const NftNew = () => {
 
+  const token = getTokenFromLocalStorage()
   const [formData, setFormData] = useState({
     name: '',
     image: '',
@@ -28,7 +29,7 @@ const NftNew = () => {
     try {
       await axios.post('/api/all',
         formData, {
-          headers: { Authorization: `Bearer ${getTokenFromLocalStorage()}` }
+          headers: { Authorization: `Bearer ${token}` }
         }
       )
     } catch (err) {
