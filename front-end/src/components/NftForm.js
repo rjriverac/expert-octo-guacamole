@@ -1,11 +1,15 @@
 import React from 'react'
-import { Button, Form, Icon } from 'semantic-ui-react'
+import { Button, Form, Icon, Header } from 'semantic-ui-react'
 
 const NftForm = ({ handleSubmit, handleChange, formData, errors, buttonText }) => {
 
   return (
     <>
-      <h1>Hello world</h1>
+      <Header 
+        as='h1'
+        content='Add your NFT here!'
+        textAlign='center'
+      />
       <Form size='big' onSubmit={handleSubmit}>
         <Form.Field>
           <label>Name </label>
@@ -29,19 +33,11 @@ const NftForm = ({ handleSubmit, handleChange, formData, errors, buttonText }) =
           />
         </Form.Field>
 
-        <Form.Field>
-          <label>Category</label>
-          <input 
-            placeholder='select a category for your NFT'
-            name='category'
-            value={formData.category}
-            onChange={handleChange}
-          />
-
-          <Form.Select>
-            <option value={formData.category} name='art'>Art</option>
-          </Form.Select>
+        <Form.Field label='Category' control='select'>
+          <option name='art' value={formData.category}>Art</option>
+          <option name='sports' value={formData.category}>Sports</option>
         </Form.Field>
+       
 
         <Button type='submit'>{buttonText}</Button>
       </Form>
