@@ -1,7 +1,7 @@
 import React from 'react'
 import { Button, Form, Icon } from 'semantic-ui-react'
 
-const NftForm = ({ handleSubmit, handleChange, formData, errors }) => {
+const NftForm = ({ handleSubmit, handleChange, formData, errors, buttonText }) => {
 
   return (
     <>
@@ -37,9 +37,13 @@ const NftForm = ({ handleSubmit, handleChange, formData, errors }) => {
             value={formData.category}
             onChange={handleChange}
           />
+
+          <Form.Select>
+            <option value={formData.category} name='art'>Art</option>
+          </Form.Select>
         </Form.Field>
-        
-        <Button type='submit'>Add my NFT!</Button>
+
+        <Button type='submit'>{buttonText}</Button>
       </Form>
     </>
   )

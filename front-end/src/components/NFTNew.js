@@ -44,6 +44,7 @@ const NftNew = () => {
           handleChange={handleChange}
           formData={formData}
           errors={errors}
+          buttonText='Add my NFT!'
         />
       </Container>
     </>
