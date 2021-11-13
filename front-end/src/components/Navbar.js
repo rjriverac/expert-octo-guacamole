@@ -1,18 +1,36 @@
 /* eslint-disable no-unused-vars */
-import React, { useEffect } from 'react'
-import { getPayload } from './helpers/auth'
+import React, { useEffect, useState } from 'react'
+import { getPayload, getTokenFromLocalStorage } from './helpers/auth'
 import { useHistory, useLocation } from 'react-router-dom'
 import { Container, Image, Menu, Icon, Button, Item, Dropdown } from 'semantic-ui-react'
+import axios from 'axios'
 
 
 const Navbar = () => {
 
+  const [getUsername, setUsername] = useState([])
   const history = useHistory()
   const location = useLocation()
+  const token = getTokenFromLocalStorage()
 
   useEffect(() => {
 
   }, [location.pathname])
+
+  useEffect(() => {
+    const getData = async () => {
+      try {
+        const { data } = await axios.get('api/profile',
+          {
+            headers: { Authorization: `Bearer ${token}` }
+          })
+        setUsername(data)
+      } catch (err) {
+        console.log(err)
+      }
+    }
+    getData()
+  }, [token])
 
   const userIsAuthenticated = () => {
     const payload = getPayload()
@@ -42,14 +60,11 @@ const Navbar = () => {
           :
           <>
             <Menu.Item position='right' as='a' onClick={handleLogout}>Log Out</Menu.Item>
-            {/* <Dropdown icon='user circle' floating closeOnChange >
-              <Dropdown.Menu>
-                <Dropdown.Item as='a' icon='add' text='Add NFT'/>
-              </Dropdown.Menu>
-            </Dropdown> */}
             <Menu.Item><Icon name='user circle' size='large' />
-              <Dropdown>
+              <Dropdown floating closeOnChange inline direction='left'>
                 <Dropdown.Menu>
+                  <Dropdown.Header>Signed in as: {getUsername.username} </Dropdown.Header>
+                  <Dropdown.Divider/>
                   <Dropdown.Item as='a' href='/profile' icon='user circle' text='Go to your profile'/>
                   <Dropdown.Item as='a' href='/profile/add' icon='add' text='Add NFT'/>
                 </Dropdown.Menu>
