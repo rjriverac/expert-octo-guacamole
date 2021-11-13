@@ -2,14 +2,7 @@
 import React, { useEffect } from 'react'
 import { getPayload } from './helpers/auth'
 import { useHistory, useLocation } from 'react-router-dom'
-import {
-  Container,
-  Image,
-  Menu,
-  Icon,
-  Button,
-  Item
-} from 'semantic-ui-react'
+import { Container, Image, Menu, Icon, Button, Item, Dropdown } from 'semantic-ui-react'
 
 
 const Navbar = () => {
@@ -49,6 +42,11 @@ const Navbar = () => {
           :
           <>
             <Menu.Item position='right' as='a' onClick={handleLogout}>Log Out</Menu.Item>
+            <Dropdown icon='user circle' floating closeOnChange >
+              <Dropdown.Menu>
+                <Dropdown.Item as='a' icon='add' text='Add NFT'/>
+              </Dropdown.Menu>
+            </Dropdown>
             <Menu.Item as='a' href='/profile'><Icon name='user circle' size='large' /></Menu.Item>
           </>
         }
