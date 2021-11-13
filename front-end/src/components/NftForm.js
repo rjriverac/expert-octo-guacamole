@@ -34,10 +34,18 @@ const NftForm = ({ handleSubmit, handleChange, formData, errors, buttonText }) =
         </Form.Field>
 
         <Form.Field label='Category' control='select'>
-          <option name='art' value={formData.category}>Art</option>
-          <option name='sports' value={formData.category}>Sports</option>
+          <option name='Art' value={formData.category}>Art</option>
+          <option name='Sports' value={formData.category}>Sports</option>
         </Form.Field>
-       
+
+        {/* {handleSubmit ? (
+          <Message 
+            success
+            header='Added'
+            content='Your NFT has been added!'
+          />
+        ) : (<p>Enter something</p>)
+        } */}
 
         <Button type='submit'>{buttonText}</Button>
       </Form>
