@@ -1,9 +1,9 @@
 import React from 'react'
 
-const NftForm = () => {
+const NftNew = () => {
 
   return (
     <h1>Hello</h1>
   )
 }
-export default NftForm
+export default NftNew
