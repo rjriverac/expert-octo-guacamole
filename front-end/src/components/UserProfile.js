@@ -1,15 +1,13 @@
-/* eslint-disable no-unused-vars */
-import React, { Component, useEffect, useState, useHistory } from 'react'
+import React, { useEffect, useState } from 'react'
 import axios from 'axios'
-import { Menu, Grid, Image, Header, Container, Segment, Card, Icon, Label, Tab } from 'semantic-ui-react'
+import { Grid, Image, Header, Container } from 'semantic-ui-react'
 import ProfileTab from './ProfileTab'
 import { getTokenFromLocalStorage,getPayload } from './helpers/auth'
+import { format } from 'date-fns'
 
 const UserProfile = () => {
 
-
   const token = getTokenFromLocalStorage()
-
   const [userInfo, setuserInfo] = useState([])
 
   useEffect(() => {
@@ -25,8 +23,7 @@ const UserProfile = () => {
       }
     }
     getData()
-  }, [token])
-  console.log(userInfo)
+  }, [])
 
   const userIsAuthenticated = () => {
     const payload = getPayload()
@@ -35,7 +32,7 @@ const UserProfile = () => {
     return now < payload.exp
   }
 
-
+  const isEmpty = (object) => Object.keys(object).length === 0
 
   return (
     <div>
@@ -48,10 +45,14 @@ const UserProfile = () => {
             </Grid.Column>
             <Grid.Column width={8}>
               <Header as='h3' style={{ fontSize: '2em' }}>
-                {userInfo.username}
+                { !isEmpty(userInfo) && userInfo.username}
               </Header>
               <p style={{ fontSize: '1.33em' }}>
-                Joined Nov 2021
+                { !isEmpty(userInfo) && (() => { 
+                  const date = new Date(userInfo.createdAt)
+                  const formattedDate = format(date, 'dd MMM yyyy')
+                  return `Member since ${formattedDate}`
+                })() }
               </p>
             </Grid.Column>
           </Grid.Row>
@@ -65,6 +66,7 @@ const UserProfile = () => {
             />
             :
             <h1>Please log in</h1>
+            /* // ! just put this in as a placeholder, we can refactor/add to this */
           }
           
           
