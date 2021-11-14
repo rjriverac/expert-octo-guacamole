@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars*/
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
@@ -63,7 +62,7 @@ const ProductDetail = () => {
     }
     if (!added){
       try {
-        const addToCart = await axios.put('/api/profile/cart',
+        await axios.put('/api/profile/cart',
           {
             'cart': {
               item

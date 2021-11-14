@@ -3,7 +3,7 @@ import React, { Component, useEffect, useState, useHistory } from 'react'
 import axios from 'axios'
 import { Menu, Grid, Image, Header, Container, Segment, Card, Icon, Label, Tab } from 'semantic-ui-react'
 import ProfileTab from './ProfileTab'
-import { getTokenFromLocalStorage } from './helpers/auth'
+import { getTokenFromLocalStorage,getPayload } from './helpers/auth'
 
 const UserProfile = () => {
 
@@ -28,6 +28,12 @@ const UserProfile = () => {
   }, [token])
   console.log(userInfo)
 
+  const userIsAuthenticated = () => {
+    const payload = getPayload()
+    if (!payload) return false
+    const now = Math.round(Date.now() / 1000)
+    return now < payload.exp
+  }
 
 
 
@@ -53,8 +59,14 @@ const UserProfile = () => {
           </Grid.Row>
         </Grid>
         <Container >
+          {userIsAuthenticated() ? 
+            <ProfileTab
+              {...userInfo}
+            />
+            :
+            <h1>Please log in</h1>
+          }
           
-          <ProfileTab />
           
         </Container>
       </div>
