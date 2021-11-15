@@ -51,6 +51,7 @@ const NftForm = () => {
           <Form.Field>
             <label>Name </label>
             <input 
+              required
               placeholder='name your NFT'
               name='name'
               value={formData.name}
@@ -61,8 +62,9 @@ const NftForm = () => {
           {errors.name && <p>{errors.name}</p>}
 
           <Form.Field>
-            <label><Icon name='image'/> Image</label>
+            <label>Image <Icon name='image'/></label>
             <input 
+              required
               placeholder='image of your NFT'
               name='image'
               value={formData.image}
@@ -71,8 +73,13 @@ const NftForm = () => {
           </Form.Field>
             
           <Form.Field label='Category' name='category' control='select' onChange={handleChange}>
-            <option value='Art' >Art</option>
+            <option value='' disabled selected>Choose a category</option>
+            <option value='Art'>Art</option>
+            <option value='Cards'>Cards</option>
+            <option value='Collectibles'>Collectibles</option>
             <option value='Sports'>Sports</option>
+            <option value='Utility'>Utility</option>
+            <option value='Virtual Worlds'>Virtual Worlds</option>
           </Form.Field>
 
           {/* {handleSubmit ? (
