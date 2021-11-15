@@ -91,7 +91,10 @@ const NftForm = () => {
           ) : (<p>Enter something</p>)
           } */}
 
-          <Button type='submit'>Add my NFT!</Button>
+          <Button type='submit' animated='vertical'>
+            <Button.Content hidden><Icon name='add' /></Button.Content>
+            <Button.Content visible>Add my NFT!</Button.Content>
+          </Button>
         </Form>
       </Container>
     </>
