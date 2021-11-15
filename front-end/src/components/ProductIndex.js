@@ -1,10 +1,8 @@
 /* eslint-disable no-unused-vars */
 import React from 'react'
-import PropTypes from 'prop-types'
-import { Card, Container, Dimmer, Grid, Loader, Segment, Menu, Dropdown, ResponsiveContainer, Image, Icon, Divider } from 'semantic-ui-react'
+import { Card, Container, Dimmer, Grid, Loader, Segment, Menu, Dropdown, Icon } from 'semantic-ui-react'
 import axios from 'axios'
 import { useState, useEffect } from 'react'
-
 import ProductCard from './ProductCard'
 
 const ProductIndex = () => {
@@ -23,17 +21,33 @@ const ProductIndex = () => {
     { key: 6, text: 'Virtual Worlds', value: 'Virtual Worlds', icon: 'computer' }
     
   ]
-  
-  const  handleDropDownCategory = (event, data) => {
-    console.log(data.value)
-  }
-
-  const  handleDropDownPrice = (event, data) => {
-    console.log(data.value)
-  }
-
   const [nft, setNft] = useState([])
   const [filteredNfts, setFilteredNfts] = useState([])
+  
+  const  handleDropDownCategory = (_event, data) => {
+    if (!data.value){
+      setFilteredNfts([...nft])
+    } else {
+      const filterArray = nft.filter(nft => {
+        return nft.category === data.value
+      })
+      setFilteredNfts(filterArray)
+    }
+  }
+
+  const  handleDropDownPrice = (_event, data) => {
+    console.log(data.value)
+    const workingArray = [...filteredNfts]
+    if (data.value === 1) {
+      const sortedArray = workingArray.sort((a,b)=> a.currentPrice - b.currentPrice)
+      console.log(sortedArray)
+      setFilteredNfts(sortedArray)
+    } else if (data.value === 2) {
+      const sortedArray = workingArray.sort((a,b) => b.currentPrice - a.currentPrice)
+      setFilteredNfts(sortedArray)
+    } else setFilteredNfts([...nft])
+  }
+
 
   useEffect(() => {
     const getData = async () => {
@@ -49,9 +63,6 @@ const ProductIndex = () => {
     getData()
   }, [])
 
-  const filteredArray = nft.filter(nftCat => {
-    return nft.category === category.value
-  })
 
   return (
     <Container>
@@ -75,8 +86,8 @@ const ProductIndex = () => {
         </Grid.Column>
         <Grid.Column width={13} color='teal' floated='right' >
           <Card.Group>
-            {nft.length ?
-              nft.map((item, index) => (
+            {filteredNfts.length ?
+              filteredNfts.map((item, index) => (
                 <ProductCard
                   key={index}
                   item={item}

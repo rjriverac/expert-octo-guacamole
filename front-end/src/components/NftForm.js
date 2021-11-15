@@ -18,9 +18,11 @@ const NftForm = () => {
     category: ''
   })
 
+
   const handleChange = (event) => {
-    const newFormData = { ...formData, available: true, [event.target.name]: event.target.value }
+    const newFormData = { ...formData, available: false, [event.target.name]: event.target.value }
     console.log('NEW FORM DATA ->', newFormData)
+    console.log(event.target.value)
     setFormData(newFormData)
   }
 
@@ -49,6 +51,7 @@ const NftForm = () => {
           <Form.Field>
             <label>Name </label>
             <input 
+              required
               placeholder='name your NFT'
               name='name'
               value={formData.name}
@@ -59,18 +62,24 @@ const NftForm = () => {
           {errors.name && <p>{errors.name}</p>}
 
           <Form.Field>
-            <label><Icon name='image'/> Image</label>
+            <label>Image <Icon name='image'/></label>
             <input 
+              required
               placeholder='image of your NFT'
               name='image'
               value={formData.image}
               onChange={handleChange}
             />
           </Form.Field>
-
-          <Form.Field label='Category' control='select'>
-            <option name='Art' value={formData.category}>Art</option>
-            <option name='Sports' value={formData.category}>Sports</option>
+            
+          <Form.Field label='Category' name='category' control='select' onChange={handleChange}>
+            <option value='' disabled selected>Choose a category</option>
+            <option value='Art'>Art</option>
+            <option value='Cards'>Cards</option>
+            <option value='Collectibles'>Collectibles</option>
+            <option value='Sports'>Sports</option>
+            <option value='Utility'>Utility</option>
+            <option value='Virtual Worlds'>Virtual Worlds</option>
           </Form.Field>
 
           {/* {handleSubmit ? (
@@ -82,7 +91,10 @@ const NftForm = () => {
           ) : (<p>Enter something</p>)
           } */}
 
-          <Button type='submit'>Add my NFT!</Button>
+          <Button type='submit' animated='vertical'>
+            <Button.Content hidden><Icon name='add' /></Button.Content>
+            <Button.Content visible>Add my NFT!</Button.Content>
+          </Button>
         </Form>
       </Container>
     </>
