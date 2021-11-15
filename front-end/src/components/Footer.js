@@ -6,7 +6,7 @@ import { Segment, Grid, Image, Button, List, Icon, Divider, Container, Header } 
 const Footer = () => {
 
   return (
-    <Segment inverted style={{ padding: '20px 0em 0 0' }}>
+    <Segment color='violet 'inverted style={{ padding: '20px 0em 0 0' }}>
       <Container>
         <Grid inverted stackable>
           <Grid.Row centered>
@@ -39,8 +39,8 @@ const Footer = () => {
             </Grid.Column>
           </Grid.Row>
         </Grid>
-        <Container textAlign='center'>
-          <Segment inverted>
+        <Container  textAlign='center'>
+          <Segment color='violet' inverted>
             <List horizontal relaxed style={{ padding: '10px 0em' }}>
               <List.Item>
                 <List.Item as='a' href='https://twitter.com/home'><Icon name='twitter' size='big' color='blue' /></List.Item>
@@ -49,7 +49,7 @@ const Footer = () => {
                 <List.Item as='a' href='https://www.reddit.com/'><Icon name='reddit' size='big' color='orange' /></List.Item>
               </List.Item>
               <List.Item>
-                <List.Item as='a' href='https://discord.com/'><Icon name='discord' size='big' color='violet' /></List.Item>
+                <List.Item as='a' href='https://discord.com/'><Icon name='discord' size='big' color='purple' /></List.Item>
               </List.Item>
               <List.Item>
                 <List.Item as='a' href='https://www.instagram.com/'><Icon name='instagram' size='big' color='yellow' /></List.Item>

@@ -1,3 +1,7 @@
 .facebookicon {
   color: #4267B2
 }
+.home {
+  background-image: url('https://www.kraken.com/_assets/files/2021-01/k_hp_retail_kelp_bkg_left_v3/1536.webp');
+  background-size: cover;
+}
