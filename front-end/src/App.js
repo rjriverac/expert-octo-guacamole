@@ -5,7 +5,7 @@ import Footer from './components/Footer'
 import Home from './components/Home'
 import Login from './components/Login'
 import Navbar from './components/Navbar'
-import NftNew from './components/NftNew'
+import NftForm from './components/NftForm'
 import ProductDetail from './components/ProductDetail'
 import ProductIndex from './components/ProductIndex'
 import Register from './components/Register'
@@ -25,7 +25,7 @@ const App = () => {
         <Route exact path='/' component={Home}/>
         <Route exact path='/profile' component={UserProfile}/>
         <Route exact path='/cart' component={Cart}/>
-        <Route exact path='/profile/add' component={NftNew}/>
+        <Route exact path='/profile/add' component={NftForm}/>
       </Switch>
       <Footer />
     </BrowserRouter>

@@ -1,54 +1,90 @@
-import React from 'react'
-import { Button, Form, Icon, Header } from 'semantic-ui-react'
+import React, { useState } from 'react'
+import { Button, Form, Icon, Header, Container } from 'semantic-ui-react'
+import axios from 'axios'
+import { getTokenFromLocalStorage } from './helpers/auth'
 
-const NftForm = ({ handleSubmit, handleChange, formData, errors, buttonText }) => {
+const NftForm = () => {
+
+  const token = getTokenFromLocalStorage()
+  const [formData, setFormData] = useState({
+    name: '',
+    image: '',
+    category: ''
+  })
+
+  const [errors, setErrors] = useState({
+    name: '',
+    image: '',
+    category: ''
+  })
+
+  const handleChange = (event) => {
+    const newFormData = { ...formData, available: true, [event.target.name]: event.target.value }
+    console.log('NEW FORM DATA ->', newFormData)
+    setFormData(newFormData)
+  }
+
+  const handleSubmit = async (event) => {
+    event.preventDefault()
+    try {
+      await axios.post('/api/all',
+        formData, {
+          headers: { Authorization: `Bearer ${token}` }
+        }
+      )
+    } catch (err) {
+      setErrors(err.response.data.errors)
+    }
+  }
 
   return (
     <>
-      <Header 
-        as='h1'
-        content='Add your NFT here!'
-        textAlign='center'
-      />
-      <Form size='big' onSubmit={handleSubmit}>
-        <Form.Field>
-          <label>Name </label>
-          <input 
-            placeholder='name your NFT'
-            name='name'
-            value={formData.name}
-            onChange={handleChange}
-          />
-        </Form.Field>
+      <Container>
+        <Header 
+          as='h1'
+          content='Add your NFT here!'
+          textAlign='center'
+        />
+        <Form size='big' onSubmit={handleSubmit}>
+          <Form.Field>
+            <label>Name </label>
+            <input 
+              placeholder='name your NFT'
+              name='name'
+              value={formData.name}
+              onChange={handleChange}
+            />
+          </Form.Field>
 
-        {errors.name && <p>{errors.name}</p>}
+          {errors.name && <p>{errors.name}</p>}
 
-        <Form.Field>
-          <label><Icon name='image'/> Image</label>
-          <input 
-            placeholder='image of your NFT'
-            name='image'
-            value={formData.image}
-            onChange={handleChange}
-          />
-        </Form.Field>
+          <Form.Field>
+            <label><Icon name='image'/> Image</label>
+            <input 
+              placeholder='image of your NFT'
+              name='image'
+              value={formData.image}
+              onChange={handleChange}
+            />
+          </Form.Field>
 
-        <Form.Field label='Category' control='select'>
-          <option name='Art' value={formData.category}>Art</option>
-          <option name='Sports' value={formData.category}>Sports</option>
-        </Form.Field>
+          <Form.Field label='Category' control='select'>
+            <option name='Art' value={formData.category}>Art</option>
+            <option name='Sports' value={formData.category}>Sports</option>
+          </Form.Field>
 
-        {/* {handleSubmit ? (
-          <Message 
-            success
-            header='Added'
-            content='Your NFT has been added!'
-          />
-        ) : (<p>Enter something</p>)
-        } */}
+          {/* {handleSubmit ? (
+            <Message 
+              success
+              header='Added'
+              content='Your NFT has been added!'
+            />
+          ) : (<p>Enter something</p>)
+          } */}
 
-        <Button type='submit'>{buttonText}</Button>
-      </Form>
+          <Button type='submit'>Add my NFT!</Button>
+        </Form>
+      </Container>
     </>
   )
 }
