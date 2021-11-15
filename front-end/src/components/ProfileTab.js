@@ -1,73 +1,58 @@
-/* eslint-disable no-unused-vars */
-import React, { Component, useState, useEffect } from 'react'
-import axios from 'axios'
-import { Menu, Grid, Image, Header, Container, Segment, Card, Icon, Label, Tab, List, Dimmer, Loader } from 'semantic-ui-react'
-import { getTokenFromLocalStorage } from './helpers/auth'
+import React from 'react'
+import { Grid, Card, Tab, Dimmer, Loader } from 'semantic-ui-react'
+
 import ProductCard from './ProductCard'
 
-const ProfileTab = () => {
-
-  const token = getTokenFromLocalStorage()
-
-  const [userInfo, setuserInfo] = useState([])
-
-  useEffect(() => {
-    const getData = async () => {
-      try {
-        const { data } = await axios.get('/api/profile',
-          {
-            headers: { Authorization: `Bearer ${token}` }
-          })
-        setuserInfo(data)
-      } catch (error) {
-        console.log(error)
-      }
-    }
-    getData()
-  }, [])
-
+const ProfileTab = (user) => {
 
   const panes = [
-    { menuItem: 'Owned', render: () => <Tab.Pane>
-      <Card.Group centered>
-        {userInfo.owned ?
-          userInfo.owned.map((item, index) => (
-            <ProductCard
-              key={index}
-              item={item}
-            />
-          )
-          )
-          :
-          <Dimmer inverted active>
-            <Loader content='Loading' />
-          </Dimmer>
-        }
-      </Card.Group>
-    </Tab.Pane> },
+    { 
+      menuItem: 'Owned', render: () => (
+        <Tab.Pane>
+          <Card.Group centered>
+            {user.owned ?
+              user.owned.map((item, index) => (
+                <ProductCard
+                  key={index}
+                  item={item}
+                />
+              )
+              )
+              :
+              <Dimmer inverted active>
+                <Loader content='Loading' />
+              </Dimmer>
+            }
+          </Card.Group>
+        </Tab.Pane>
+      ) 
+    },
     {
-      menuItem: 'Cart', render: () => <Tab.Pane>
-        <Card.Group>
-          <h1>cart will go here</h1>
-        </Card.Group>
-      </Tab.Pane>
+      menuItem: 'About', render: () => ( 
+        <Tab.Pane>
+          <Card>
+            <Card.Content>
+              <Card.Header>
+                {`User Id: ${user._id}`}
+              </Card.Header>
+              <Card.Meta>
+                {`${user.owned.length} NFTs owned`}
+              </Card.Meta>
+              <Card.Description>
+                {`Current Email: ${user.email}`}
+              </Card.Description>
+            </Card.Content>
+          </Card>
+        </Tab.Pane>
+      )
     }
   ]
-
   return (
     <Grid.Column>
-      <h3>{userInfo.image}</h3>
+      <h3>{user.image}</h3>
       <Tab panes={panes}/>
     </Grid.Column>
   )
 }
-
-
-
-
-
-
-
-
 
 export default ProfileTab
