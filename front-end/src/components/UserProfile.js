@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import { Grid, Image, Header, Container } from 'semantic-ui-react'
 import ProfileTab from './ProfileTab'
-import { getTokenFromLocalStorage,getPayload } from './helpers/auth'
+import { getTokenFromLocalStorage,userIsAuthenticated } from './helpers/auth'
 import { format } from 'date-fns'
 
 const UserProfile = () => {
@@ -25,12 +25,6 @@ const UserProfile = () => {
     getData()
   }, [])
 
-  const userIsAuthenticated = () => {
-    const payload = getPayload()
-    if (!payload) return false
-    const now = Math.round(Date.now() / 1000)
-    return now < payload.exp
-  }
 
   const isEmpty = (object) => Object.keys(object).length === 0
 

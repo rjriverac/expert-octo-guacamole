@@ -1,5 +1,6 @@
 import React from 'react'
 import { Grid, Card, Tab, Dimmer, Loader } from 'semantic-ui-react'
+import { userIsAuthenticated } from './helpers/auth'
 
 import ProductCard from './ProductCard'
 
@@ -50,7 +51,7 @@ const ProfileTab = (user) => {
   return (
     <Grid.Column>
       <h3>{user.image}</h3>
-      <Tab panes={panes}/>
+      {userIsAuthenticated() && <Tab panes={panes}/>}
     </Grid.Column>
   )
 }
