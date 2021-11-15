@@ -53,8 +53,8 @@ const Navbar = () => {
         <Menu.Item as='a' href='/browse'>Browse</Menu.Item>
         {!userIsAuthenticated() ? 
           <>
-            <Menu.Item position='right'><Button as='a' basic inverted href='/register'>Register</Button></Menu.Item>
-            <Menu.Item><Button as='a' basic inverted href='/login'>Login</Button></Menu.Item>
+            <Menu.Item position='right'><Button as='a' color='teal' href='/register'>Create an Account</Button></Menu.Item>
+            <Menu.Item><Button as='a' inverted color='teal'  href='/login'>Sign In</Button></Menu.Item>
           </>
           :
           <>
