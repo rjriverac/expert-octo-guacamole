@@ -5,3 +5,42 @@
   background-image: url('https://www.kraken.com/_assets/files/2021-01/k_hp_retail_kelp_bkg_left_v3/1536.webp');
   background-size: cover;
 }
+.smallButtons {
+  margin: 0px 5px;
+  box-shadow: 0 0 0 0 rgb(34 36 38 / 15%) inset;
+  background-color: #6435c9;
+  color: white;
+  padding: 6px;
+  border-radius: 5px;
+    text-shadow: none;
+    background-image: none;
+    cursor: pointer;
+    display: inline-block;
+    min-height: 1;
+    outline: 0;
+    border: none;
+    vertical-align: baseline;
+    background: #6435c9 none;
+    
+    font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;
+    margin: 0 0.25;
+    text-transform: none;
+    text-shadow: none;
+    font-weight: 700;
+    line-height: 1em;
+    font-style: normal;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 0.28571429;
+    box-shadow: 0 0 0 1px transparent inset, 0 0 0 0 rgb(34 36 38 / 15%) inset;
+    -webkit-user-select: none;
+    user-select: none;
+    transition: opacity .1s ease,background-color .1s ease,color .1s ease,box-shadow .1s ease, .1s ease;
+    will-change: '';
+    -webkit-tap-highlight-color: transparent;
+}
+.smallButtons:hover {
+  background-color: #7142d6;
+}
+
+
