@@ -18,9 +18,11 @@ const NftForm = () => {
     category: ''
   })
 
+
   const handleChange = (event) => {
     const newFormData = { ...formData, available: true, [event.target.name]: event.target.value }
     console.log('NEW FORM DATA ->', newFormData)
+    console.log(event.target.value)
     setFormData(newFormData)
   }
 
@@ -67,10 +69,10 @@ const NftForm = () => {
               onChange={handleChange}
             />
           </Form.Field>
-
-          <Form.Field label='Category' control='select'>
-            <option name='Art' value={formData.category} onChange={handleChange}>Art</option>
-            <option name='Sports' value={formData.category} onChange={handleChange}>Sports</option>
+            
+          <Form.Field label='Category' name='category' control='select' onChange={handleChange}>
+            <option value='Art' >Art</option>
+            <option value='Sports'>Sports</option>
           </Form.Field>
 
           {/* {handleSubmit ? (
