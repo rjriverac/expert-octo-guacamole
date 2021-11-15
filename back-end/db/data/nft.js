@@ -7,7 +7,7 @@ export default [
   {
     name: 'theCat',
     image: 'https://lh3.googleusercontent.com/DPytepoM9ZEGiLbq_9uo7rk3mCfpV8E3JgX-YtE25NjmONRNUKmd4VSY-_shzcGDDuOGq0rxyDcCWVHYsfKDBHJCN_7e8b67eYMo3g=s0',
-    category: 'Portrait'
+    category: 'Collectibles'
   },
   {
     name: 'Bored FungleHeadz',
@@ -56,7 +56,8 @@ export default [
   }, 
   {
     name: 'GoonCat',
-    image: 'https://lh3.googleusercontent.com/eGEwLmXvIRaJdv3FhUI5xp7heIj7N9JTStrH7aZ-1MGkq8rSTBN983acwweRFUcBlD0XjCq1T428lBkLxOzae5-5TZ-zJeVHXYdKY5I=w600'
+    image: 'https://lh3.googleusercontent.com/eGEwLmXvIRaJdv3FhUI5xp7heIj7N9JTStrH7aZ-1MGkq8rSTBN983acwweRFUcBlD0XjCq1T428lBkLxOzae5-5TZ-zJeVHXYdKY5I=w600',
+    category: 'Virtual Worlds'
   },
   {
     name: 'REVV Blur',
@@ -111,5 +112,91 @@ export default [
     name: 'BOONJI',
     image: 'https://lh3.googleusercontent.com/34ns4iZnuOEgwHrCPrKkLBlfKRfZ0uHLvq7sv1DueANdzRMc0CBdHe9jdFnZvUKUfRHiqtlpTe3VBtqfsqNbsLoWtqp_PknseGy-D4M=w600',
     category: 'Art'
+  },
+  {
+    name: 'Goon Cats',
+    image: 'https://lh3.googleusercontent.com/G9gJMlyeq282cZ9yguEuodzJPl7dLSThXvIiRr1WHO-7CGb2kPJFwfus0rsjcLz35O_9RTbnY03qj_ysr9QAl2_XFwSgGLjxEz6Wsg=w600',   
+    category: 'Collectibles'
+  },
+  {
+    name: 'BeezerBear',
+    image: 'https://lh3.googleusercontent.com/Kk7_TypYGM3hWzNfi94JRxDY_biyol5ElaqkygiXLmLbpkZhZq1hqkDUBOzdyEXLgHmAFKCNNXSY4ue8m4p9iIJ7dFuw4NTwEyEo0w=s0',
+    category: 'Collectibles'
+  },
+  {
+    name: 'MonaMusk',
+    image: 'https://lh3.googleusercontent.com/GjzgYhThXYSjWSIu3ZrNJPiiHC7fpGUN2FYYuYGzc1uciiHx4vexMvxSW-7LNTyAANJZ2iOIMYr8mhNouzZG6Xc62D4OLofX3iLditI=w600',
+    category: 'Card'
+  },
+  {
+    name: 'Crypto Hero',
+    image: 'https://lh3.googleusercontent.com/UzagG9Zr7-RJn9bt1rfQHNLTwH9Urxwkwv7QWlKqblkQqncH3EYMVj7cK1stcGc4cnNl7T-eyK20F8Fs8XG43qeYmy60tsZ2Ft8ZOg=w600',
+    category: 'Virtual Worlds'
+  },
+  {
+    name: 'Shiba',
+    image: 'https://64.media.tumblr.com/16a1bc1dc7ce99717e8efac90dcfd37f/fb509ffcb071383c-69/s540x810/78516e407950983af8cb6e9f841343cbcb5bb8ee.gifv',
+    category: 'Virtual Worlds'
+  },
+  {
+    name: 'Bored Ape',
+    image: 'https://lh3.googleusercontent.com/yJ0crgQo01cM8yMl-b71nbDxiR8GO0aHIi4v0v5RBxyQjqcedb1dg6OSc3qS3OVT9c5Wris5dcFc215VONmUA1IQBZ8xsHVzClduQcY=w600',
+    category: 'Collectibles'
+  },
+  {
+    name: 'WeWorld',
+    image: 'https://lh3.googleusercontent.com/dex93jCbApk6Xe8dzvt3HavH1c0eRV099hDkXoK2UnOmaA__Qg00PnLwMDKnBcfwo4TkYCI-T953r_wS_qXQbcsUY-FzZYuz5eyLo8I=w600',
+    category: 'Virtual Worlds'
+  },
+  {
+    name: 'Smokester',
+    image: '  https://lh3.googleusercontent.com/UFfo7KXKp-S0Gc85FcJs_cZhWXorlvDuwyfVyHjLPwJz27jV57wXy1i92hHh8QB3qmUJpY4HdPQvnWVP3-O3mxN6bkmhsiyt9Pyx=w600',
+    category: 'Collectibles'
+  },
+  {
+    name: 'SkaterTony',
+    image: 'https://lh3.googleusercontent.com/uyocg4pYMp3AjjMKkf5aMb3U5Tk_xFm6DuiCeG8Iod7UqMNpzrUA1TrR960wDWMNlKim3a9JL7MvPCA9LbWv_uDcQQlL9NNhyq_Nf3k=w600',
+    category: 'Art'
+  },
+  {
+    name: 'UltraPunk',
+    image: 'https://lh3.googleusercontent.com/TqlW5vmutG_qXrvHbjcdK7ATrzbbV79HQnHxDq6Jh9-r_o8MBcYlm4EfcRW9fMr6bSEzEyByDDX94w4dBb73qcUIwB9ZOSRz72vLrQ=w600',
+    category: 'Collectibles'
+  },
+  {
+    name: 'Ethermon',
+    image: 'https://lh3.googleusercontent.com/u485S1UVF8xufP54ZtynanKbb0KnPllKJQDjg8JESNS7tRYhMEMXkS2Ss7PcxVlh5PT9VlhYsYIJvGMIdy3PcfFazsfGxjCarTCW52U=w600',
+    category: 'Collectibles'
+  },
+  {
+    name: 'Wall Street Block of Gold',
+    image: 'https://lh3.googleusercontent.com/PklSk2bNxkSJdQdG6rfbVoCsLE7xxeNkkZQEMLZerC2SgXN_F7MqWl6rQXA1KSbH95FSxWnsqKwnlxb0Z-i5n6DbvWJJsz8_ILms5Q=w600',
+    category: 'Utility'
+  },
+  {
+    name: 'Rabbitar',
+    image: 'https://lh3.googleusercontent.com/GqFhBi6qaFNfEs6yVt3rUnWCIacLQkWlg8dEChWpkv8NGluJ5Tib3zzBBHjdyb7HmE2MScfROLzX8D-liEd9gEsvEduJMY9w9cyF6g=w600',
+    category: 'Art'
+  },
+  {
+    name: 'MetaFreaks Insert',
+    image: 'https://lh3.googleusercontent.com/2PmNoBDPPvB5ASF786Ehb7aJKpQNGjRP3ZGYhzOcZF9pM_V-ehFmQdv41Q6t2oO-0lk9pNX3nWF5DIYTjLYMudoxkf2NN5-5eEPR=w6000',
+    category: 'Card'
+  },
+  {
+    name: 'Knights of Degen',
+    image: 'https://lh3.googleusercontent.com/aVmWawCGIo3-ByJ19E50e2zWo0lCspvaMVFUJPTR88T4gQbelJq5PvWqePnMXkZoNOmpISO9Ft2yhYEnybgafGHjRsRU_RqeBmzQmg=w600',
+    category: 'Sport'
+  },
+  {
+    name: 'SportsIcon Lion',
+    image: 'https://lh3.googleusercontent.com/fuJXiL_bS4UjbL7-rY9zwnKrTWrYmqvslTh1CJw2ua96Mu3_3RDHwksX00_DYWxmic3k2vajgEKCwRvLGR_XTHyTXfvLucmKQ2PunA=w600',
+    category: 'Sport'
+  },
+  {
+    name: 'ArtWars Orange',
+    image: 'https://lh3.googleusercontent.com/DO9gf65ThMykUnPyErREW2nMUfOlLLZiJ6BfFObOd6iJoXyRz2aUUDnXM-eMlvEGcowzsG737Pq03v3wek2KMiyysPTq976wK6SF7w=w600',
+    category: 'Art'
   }
-]
+
+]     

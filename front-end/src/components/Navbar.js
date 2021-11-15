@@ -8,7 +8,8 @@ import {
   Menu,
   Icon,
   Button,
-  Item
+  Item,
+  Input
 } from 'semantic-ui-react'
 
 
@@ -34,10 +35,10 @@ const Navbar = () => {
   }
 
   return (
-    <Menu color='grey' secondary inverted size='large' >
+    <Menu color='violet' secondary inverted size='large' >
       <Container>
         <Menu.Item header as='a' href='/'>
-          <Image style={{ marginRight: '10px' }} size='mini' src='https://i.imgur.com/QC1O8bP.png'/>
+          <Image style={{ marginRight: '10px' }} size='mini' src='https://i.imgur.com/yCvLNgk.png'/>
           <h3 style={{ marginTop: 'unset' }}>Tokenizer</h3>
         </Menu.Item>
         <Menu.Item as='a' href='/browse'>Browse</Menu.Item>
@@ -48,7 +49,7 @@ const Navbar = () => {
           </>
           :
           <>
-            <Menu.Item position='right' as='a' onClick={handleLogout}>Log Out</Menu.Item>
+            <Menu.Item position='right' as='a' onClick={handleLogout}><Icon name='log out'></Icon>Log Out</Menu.Item>
             <Menu.Item as='a' href='/profile'><Icon name='user circle' size='large' /></Menu.Item>
           </>
         }
