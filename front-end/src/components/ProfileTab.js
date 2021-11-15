@@ -51,7 +51,7 @@ const ProfileTab = (user) => {
   return (
     <Grid.Column>
       <h3>{user.image}</h3>
-      {userIsAuthenticated() && <Tab panes={panes}/>}
+      {userIsAuthenticated() && <Tab menu={{ vertical: true, tabular: true, pointing: true, secondary: true }} panes={panes}/>}
     </Grid.Column>
   )
 }

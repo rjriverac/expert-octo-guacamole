@@ -1,10 +1,12 @@
+/* eslint-disable no-unused-vars */
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import { Button, Divider, Grid, Header, Icon, Image, Label, Placeholder, Segment, Table } from 'semantic-ui-react'
+import { Tab, Button, Divider, Grid, Header, Icon, Image, Label, Placeholder, Segment, Table, Container } from 'semantic-ui-react'
 import PricingDetails from './PricingDetail'
-import { getTokenFromLocalStorage,getPayload } from './helpers/auth'
+import { getTokenFromLocalStorage, userIsAuthenticated, userIsOwner } from './helpers/auth'
 import { useHistory } from 'react-router-dom'
+import NftEdit from './NftEdit'
 
 
 const ProductDetail = () => {
@@ -13,12 +15,7 @@ const ProductDetail = () => {
   const [added,setAdded] = useState(false)
   const history = useHistory()
 
-  const userIsAuthenticated = () => {
-    const payload = getPayload()
-    if (!payload) return false
-    const now = Math.round(Date.now() / 1000)
-    return now < payload.exp
-  }
+
   const [thecart,settheCart] = useState()
 
 
@@ -77,7 +74,32 @@ const ProductDetail = () => {
       }
     }
   }
-  console.log(userIsAuthenticated())
+
+  const panes = [
+    {
+      menuItem: 'Price History', render: () => (
+        <Tab.Pane>
+          <PricingDetails { ...item }/>
+        </Tab.Pane>
+      )
+    },
+    {
+      menuItem: 'Edit Details', render: () => (
+        <Tab.Pane>
+          { userIsOwner(item.owner.id) ?
+            <NftEdit
+              {...item}
+              {...id}
+            />
+            :
+            <p>You are not allowed to Edit this NFT</p>
+          }
+        </Tab.Pane>
+      )
+    }
+  ]
+
+  console.log(item)
   
   return (
     
@@ -109,27 +131,30 @@ const ProductDetail = () => {
             }
           </Grid.Column>
           <Grid.Column>
-            <Placeholder>
-              <Segment raised>
-                
-                <PricingDetails { ...item }/>
-              </Segment>
-              <Divider horizontal/>
-              <Segment raised>
-                <Button
-                  className={!added ? 'positive' : 'disabled' }
-                  animated 
-                  fluid
-                  color='red'
-                  onClick={handleClick}
-                >
-                  <Button.Content visible>{!added ? 'Add to Cart' : 'Already in Cart'}</Button.Content>
-                  <Button.Content hidden>
-                    <Icon name='shopping cart' />
-                  </Button.Content>
-                </Button>
-              </Segment>
-            </Placeholder>
+            <Segment raised> 
+              <Container>
+                <Tab menu={{ tabular: true, pointing: true }} panes={panes}/>
+              </Container>          
+              {/* <PricingDetails { ...item }/> */}
+            </Segment>
+            <Divider horizontal/>
+            { item &&
+              (!userIsOwner(item.owner.id) &&
+                  <Segment raised>
+                    <Button
+                      className={!added ? 'positive' : 'disabled' }
+                      animated 
+                      fluid
+                      color='red'
+                      onClick={handleClick}
+                    >
+                      <Button.Content visible>{!added ? 'Add to Cart' : 'Already in Cart'}</Button.Content>
+                      <Button.Content hidden>
+                        <Icon name='shopping cart' />
+                      </Button.Content>
+                    </Button>
+                  </Segment>)
+            }
           </Grid.Column>
         </Grid.Row>
         <Grid.Row>
