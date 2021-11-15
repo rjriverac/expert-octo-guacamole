@@ -69,8 +69,8 @@ const NftForm = () => {
           </Form.Field>
 
           <Form.Field label='Category' control='select'>
-            <option name='Art' value={formData.category}>Art</option>
-            <option name='Sports' value={formData.category}>Sports</option>
+            <option name='Art' value={formData.category} onChange={handleChange}>Art</option>
+            <option name='Sports' value={formData.category} onChange={handleChange}>Sports</option>
           </Form.Field>
 
           {/* {handleSubmit ? (
