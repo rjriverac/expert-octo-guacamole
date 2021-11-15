@@ -42,5 +42,8 @@
 .smallButtons:hover {
   background-color: #7142d6;
 }
-
+.login {
+  background-image: url('https://www.kraken.com/accounts/_next/static/media/sign-in.be3cefee3310f6615ae46fb1f9bc99c1.svg');
+  background-size: cover;
+}
 
