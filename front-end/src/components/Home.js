@@ -54,7 +54,7 @@ const Home = () => {
                   return (
                     <>
                       <Slide key={index}>
-                        <Card>
+                        <Card as='a' href={`/browse/${product._id}`}>
                           <Image src={product.image}></Image>
                           <Card.Content>
                             <Card.Header>{product.name}</Card.Header>
