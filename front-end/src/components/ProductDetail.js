@@ -89,7 +89,7 @@ const ProductDetail = () => {
           { userIsOwner(item.owner.id) ?
             <NftEdit
               {...item}
-              {...id}
+              id={id}
             />
             :
             <p>You are not allowed to Edit this NFT</p>
@@ -99,7 +99,7 @@ const ProductDetail = () => {
     }
   ]
 
-  console.log(item)
+
   
   return (
     
@@ -131,12 +131,12 @@ const ProductDetail = () => {
             }
           </Grid.Column>
           <Grid.Column>
-            <Segment raised> 
-              <Container>
-                <Tab menu={{ tabular: true, pointing: true }} panes={panes}/>
-              </Container>          
-              {/* <PricingDetails { ...item }/> */}
-            </Segment>
+            {/* <Segment raised>  */}
+            <Container>
+              <Tab menu={{ pointing: true, secondary: true }} panes={panes}/>
+            </Container>          
+            {/* <PricingDetails { ...item }/> */}
+            {/* </Segment> */}
             <Divider horizontal/>
             { item &&
               (!userIsOwner(item.owner.id) &&

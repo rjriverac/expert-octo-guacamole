@@ -20,7 +20,7 @@ const NftForm = () => {
 
 
   const handleChange = (event) => {
-    const newFormData = { ...formData, available: true, [event.target.name]: event.target.value }
+    const newFormData = { ...formData, available: false, [event.target.name]: event.target.value }
     console.log('NEW FORM DATA ->', newFormData)
     console.log(event.target.value)
     setFormData(newFormData)

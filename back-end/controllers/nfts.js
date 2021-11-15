@@ -56,7 +56,7 @@ export const deleteAnNft = async (req, res) => {
 export const updateNft = async (req, res) => {
   try {
     const { id } = req.params
-    const { transactions, ...update } = req.body
+    const { transactions = [], ...update } = req.body
     const findNft = await Nft.findById(id)
     if (!findNft) throw new Error()
     if (transactions.type) {
@@ -68,10 +68,12 @@ export const updateNft = async (req, res) => {
         },
         { returnDocument: 'after' }
       )
+    } else {
+      const updatedNft = await Nft.findOneAndUpdate({ _id: id }, { ...update }, { returnDocument: 'after' })
+      if (!updatedNft) throw new Error()
+      return res.status(202).json(updatedNft)
     }
-    const updatedNft = await Nft.findOneAndUpdate({ _id: id }, { ...update }, { new: true })
-    if (!updatedNft) throw new Error()
-    return res.status(202).json(updatedNft)
+    
   } catch (err) {
     return res.status(404).json({ 'message': 'not found' })
   }
