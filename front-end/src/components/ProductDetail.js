@@ -2,7 +2,7 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import { Accordion, Button, Divider, Grid, Header, Icon, Image, Label, Placeholder, Segment, Table } from 'semantic-ui-react'
+import { Tab, Button, Divider, Grid, Header, Icon, Image, Label, Placeholder, Segment, Table, Container } from 'semantic-ui-react'
 import PricingDetails from './PricingDetail'
 import { getTokenFromLocalStorage, userIsAuthenticated, userIsOwner } from './helpers/auth'
 import { useHistory } from 'react-router-dom'
@@ -75,25 +75,26 @@ const ProductDetail = () => {
     }
   }
 
-  const panels = [
+  const panes = [
     {
-      key: 'pricing-detail',
-      title: 'Price History',
-      content: (
-        <PricingDetails { ...item }/>
+      menuItem: 'Price History', render: () => (
+        <Tab.Pane>
+          <PricingDetails { ...item }/>
+        </Tab.Pane>
       )
     },
     {
-      key: 'edit',
-      title: 'Edit Details',
-      content: (
-        userIsOwner(item.owner.id) ?
-          <NftEdit
-            {...item}
-            {...id}
-          />
-          :
-          <p>You are not allowed to Edit this NFT</p>
+      menuItem: 'Edit Details', render: () => (
+        <Tab.Pane>
+          { userIsOwner(item.owner.id) ?
+            <NftEdit
+              {...item}
+              {...id}
+            />
+            :
+            <p>You are not allowed to Edit this NFT</p>
+          }
+        </Tab.Pane>
       )
     }
   ]
@@ -130,15 +131,15 @@ const ProductDetail = () => {
             }
           </Grid.Column>
           <Grid.Column>
-            <Segment raised>           
+            <Segment raised> 
+              <Container>
+                <Tab menu={{ tabular: true, pointing: true }} panes={panes}/>
+              </Container>          
               {/* <PricingDetails { ...item }/> */}
-              <Accordion
-                panels={panels} 
-              />
             </Segment>
             <Divider horizontal/>
-            {
-              !userIsOwner(item.owner.id) &&
+            { item &&
+              (!userIsOwner(item.owner.id) &&
                   <Segment raised>
                     <Button
                       className={!added ? 'positive' : 'disabled' }
@@ -152,7 +153,7 @@ const ProductDetail = () => {
                         <Icon name='shopping cart' />
                       </Button.Content>
                     </Button>
-                  </Segment>
+                  </Segment>)
             }
           </Grid.Column>
         </Grid.Row>
