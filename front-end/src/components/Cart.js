@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import {  getTokenFromLocalStorage } from './helpers/auth'
 import axios from 'axios'
+import { Card, Container, Header, Image, Segment } from 'semantic-ui-react'
 
 
 const Cart = () => {
@@ -38,7 +39,45 @@ const Cart = () => {
 
   console.log(userInfo)
   return (
-    <h1>hello world</h1>
+    <>
+      <Header 
+        as='h1'
+        size='large'
+      >
+        Cart
+      </Header>
+      <Container>
+        <Card.Group
+          doubling
+          stackable
+        >
+          {
+            userInfo.map((cartItem, index) => (
+
+              <Card key={index}>
+                <Card.Content>
+                  <Image
+                    floated='left'
+                    size='mini'
+                    src={cartItem.image}
+                  />
+                  <Card.Header>{cartItem.name}</Card.Header>
+                  <Card.Description>
+                    {`Price: ${cartItem.currentPrice}`}
+                  </Card.Description>
+                </Card.Content>
+              </Card>
+            ))
+          }
+
+        </Card.Group>
+      </Container>
+      <Segment raised>
+        Total: {(()=> userInfo.reduce((acc,cur) => {
+          return acc + cur.currentPrice
+        },0))()}
+      </Segment>
+    </>
   )
 }
 
