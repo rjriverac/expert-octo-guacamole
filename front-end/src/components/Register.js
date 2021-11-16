@@ -7,7 +7,7 @@ import { useHistory } from 'react-router-dom'
 const Register = () => {
 
   const history = useHistory()
-
+  const [displayMessage, setMessage] = useState(false)
   const [formData, setFormData] = useState({
     username: '',
     email: '',
@@ -25,10 +25,13 @@ const Register = () => {
     event.preventDefault()
     try {
       await axios.post('/api/register', formData)
-      history.push('/login')
+      setTimeout(() => {
+        history.push('/login')
+      }, 2000)
     } catch (err) {
       console.log(err)
     }
+    setMessage(true)
   }
 
   const handleChange = (event) => {
@@ -104,16 +107,18 @@ const Register = () => {
                   <Icon name='lock' />
                 </Form.Input>
                 
-
-                {/* <Message 
-              success
-              header='Registration successful!'
-              content='You may now login with the email you just signed up with'
-            />  */}
               </Form.Group>
               <br/>
               <Button size='big' color='teal' type='submit'>Click to Register!</Button>
               
+              {displayMessage ? (
+                <Message 
+                  success
+                  header='Registration successful!'
+                  content='You will now be directed to the login page.'
+                /> 
+              ) : '' }
+
             </Form>
           </Grid.Column>
           {/* <Message color='yellow'>
