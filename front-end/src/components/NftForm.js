@@ -13,17 +13,10 @@ const NftForm = () => {
     category: ''
   })
 
-  const [errors, setErrors] = useState({
-    name: '',
-    image: '',
-    category: ''
-  })
-
+  const [errors, setErrors] = useState(false)
 
   const handleChange = (event) => {
     const newFormData = { ...formData, available: false, [event.target.name]: event.target.value }
-    console.log('NEW FORM DATA ->', newFormData)
-    console.log(event.target.value)
     setFormData(newFormData)
   }
 
@@ -35,10 +28,12 @@ const NftForm = () => {
           headers: { Authorization: `Bearer ${token}` }
         }
       )
+      setMessage(true)
     } catch (err) {
-      setErrors(err.response.data.errors)
+      console.log(err)
+      setErrors(true)
+      setMessage(false)
     }
-    setMessage(true)
     setFormData({ name: '', image: '', category: '' })
   }
 
@@ -61,8 +56,6 @@ const NftForm = () => {
               onChange={handleChange}
             />
           </Form.Field>
-
-          {errors.name && <p>{errors.name}</p>}
 
           <Form.Field>
             <label>Image <Icon name='image'/></label>
@@ -91,9 +84,8 @@ const NftForm = () => {
               header='Added'
               content='Your NFT has been added!'
             />
-          ) : ''
-          }
-
+          ) : ''}
+          {errors && <p>🆘 Something went wrong... Please try again later.</p>}
           <Button type='submit' animated='vertical'>
             <Button.Content hidden><Icon name='add' /></Button.Content>
             <Button.Content visible>Add my NFT!</Button.Content>
