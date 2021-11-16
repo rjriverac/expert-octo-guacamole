@@ -30,7 +30,7 @@ const Login = () => {
       setToken(data.token)
       setTimeout(() => {
         history.push('/browse')
-      }, 3000)
+      }, 2000)
       setMessage(true)
     } catch (err) {
       console.log(err)
@@ -51,7 +51,7 @@ const Login = () => {
               textAlign='center'
             />
 
-            <Form onSubmit={handleSubmit} size='big' success>
+            <Form onSubmit={handleSubmit} size='big' success error>
               <Form.Field>
                 <label> <Icon name='user' /> Email </label>
                 <input
@@ -78,8 +78,11 @@ const Login = () => {
                   header='Login Successful'
                   content="You will now be redirected to the home page."
                 />
-              ) : '' }
-              {error && <p>Your email or password is incorrect, please try again!</p> }
+              ) : (error && <Message 
+                error
+                header='Login Unsuccessful'
+                content='Your email or password is incorrect, please try again!'
+              />) }
               <Button color='teal' type='submit' animated>
                 <Button.Content visible>Log In!</Button.Content>
                 <Button.Content hidden>
