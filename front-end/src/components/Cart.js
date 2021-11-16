@@ -57,6 +57,17 @@ const Cart = () => {
     }
   }
 
+  const handleClearCart = async () => {
+    try {
+      await axios.post('/api/profile/cart',{},
+        { headers: { Authorization: `Bearer ${token}` } }
+      )
+      setuserInfo([])
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
 
   console.log(userInfo)
   return (
@@ -69,7 +80,7 @@ const Cart = () => {
       </Header>
       <Segment
         raised
-        style={{ 'min-height': '50vh' }}
+        style={{ minHeight: '50vh' }}
       >
 
         <Container>
@@ -131,7 +142,7 @@ const Cart = () => {
           <Button
             negative
             animated='fade'
-
+            onClick={handleClearCart}
           >
             <Button.Content visible>
               <Icon name='trash'/>

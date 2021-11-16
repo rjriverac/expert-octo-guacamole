@@ -51,12 +51,12 @@ export const removeOneFromCart = async (req,res) => {
 
 export const clearCart = async (req,res) => {
 
-  const user = await User.findById(req.currentUser._id)
-  if (!user) throw new Error()
   try {
+    const user = await User.findById(req.currentUser._id)
+    if (!user) throw new Error()
     const updatedUser = await User.findByIdAndUpdate(req.currentUser._id,
-      { 'cart': [] },
-      { overwrite: true,returnDocument: 'after' }
+      { $set: { 'cart': [] } },
+      { multi: true,returnDocument: 'after' }
     )
     return res.status(202).json(updatedUser)  
   } catch (error) {
