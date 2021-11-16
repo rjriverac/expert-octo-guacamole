@@ -18,7 +18,7 @@ const ProductCard = ({ index, item }) => {
       <Image
         src={item.image}
         rounded
-        size='medium'
+        size='large'
       />
       <Card.Content>
         <Card.Header>{item.name}</Card.Header>
