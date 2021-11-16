@@ -10,7 +10,7 @@ import { useParams } from 'react-router-dom'
 const NftEdit = (_item) => {
 
   const { id } = useParams()
-  const [displayMessage, setMessage] = useState(null)
+  const [displayMessage, setMessage] = useState(false)
   const [notForSale, setNotForSale] = useState(false)
   const [formData, setFormData] = useState({
     available: undefined,
@@ -19,8 +19,7 @@ const NftEdit = (_item) => {
 
   const handleChange = (event) => {
     const newFormData = { ...formData, [event.target.name]: event.target.value }
-    console.log('NEW FORM DATA ->', newFormData)
-
+    // console.log('NEW FORM DATA ->', newFormData)
     setFormData(newFormData)
   }
 
@@ -33,20 +32,25 @@ const NftEdit = (_item) => {
         }
       )
       if (formData.available === true) {
-        setMessage('Yes')
-        console.log(displayMessage)
-      } else {
-        setMessage('No')
-        console.log(displayMessage)
+        // console.log(displayMessage)
+        // console.log(formData.available)
+        setMessage(true)
+      } else if (formData.available === false) {
+        setNotForSale(true)
+        setMessage(false)
+        // console.log(displayMessage)
       }
     } catch (err) {
       console.log(err.response.data)
       setMessage(false)
+      setNotForSale(false)
     }
-    setFormData({ available: undefined, currentPrice: undefined })
+    // setFormData({ available: undefined, currentPrice: undefined })
   }
 
-  console.log(id)
+  // console.log(id)
+  // console.log(formData.available)
+  console.log(notForSale)
   return (
     <Container>
       <Form onSubmit={handleSubmit} success warning>
@@ -65,7 +69,18 @@ const NftEdit = (_item) => {
           />
         </Form.Field>
 
-        { displayMessage ? (
+        {displayMessage ? (
+          <Message 
+            success
+            header='Price Updated!'
+            content='Your NFT has now been listed for sale!'
+          />
+        ) : (notForSale && <Message 
+          warning
+          header='NFT not for sale!'
+          content='You have chosen not to list your NFT for sale'
+        />)}
+        {/* { displayMessage ? (
           displayMessage === 'Yes' ? (<Message 
             success
             header='Price Updated!'
@@ -77,7 +92,7 @@ const NftEdit = (_item) => {
           />)
           
         ) : ''
-        }
+        } */}
         <Button type='submit'>Update</Button>
       </Form>
 
