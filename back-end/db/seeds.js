@@ -18,14 +18,16 @@ const seedDB = async () => {
     console.log(`🌱 successful with ${users.length} users added`)
 
     const nfts = nftData.map(nft => {
-      nft.owner = users[0]._id
+      const owner = users[(Math.floor(Math.random() * users.length))]._id
+      nft.owner = owner
       nft.token = uuid()
       nft.transactions = {
         type: 'minted',
-        to: users[0]._id,
+        to: owner,
         price: 0
       }
       nft.available = true
+      nft.currentPrice = (Math.round(Math.random() * 5000)) / 100
       return nft
     })
 

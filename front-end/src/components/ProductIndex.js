@@ -70,10 +70,10 @@ const ProductIndex = () => {
         <h1>Filters</h1><Dropdown placeholder='Categories' fluid multiple selection options={category} />
       </Segment>
       <br/>
-      <Grid columns='equal' divided right>
+      <Grid columns='equal' divided>
         <Grid.Column width={3} textAlign='left'>
           <Container>
-            <Grid.Column floated='' width={6}>
+            <Grid.Column width={6}>
               <h1 style={{ margin: '10px 0em' }}>Filters <Icon name='filter' size='small'></Icon></h1>
             </Grid.Column>
           </Container>
