@@ -39,6 +39,7 @@ const NftForm = () => {
       setErrors(err.response.data.errors)
     }
     setMessage(true)
+    setFormData({ name: '', image: '', category: '' })
   }
 
   return (
