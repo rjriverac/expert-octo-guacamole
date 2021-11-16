@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from 'react'
-import { Segment, Grid, Button, Icon, Divider, Container, Header, Card, GridRow, GridColumn, Label } from 'semantic-ui-react'
-import { CarouselProvider, Image, Slider, Slide, ButtonBack, ButtonNext, Dot } from 'pure-react-carousel'
+import { Grid, Button, Icon, Divider, Container, Header, Card, Label } from 'semantic-ui-react'
+import { CarouselProvider, Image, Slider, Slide, ButtonBack, ButtonNext } from 'pure-react-carousel'
 import 'pure-react-carousel/dist/react-carousel.es.css'
 import axios from 'axios'
 
@@ -59,9 +59,6 @@ const Home = () => {
                       )
                     })}
                   </Slider>
-                  {/* {nftData.filter((_item, index) => index < 4).map(slide => (
-              <Button as={Dot} key={slide} slide={slide} icon='circle'/>
-            ))} */}
                   <Container textAlign='center'>
                     <ButtonBack className='smallButtons'>Back</ButtonBack>
                     <ButtonNext className='smallButtons'>Next</ButtonNext>
