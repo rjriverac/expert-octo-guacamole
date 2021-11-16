@@ -42,68 +42,84 @@ const Register = () => {
     <div className='register'>
       <Grid each style={{ height: '80vh' }} verticalAlign='middle'>
         <Grid.Row centered style={{ margin: '70px 50px', alignItems: 'center', justifyContent: 'space-around' }}>
-          <Grid.Column width={5} textAlign='center' style={{ margin: '10px', maxWidth: 800 }}>
+          <Grid.Column width={10} textAlign='center' style={{ margin: '10px', maxWidth: 800, height: '40vh' }}>
             <Header
               color='inverted'
               as='h1'
-              content='Register'
+              content='Register to Tokenizer!'
+              size='huge'
             />
-
+            <br />
+            <br />
             <Form inverted onSubmit={handleSubmit} size='big' success>
-              <Form.Field>
-                <label> <Icon name='user' /> Username </label>
-                <input
+              <Form.Group unstackable widths={2}>
+                <Form.Input label='Username' iconPosition='right'>
                   
-                  name="username"
-                  value={formData.username}
-                  onChange={handleChange}
-                  placeholder='Enter a username'
-                />
-              </Form.Field>
-              {/* {errors.username && <p>Username is required</p>} */}
-              <Form.Field>
-                <label> <Icon name='mail' /> Email </label>
-                <input
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  placeholder='Enter your email'
-                />
-              </Form.Field>
-              <Form.Field>
-                <label> <Icon name='lock' /> Password </label>
-                <input
-                  name="password"
-                  value={formData.password}
-                  onChange={handleChange}
-                  placeholder='Enter password'
-                  type="password"
-                />
-              </Form.Field>
-              <Form.Field>
-                <label> <Icon name='lock' /> Re-Enter Password </label>
-                <input
-                  name="passwordConfirmation"
-                  value={formData.passwordConfirmation}
-                  onChange={handleChange}
-                  placeholder='Enter password again'
-                  type="password"
-                />
-              </Form.Field>
+                  {/* <label> <Icon name='user' /> Username </label> */}
+                  <input
 
-              {/* <Message 
+                    name="username"
+                    value={formData.username}
+                    onChange={handleChange}
+                    placeholder='Enter a username'
+                  />
+                  <Icon name='user' />
+                </Form.Input>
+                {/* {errors.username && <p>Username is required</p>} */}
+                <Form.Input label='Email' iconPosition='right'>
+                  {/* <label> <Icon name='mail' /> Email </label> */}
+                  <input
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    placeholder='Enter your email'
+                  />
+                  <Icon name='mail' />
+                </Form.Input>
+              </Form.Group>
+              <Form.Group widths={2}>
+            
+              
+                <Form.Input label='Password' iconPosition='right'>
+                  {/* <label> <Icon name='lock' /> Password </label> */}
+                  <input
+                    name="password"
+                    value={formData.password}
+                    onChange={handleChange}
+                    placeholder='Enter password'
+                    type="password"
+                  />
+                  <Icon name='lock' />
+                </Form.Input>
+                <Form.Input label='Re-Enter Password' iconPosition='right'>
+                  {/* <label> <Icon name='lock' /> Re-Enter Password </label> */}
+                  <input
+                    
+                    name="passwordConfirmation"
+                    value={formData.passwordConfirmation}
+                    onChange={handleChange}
+                    placeholder='Enter password again'
+                    type="password"
+                  />
+                  <Icon name='lock' />
+                </Form.Input>
+                
+
+                {/* <Message 
               success
               header='Registration successful!'
               content='You may now login with the email you just signed up with'
             />  */}
-
-              <Button color='teal' type='submit'>Click to Register!</Button>
+              </Form.Group>
+              <br/>
+              <Button size='big' color='teal' type='submit'>Click to Register!</Button>
+              
             </Form>
           </Grid.Column>
-          <Message color='yellow'>
+          {/* <Message color='yellow'>
             <Icon name='help' />
             already have an account? <a href='/login'>Login</a>
-          </Message>
+          </Message> */}
         </Grid.Row>
       </Grid>
 
