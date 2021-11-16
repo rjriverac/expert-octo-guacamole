@@ -1,11 +1,12 @@
 import React, { useState } from 'react'
-import { Button, Form, Icon, Header, Container } from 'semantic-ui-react'
+import { Button, Form, Icon, Header, Container, Message } from 'semantic-ui-react'
 import axios from 'axios'
 import { getTokenFromLocalStorage } from './helpers/auth'
 
 const NftForm = () => {
 
   const token = getTokenFromLocalStorage()
+  const [displayMessage, setMessage] = useState(false)
   const [formData, setFormData] = useState({
     name: '',
     image: '',
@@ -37,6 +38,8 @@ const NftForm = () => {
     } catch (err) {
       setErrors(err.response.data.errors)
     }
+    setMessage(true)
+    setFormData({ name: '', image: '', category: '' })
   }
 
   return (
@@ -47,7 +50,7 @@ const NftForm = () => {
           content='Add your NFT here!'
           textAlign='center'
         />
-        <Form size='big' onSubmit={handleSubmit}>
+        <Form size='big' onSubmit={handleSubmit} success>
           <Form.Field>
             <label>Name </label>
             <input 
@@ -82,14 +85,14 @@ const NftForm = () => {
             <option value='Virtual Worlds'>Virtual Worlds</option>
           </Form.Field>
 
-          {/* {handleSubmit ? (
+          {displayMessage ? (
             <Message 
               success
               header='Added'
               content='Your NFT has been added!'
             />
-          ) : (<p>Enter something</p>)
-          } */}
+          ) : ''
+          }
 
           <Button type='submit' animated='vertical'>
             <Button.Content hidden><Icon name='add' /></Button.Content>
