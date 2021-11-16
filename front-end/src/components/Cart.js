@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import {  getTokenFromLocalStorage } from './helpers/auth'
 import axios from 'axios'
-import { Card, Container, Header, Image, Segment } from 'semantic-ui-react'
+import { Button, Card, Container, Header, Icon, Image, Segment } from 'semantic-ui-react'
 
 
 const Cart = () => {
@@ -37,6 +37,30 @@ const Cart = () => {
     getData()
   },[token])
 
+  const handleRemoveOne = async (cartItem) => {
+    try {
+      const { data: { cart } } = await axios.delete('/api/profile/cart',
+        { 
+          headers: { Authorization: `Bearer ${token}` },
+          data: { item: { _id: cartItem } }
+        }
+      )
+      const populated = await Promise.all(cart.map( async (item) => {
+        try {
+          const { data } = await axios.get(`/api/all/${item.item}`)
+          return data
+        } catch (error) {
+          console.log(error)
+        }
+      }))
+      setuserInfo(populated)
+
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+
   console.log(userInfo)
   return (
     <>
@@ -53,7 +77,6 @@ const Cart = () => {
         >
           {
             userInfo.map((cartItem, index) => (
-
               <Card key={index}>
                 <Card.Content>
                   <Image
@@ -66,6 +89,23 @@ const Cart = () => {
                     {`Price: ${cartItem.currentPrice}`}
                   </Card.Description>
                 </Card.Content>
+                <Card.Content extra>
+                  <Button
+                    negative
+                    size='small'
+                    compact
+                    animated='fade'
+                    onClick={(() => handleRemoveOne(cartItem._id))}
+                  >
+                    <Button.Content visible>
+                      <Icon name='trash alternate outline'/>
+                      Remove Item 
+                    </Button.Content>
+                    <Button.Content hidden>
+                      <Icon name='arrow cart down'/>
+                    </Button.Content>
+                  </Button>
+                </Card.Content>
               </Card>
             ))
           }
@@ -75,7 +115,7 @@ const Cart = () => {
       <Segment raised>
         Total: {(()=> userInfo.reduce((acc,cur) => {
           return acc + cur.currentPrice
-        },0))()}
+        },0).toFixed(2))()}
       </Segment>
     </>
   )
