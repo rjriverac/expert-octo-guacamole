@@ -162,7 +162,7 @@ const ProductDetail = () => {
             <Header
               as='h2'
               content={item && `${item.name}`}
-              textAlign='justified'
+              // textAlign='justified'
             />
             <Segment raised attached compact>
               <Label attached='top'>Details</Label>

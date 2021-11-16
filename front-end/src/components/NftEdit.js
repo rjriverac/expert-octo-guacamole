@@ -11,6 +11,7 @@ const NftEdit = (_item) => {
 
   const { id } = useParams()
   const [displayMessage, setMessage] = useState(false)
+  const [notForSale, setNotForSale] = useState(false)
   const [formData, setFormData] = useState({
     available: undefined,
     currentPrice: undefined
@@ -42,7 +43,7 @@ const NftEdit = (_item) => {
   console.log(id)
   return (
     <Container>
-      <Form onSubmit={handleSubmit} success>
+      <Form onSubmit={handleSubmit} success warning>
         <Form.Field required label='List for Sale?' name='available' control='select' onChange={handleChange}>
           <option as='Dropdown Header'>Please select</option>
           <option value={true}>Yes</option>
@@ -58,13 +59,19 @@ const NftEdit = (_item) => {
           />
         </Form.Field>
 
-        {displayMessage ? (
+        {displayMessage && formData.available ? (
           <Message 
             success
             header='Price Updated!'
             content='Your NFT has now been listed for sale'
           />
-        ) : '' }
+        ) : ''
+        // ( <Message 
+        //   warning
+        //   header='NFT not for sale!'
+        //   content='You have chosen not to list your NFT for sale'
+        // />) 
+        }
         <Button type='submit'>Update</Button>
       </Form>
 
