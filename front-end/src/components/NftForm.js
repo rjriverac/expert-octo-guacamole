@@ -45,7 +45,7 @@ const NftForm = () => {
           content='Add your NFT here!'
           textAlign='center'
         />
-        <Form size='big' onSubmit={handleSubmit} success>
+        <Form size='big' onSubmit={handleSubmit} success error>
           <Form.Field>
             <label>Name </label>
             <input 
@@ -84,8 +84,13 @@ const NftForm = () => {
               header='Added'
               content='Your NFT has been added!'
             />
-          ) : ''}
-          {errors && <p>🆘 Something went wrong... Please try again later.</p>}
+          ) : (errors && <Message 
+            error
+            header='Uh Ho!'
+            content='🆘 Something went wrong... Please try again later.'
+          />
+          )}
+          
           <Button type='submit' animated='vertical'>
             <Button.Content hidden><Icon name='add' /></Button.Content>
             <Button.Content visible>Add my NFT!</Button.Content>
