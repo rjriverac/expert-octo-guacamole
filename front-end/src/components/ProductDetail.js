@@ -139,7 +139,7 @@ const ProductDetail = () => {
             {/* </Segment> */}
             <Divider horizontal/>
             { item &&
-              (!userIsOwner(item.owner.id) &&
+              (!userIsOwner(item.owner.id) && (item.available === true) &&
                   <Segment raised>
                     <Button
                       className={!added ? 'positive' : 'disabled' }
