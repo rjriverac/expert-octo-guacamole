@@ -25,7 +25,9 @@ const Register = () => {
     event.preventDefault()
     try {
       await axios.post('/api/register', formData)
-      history.push('/login')
+      setTimeout(() => {
+        history.push('/login')
+      }, 2000)
     } catch (err) {
       console.log(err)
     }
@@ -109,13 +111,13 @@ const Register = () => {
               <br/>
               <Button size='big' color='teal' type='submit'>Click to Register!</Button>
               
-              {/* {displayMessage ? (
+              {displayMessage ? (
                 <Message 
                   success
                   header='Registration successful!'
-                  content='You may now login with the email you just signed up with'
+                  content='You will now be directed to the login page.'
                 /> 
-              ) : '' } */}
+              ) : '' }
 
             </Form>
           </Grid.Column>
