@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from 'react'
-import { Segment, Grid, Button, Icon, Divider, Container, Header, Card, GridRow, GridColumn } from 'semantic-ui-react'
+import { Segment, Grid, Button, Icon, Divider, Container, Header, Card, GridRow, GridColumn, Label } from 'semantic-ui-react'
 import { CarouselProvider, Image, Slider, Slide, ButtonBack, ButtonNext, Dot } from 'pure-react-carousel'
 import 'pure-react-carousel/dist/react-carousel.es.css'
 import axios from 'axios'
@@ -34,7 +34,7 @@ const Home = () => {
                   naturalSlideWidth={1}
                   naturalSlideHeight={1.25}
                   totalSlides={4}
-                  style={{ width: '300px' }}
+                  style={{ width: '315px' }}
                   orientation='vertical'
                   visibleSlides={1}>
                   <Slider>
@@ -42,10 +42,15 @@ const Home = () => {
                       return (
                         <>
                           <Slide key={index}>
-                            <Card>
+                            <Card as='a' href={`/browse/${product._id}`}>
                               <Image src={product.image}></Image>
                               <Card.Content>
                                 <Card.Header>{product.name}</Card.Header>
+                              </Card.Content>
+                              <Card.Content extra>
+                                <Label>
+                                  <Icon name='bitcoin'/>Price: {product.currentPrice}
+                                </Label>
                               </Card.Content>
                             </Card>
                           </Slide>
