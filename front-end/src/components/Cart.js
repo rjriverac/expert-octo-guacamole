@@ -19,7 +19,16 @@ const Cart = () => {
           {
             headers: { Authorization: `Bearer ${token}` }
           })
-        setuserInfo(cart)
+        const cartItems = [...cart]
+        const populated = await Promise.all(cartItems.map( async (item) => {
+          try {
+            const { data } = await axios.get(`/api/all/${item.item}`)
+            return data
+          } catch (error) {
+            console.log(error)
+          }
+        }))
+        setuserInfo(populated)
       } catch (error) {
         console.log(error)
       }
