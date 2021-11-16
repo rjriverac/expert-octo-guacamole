@@ -37,6 +37,30 @@ const Cart = () => {
     getData()
   },[token])
 
+  const handleRemoveOne = async (cartItem) => {
+    try {
+      const { data: { cart } } = await axios.delete('/api/profile/cart',
+        { 
+          headers: { Authorization: `Bearer ${token}` },
+          data: { item: { _id: cartItem } }
+        }
+      )
+      const populated = await Promise.all(cart.map( async (item) => {
+        try {
+          const { data } = await axios.get(`/api/all/${item.item}`)
+          return data
+        } catch (error) {
+          console.log(error)
+        }
+      }))
+      setuserInfo(populated)
+
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+
   console.log(userInfo)
   return (
     <>
@@ -71,6 +95,7 @@ const Cart = () => {
                     size='small'
                     compact
                     animated='fade'
+                    onClick={(() => handleRemoveOne(cartItem._id))}
                   >
                     <Button.Content visible>
                       <Icon name='trash alternate outline'/>
@@ -90,7 +115,7 @@ const Cart = () => {
       <Segment raised>
         Total: {(()=> userInfo.reduce((acc,cur) => {
           return acc + cur.currentPrice
-        },0))()}
+        },0).toFixed(2))()}
       </Segment>
     </>
   )

@@ -13,6 +13,7 @@ export const getUserInfo = async (req,res) => {
 export const addToCart = async (req,res) => {
   try {
     const { cart }  = req.body
+    console.log('cart->',cart)
     const user = await User.findById(req.currentUser._id)
 
     if (!user) throw new Error()
@@ -33,12 +34,12 @@ export const addToCart = async (req,res) => {
 
 export const removeOneFromCart = async (req,res) => {
   try {
-    const { cart } = req.body
+    const { item }  = req.body
     const user = await User.findById(req.currentUser._id)
     if (!user) throw new Error()
     const updatedCart = await User.findOneAndUpdate(
       { _id: req.currentUser._id },
-      { $pull: { cart } },
+      { $pull: { 'cart': { 'item': item._id } } },
       { returnDocument: 'after' }
     )
     return res.status(202).json(updatedCart)
