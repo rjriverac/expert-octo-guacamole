@@ -27,7 +27,7 @@ const App = () => {
         <Route exact path='/cart' component={Cart}/>
         <Route exact path='/profile/add' component={NftForm}/>
       </Switch>
-      <Footer />
+      <Footer className='footer'/>
     </BrowserRouter>
   )
 }
