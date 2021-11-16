@@ -31,6 +31,19 @@ export const addToCart = async (req,res) => {
   }
 }
 
-// export const removeFromCart = async (req,res) => {
-
-// }
+export const removeOneFromCart = async (req,res) => {
+  try {
+    const { cart } = req.body
+    const user = await User.findById(req.currentUser._id)
+    if (!user) throw new Error()
+    const updatedCart = await User.findOneAndUpdate(
+      { _id: req.currentUser._id },
+      { $pull: { cart } },
+      { returnDocument: 'after' }
+    )
+    return res.status(202).json(updatedCart)
+  } catch (error) {
+    console.log(error)
+    return res.sendStatus(404)
+  }
+}
