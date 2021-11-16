@@ -1,14 +1,11 @@
-/* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from 'react'
-import { useHistory } from 'react-router-dom'
 import {  getTokenFromLocalStorage } from './helpers/auth'
 import axios from 'axios'
-import { Button, ButtonContent, Card, Container, Header, Icon, Image, Segment } from 'semantic-ui-react'
+import { Button, Card, Container, Header, Icon, Image, Segment } from 'semantic-ui-react'
 
 
 const Cart = () => {
 
-  const history = useHistory()
   const token = getTokenFromLocalStorage()
 
   const [userInfo,setuserInfo] = useState([])

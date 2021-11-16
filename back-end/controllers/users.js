@@ -48,3 +48,19 @@ export const removeOneFromCart = async (req,res) => {
     return res.sendStatus(404)
   }
 }
+
+export const clearCart = async (req,res) => {
+
+  const user = await User.findById(req.currentUser._id)
+  if (!user) throw new Error()
+  try {
+    const updatedUser = await User.findByIdAndUpdate(req.currentUser._id,
+      { 'cart': [] },
+      { overwrite: true,returnDocument: 'after' }
+    )
+    return res.status(202).json(updatedUser)  
+  } catch (error) {
+    console.log(error)
+    return res.sendStatus(404)
+  }
+}
