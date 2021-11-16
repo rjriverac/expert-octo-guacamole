@@ -1,12 +1,13 @@
 // /* eslint-disable no-unused-vars */ 
 import React, { useState } from 'react'
-import { Button, Form, Container, Header, Grid, Icon } from 'semantic-ui-react'
+import { Button, Form, Container, Header, Grid, Icon, Message } from 'semantic-ui-react'
 import axios from 'axios'
 import { useHistory } from 'react-router-dom'
 
 const Login = () => {
 
   const history = useHistory()
+  const [displayMessage, setMessage] = useState(false)
   const [formData, setFormData] = useState({
     email: '',
     password: ''
@@ -27,10 +28,14 @@ const Login = () => {
     try {
       const { data } = await axios.post('/api/login', formData)
       setToken(data.token)
-      history.push('/browse')
+      setTimeout(() => {
+        history.push('/browse')
+      }, 2000)
+      setMessage(true)
     } catch (err) {
       console.log(err)
       setError(true)
+      setMessage(false)
     }
   }
 
@@ -46,7 +51,7 @@ const Login = () => {
               textAlign='center'
             />
 
-            <Form onSubmit={handleSubmit} size='big'>
+            <Form onSubmit={handleSubmit} size='big' success error>
               <Form.Field>
                 <label> <Icon name='user' /> Email </label>
                 <input
@@ -67,9 +72,17 @@ const Login = () => {
                   onChange={handleChange}
                 />
               </Form.Field>
-
-              {error && <p>Your email or password is incorrect, please try again!</p>}
-
+              {displayMessage ? (
+                <Message 
+                  success
+                  header='Login Successful'
+                  content="You will now be redirected to the home page."
+                />
+              ) : (error && <Message 
+                error
+                header='Login Unsuccessful'
+                content='Your email or password is incorrect, please try again!'
+              />) }
               <Button color='teal' type='submit' animated>
                 <Button.Content visible>Log In!</Button.Content>
                 <Button.Content hidden>

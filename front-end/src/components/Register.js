@@ -14,30 +14,30 @@ const Register = () => {
     password: '',
     passwordConfirmation: ''
   })
-  const [errors, setErrors] = useState({
-    username: '',
-    email: '',
-    password: '',
-    passwordConfirmation: ''
-  })
+  const [error, setError] = useState(false)
+
+  const handleChange = (event) => {
+    const newData = { ...formData, [event.target.name]: event.target.value }
+    setFormData(newData)
+  }
 
   const handleSubmit = async event => {
     event.preventDefault()
     try {
       await axios.post('/api/register', formData)
-      history.push('/login')
+      setTimeout(() => {
+        history.push('/login')
+      }, 2000)
+      setMessage(true)
     } catch (err) {
       console.log(err)
+      setError(true)
+      setMessage(false)
     }
-    setMessage(true)
   }
+  console.log(error)
 
-  const handleChange = (event) => {
-    const newData = { ...formData, [event.target.name]: event.target.value }
-    const newErrors = { ...errors, [event.target.name]: '' }
-    setFormData(newData)
-    setErrors(newErrors)
-  }
+  
 
   return (
     <div className='register'>
@@ -52,13 +52,12 @@ const Register = () => {
             />
             <br />
             <br />
-            <Form inverted onSubmit={handleSubmit} size='big' success>
+            <Form inverted onSubmit={handleSubmit} size='big' success error>
               <Form.Group unstackable widths={2}>
                 <Form.Input label='Username' iconPosition='right'>
                   
                   {/* <label> <Icon name='user' /> Username </label> */}
                   <input
-
                     name="username"
                     value={formData.username}
                     onChange={handleChange}
@@ -66,7 +65,7 @@ const Register = () => {
                   />
                   <Icon name='user' />
                 </Form.Input>
-                {/* {errors.username && <p>Username is required</p>} */}
+
                 <Form.Input label='Email' iconPosition='right'>
                   {/* <label> <Icon name='mail' /> Email </label> */}
                   <input
@@ -109,14 +108,18 @@ const Register = () => {
               <br/>
               <Button size='big' color='teal' type='submit'>Click to Register!</Button>
               
-              {/* {displayMessage ? (
+              {displayMessage ? (
                 <Message 
                   success
                   header='Registration successful!'
-                  content='You may now login with the email you just signed up with'
-                /> 
-              ) : '' } */}
-
+                  content='You will now be directed to the login page.'
+                />
+              ) : (error && <Message 
+                error
+                header='Action Forbidden'
+                content='Please check all fields have been entered correctly.'
+              />) }
+              
             </Form>
           </Grid.Column>
           {/* <Message color='yellow'>

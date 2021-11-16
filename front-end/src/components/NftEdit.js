@@ -31,10 +31,11 @@ const NftEdit = (_item) => {
           headers: { Authorization: `Bearer ${getTokenFromLocalStorage()}` }
         }
       )
+      setMessage(true)
     } catch (err) {
       console.log(err.response.data)
+      setMessage(false)
     }
-    setMessage(true)
     setFormData({ available: undefined, currentPrice: undefined })
   }
 

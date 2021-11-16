@@ -1,5 +1,5 @@
 import React from 'react'
-import { Card, Icon, Image, Label } from 'semantic-ui-react'
+import { Card, Divider, Icon, Image, Label } from 'semantic-ui-react'
 import { format } from 'date-fns'
 
 
@@ -25,9 +25,11 @@ const ProductCard = ({ index, item }) => {
         <Card.Meta>{item.category}</Card.Meta>
       </Card.Content>
       <Card.Content extra>
+        <Label><Icon name='bitcoin'/>Price: {item.currentPrice}</Label>
+        <Divider />
         <Label>
           <Icon name='barcode' />
-          <Label.Detail>Last transaction: {formattedText} at {formattedDate}</Label.Detail> 
+          <Label.Detail>Last transaction: {formattedText} at {formattedDate}</Label.Detail>
         </Label>
       </Card.Content>
     </Card>
