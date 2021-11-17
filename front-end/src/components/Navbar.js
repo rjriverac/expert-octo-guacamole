@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react'
 import { getPayload, getTokenFromLocalStorage } from './helpers/auth'
 import { useHistory, useLocation } from 'react-router-dom'
-import { Container, Image, Menu, Icon, Button, Item, Dropdown } from 'semantic-ui-react'
+import { Container, Image, Menu, Icon, Button, Dropdown } from 'semantic-ui-react'
 import axios from 'axios'
 
 const Navbar = () => {
@@ -28,20 +28,22 @@ const Navbar = () => {
     history.push('/')
   }
 
-  // useEffect(() => {
-  //   const getData = async () => {
-  //     try {
-  //       const { data } = await axios.get('api/profile',
-  //         {
-  //           headers: { Authorization: `Bearer ${token}` }
-  //         })
-  //       setUsername(data)
-  //     } catch (err) {
-  //       console.log(err)
-  //     }
-  //   }
-  //   getData()
-  // }, [token])
+  useEffect(() => {
+    const getData = async () => {
+      if (userIsAuthenticated()){
+        try {
+          const { data } = await axios.get('api/profile',
+            {
+              headers: { Authorization: `Bearer ${token}` }
+            })
+          setUsername(data)
+        } catch (err) {
+          console.log(err)
+        }
+      }
+    }
+    getData()
+  }, [token])
 
   return (
     <Menu color='violet' secondary inverted size='large'>
@@ -63,7 +65,7 @@ const Navbar = () => {
             <Menu.Item><Icon name='user circle' size='large' />
               <Dropdown floating closeOnChange inline direction='left'>
                 <Dropdown.Menu>
-                  {/* <Dropdown.Header>Signed in as: {getUsername.username} </Dropdown.Header> */}
+                  <Dropdown.Header>Signed in as: {getUsername.username} </Dropdown.Header>
                   <Dropdown.Divider/>
                   <Dropdown.Item as='a' href='/profile' icon='user circle' text='Go to your profile'/>
                   <Dropdown.Item as='a' href='/profile/add' icon='add' text='Add NFT'/>
