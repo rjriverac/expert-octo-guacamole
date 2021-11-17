@@ -1,6 +1,4 @@
-/* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from 'react'
-import { useHistory } from 'react-router-dom'
 import {  getTokenFromLocalStorage } from './helpers/auth'
 import axios from 'axios'
 import { Button, Card, Container, Header, Icon, Image, Segment } from 'semantic-ui-react'
@@ -8,7 +6,6 @@ import { Button, Card, Container, Header, Icon, Image, Segment } from 'semantic-
 
 const Cart = () => {
 
-  const history = useHistory()
   const token = getTokenFromLocalStorage()
 
   const [userInfo,setuserInfo] = useState([])
@@ -60,6 +57,17 @@ const Cart = () => {
     }
   }
 
+  const handleClearCart = async () => {
+    try {
+      await axios.post('/api/profile/cart',{},
+        { headers: { Authorization: `Bearer ${token}` } }
+      )
+      setuserInfo([])
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
 
   console.log(userInfo)
   return (
@@ -70,52 +78,98 @@ const Cart = () => {
       >
         Cart
       </Header>
-      <Container>
-        <Card.Group
-          doubling
-          stackable
-        >
-          {
-            userInfo.map((cartItem, index) => (
-              <Card key={index}>
-                <Card.Content>
-                  <Image
-                    floated='left'
-                    size='mini'
-                    src={cartItem.image}
-                  />
-                  <Card.Header>{cartItem.name}</Card.Header>
-                  <Card.Description>
-                    {`Price: ${cartItem.currentPrice}`}
-                  </Card.Description>
-                </Card.Content>
-                <Card.Content extra>
-                  <Button
-                    negative
-                    size='small'
-                    compact
-                    animated='fade'
-                    onClick={(() => handleRemoveOne(cartItem._id))}
-                  >
-                    <Button.Content visible>
-                      <Icon name='trash alternate outline'/>
-                      Remove Item 
-                    </Button.Content>
-                    <Button.Content hidden>
-                      <Icon name='arrow cart down'/>
-                    </Button.Content>
-                  </Button>
-                </Card.Content>
-              </Card>
-            ))
-          }
+      <Segment
+        raised
+        style={{ minHeight: '50vh' }}
+      >
 
-        </Card.Group>
-      </Container>
-      <Segment raised>
-        Total: {(()=> userInfo.reduce((acc,cur) => {
-          return acc + cur.currentPrice
-        },0).toFixed(2))()}
+        <Container>
+          <Card.Group
+            doubling
+            stackable
+          >
+            {
+              userInfo.map((cartItem, index) => (
+                <Card key={index}>
+                  <Card.Content>
+                    <Image
+                      floated='left'
+                      size='mini'
+                      src={cartItem.image}
+                    />
+                    <Card.Header>{cartItem.name}</Card.Header>
+                    <Card.Description>
+                      {`Price: ${cartItem.currentPrice}`}
+                    </Card.Description>
+                  </Card.Content>
+                  <Card.Content extra>
+                    <Button
+                      negative
+                      size='small'
+                      compact
+                      animated='fade'
+                      onClick={(() => handleRemoveOne(cartItem._id))}
+                    >
+                      <Button.Content visible>
+                        <Icon name='trash alternate outline'/>
+                        Remove Item 
+                      </Button.Content>
+                      <Button.Content hidden>
+                        <Icon name='arrow cart down'/>
+                      </Button.Content>
+                    </Button>
+                  </Card.Content>
+                </Card>
+              ))
+            }
+
+          </Card.Group>
+        </Container>
+      </Segment>
+      <Segment
+        raised
+        style={{ 'height': '65px' }}
+        textAlign='left'
+      >
+        <p style={{ display: 'inline-block' }}>
+          Total: {(()=> userInfo.reduce((acc,cur) => {
+            return acc + cur.currentPrice
+          },0).toFixed(2))()}
+        </p>
+        <Button.Group
+          floated='right'
+        >
+          <Button
+            negative
+            animated='fade'
+            onClick={handleClearCart}
+          >
+            <Button.Content visible>
+              <Icon name='trash'/>
+              Clear Cart
+            </Button.Content>
+            <Button.Content hidden>
+              <Icon name='arrow cart down'/>
+            </Button.Content>
+          </Button>
+
+          <Button.Or></Button.Or>
+
+          <Button
+            positive
+            animated='fade'
+
+          >
+            <Button.Content visible>
+              <Icon name='credit card outline'/>
+              Confirm Purchase
+            </Button.Content>
+            <Button.Content hidden>
+              <Icon name='payment'/>
+            </Button.Content>
+          </Button>
+
+        </Button.Group>
       </Segment>
     </>
   )
