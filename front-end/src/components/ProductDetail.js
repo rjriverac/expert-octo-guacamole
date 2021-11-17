@@ -11,13 +11,13 @@ import NftEdit from './NftEdit'
 
 const ProductDetail = () => {
   const { id } = useParams()
-  const [item,setItem] = useState(null)
+  const [item,setItem] = useState({})
   const [added,setAdded] = useState(false)
   const history = useHistory()
 
 
   const [thecart,settheCart] = useState()
-
+  const isEmpty = (object) => Object.keys(object).length === 0
 
   useEffect(() => {
     const getData = async() => {
@@ -79,7 +79,14 @@ const ProductDetail = () => {
     {
       menuItem: 'Price History', render: () => (
         <Tab.Pane>
-          <PricingDetails { ...item }/>
+          {
+            !isEmpty(item) ? 
+              <PricingDetails item={ item }/>
+              :
+              <Placeholder style={{ height: 150, width: 150 }}>
+                <Placeholder.Image />
+              </Placeholder>
+          }
         </Tab.Pane>
       )
     },
@@ -99,7 +106,7 @@ const ProductDetail = () => {
     }
   ]
 
-
+  console.log(isEmpty(item))
   
   return (
     
@@ -117,7 +124,7 @@ const ProductDetail = () => {
       >
         <Grid.Row>
           <Grid.Column>
-            {item ? 
+            {!isEmpty(item) ? 
               <Image
                 src={item.image}
                 size='large'
@@ -138,7 +145,7 @@ const ProductDetail = () => {
             {/* <PricingDetails { ...item }/> */}
             {/* </Segment> */}
             <Divider horizontal/>
-            { item &&
+            { !isEmpty(item) &&
               (!userIsOwner(item.owner.id) && (item.available === true) &&
                   <Segment raised>
                     <Button
@@ -161,7 +168,7 @@ const ProductDetail = () => {
           <Grid.Column>
             <Header
               as='h2'
-              content={item && `${item.name}`}
+              content={!isEmpty(item) && `${item.name}`}
               // textAlign='justified'
             />
             <Segment raised attached compact>
@@ -170,15 +177,15 @@ const ProductDetail = () => {
                 <Table.Body>
                   <Table.Row>
                     <Table.Cell>Contract ID</Table.Cell>
-                    <Table.Cell>{item && item.token}</Table.Cell>
+                    <Table.Cell>{!isEmpty(item) && item.token}</Table.Cell>
                   </Table.Row>
                   <Table.Row>
                     <Table.Cell>Current Owner</Table.Cell>
-                    <Table.Cell>{item && item.owner.username}</Table.Cell>
+                    <Table.Cell>{!isEmpty(item) && item.owner.username}</Table.Cell>
                   </Table.Row>
                   <Table.Row>
                     <Table.Cell>Last Price</Table.Cell>
-                    <Table.Cell>{item && item.transactions.slice(-1)[0].price}</Table.Cell>
+                    <Table.Cell>{!isEmpty(item) && item.transactions.slice(-1)[0].price}</Table.Cell>
                   </Table.Row>
                 </Table.Body>
               </Table>

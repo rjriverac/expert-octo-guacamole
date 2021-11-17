@@ -13,7 +13,7 @@ export const getUserInfo = async (req,res) => {
 export const addToCart = async (req,res) => {
   try {
     const { cart }  = req.body
-    console.log('cart->',cart)
+
     const user = await User.findById(req.currentUser._id)
 
     if (!user) throw new Error()

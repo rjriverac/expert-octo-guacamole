@@ -4,18 +4,27 @@ import { Accordion } from 'semantic-ui-react'
 import { LineChart,Line,XAxis,YAxis,CartesianGrid,ResponsiveContainer } from 'recharts'
 import { format } from 'date-fns'
 
-const PricingDetails = ({ transactions }) => {
+const PricingDetails = ({ item }) => {
+
+  // const isEmpty = (object) => Object.keys(object).length === 0
+
+  
 
 
-  // const priceData = transactions.filter(item => item.type === 'sale')
-
-  // transactions.map(item => {
-  //   const date = new Date(item.createdAt)
+  const priceData = item.transactions.filter(item => item.type === 'sale')
+  
+  // const dataArray = priceData.transactions.map(sale => {
+  //   const date = new Date(sale.createdAt)
   //   const formattedDate = format(date, 'dd/mm/yy')
-  //   const price = 
+  //   const price = sale.price
+  //   return [formattedDate,price]
   // })
+  // console.log('dataArray',dataArray)
+  
 
-  // console.log(transactions)
+
+  console.log(priceData)
+  console.log(item)
   return (
     <>
       <h1>hello world</h1>
