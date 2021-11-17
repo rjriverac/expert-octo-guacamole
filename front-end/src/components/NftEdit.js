@@ -18,8 +18,7 @@ const NftEdit = (_item) => {
 
   const handleChange = (event) => {
     const newFormData = { ...formData, [event.target.name]: event.target.value }
-    console.log('NEW FORM DATA ->', newFormData)
-
+    // console.log('NEW FORM DATA ->', newFormData)
     setFormData(newFormData)
   }
 
@@ -39,10 +38,9 @@ const NftEdit = (_item) => {
     setFormData({ available: undefined, currentPrice: undefined })
   }
 
-  console.log(id)
   return (
     <Container>
-      <Form onSubmit={handleSubmit} success>
+      <Form onSubmit={handleSubmit} success warning>
         <Form.Field required label='List for Sale?' name='available' control='select' onChange={handleChange}>
           <option as='Dropdown Header'>Please select</option>
           <option value={true}>Yes</option>
@@ -61,10 +59,23 @@ const NftEdit = (_item) => {
         {displayMessage ? (
           <Message 
             success
+            header='NFT Updated!'
+            content='Your NFT has now been updated!'
+          />
+        ) : ''}
+        {/* { displayMessage ? (
+          displayMessage === 'Yes' ? (<Message 
+            success
             header='Price Updated!'
             content='Your NFT has now been listed for sale'
-          />
-        ) : '' }
+          />) : (<Message 
+            warning
+            header='NFT not for sale!'
+            content='You have chosen not to list your NFT for sale'
+          />)
+          
+        ) : ''
+        } */}
         <Button type='submit'>Update</Button>
       </Form>
 

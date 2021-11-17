@@ -139,7 +139,7 @@ const ProductDetail = () => {
             {/* </Segment> */}
             <Divider horizontal/>
             { item &&
-              (!userIsOwner(item.owner.id) &&
+              (!userIsOwner(item.owner.id) && (item.available === true) &&
                   <Segment raised>
                     <Button
                       className={!added ? 'positive' : 'disabled' }
@@ -162,7 +162,7 @@ const ProductDetail = () => {
             <Header
               as='h2'
               content={item && `${item.name}`}
-              textAlign='justified'
+              // textAlign='justified'
             />
             <Segment raised attached compact>
               <Label attached='top'>Details</Label>

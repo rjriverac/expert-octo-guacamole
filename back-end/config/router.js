@@ -1,7 +1,7 @@
 import express from 'express'
 import { loginUser, registeredUser } from '../controllers/auth.js'
 import { addNft, getAllNft, deleteAnNft, getSingleNft, updateNft } from '../controllers/nfts.js'
-import { addToCart, getUserInfo, removeOneFromCart } from '../controllers/users.js'
+import { addToCart, clearCart, getUserInfo, removeOneFromCart } from '../controllers/users.js'
 import { secureRoute } from './secureRoute.js'
 
 const router = express.Router()
@@ -27,5 +27,6 @@ router.route('/profile')
 router.route('/profile/cart')
   .put(secureRoute,addToCart)
   .delete(secureRoute,removeOneFromCart)
+  .post(secureRoute,clearCart)
 
 export default router

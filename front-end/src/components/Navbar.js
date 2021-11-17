@@ -59,6 +59,7 @@ const Navbar = () => {
           :
           <>
             <Menu.Item position='right' as='a' onClick={handleLogout}>Log Out</Menu.Item>
+            <Menu.Item as='a' href='/cart'><Icon name='shopping cart'/>Cart</Menu.Item>
             <Menu.Item><Icon name='user circle' size='large' />
               <Dropdown floating closeOnChange inline direction='left'>
                 <Dropdown.Menu>
