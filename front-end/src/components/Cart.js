@@ -196,6 +196,7 @@ const Cart = () => {
                 <Button
                   positive
                   animated='fade'
+                  onClick={handleCheckOut}
                 >
                   <Button.Content visible>
                     <Icon name='credit card outline' />
