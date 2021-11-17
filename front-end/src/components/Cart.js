@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import {  getTokenFromLocalStorage } from './helpers/auth'
+import {  getTokenFromLocalStorage,getPayload } from './helpers/auth'
 import axios from 'axios'
 import { Button, Card, Container, Header, Icon, Image, Segment } from 'semantic-ui-react'
 
@@ -68,6 +68,34 @@ const Cart = () => {
     }
   }
 
+
+  const handleCheckOut = async () => {
+    let isError = false
+    const currentUser = getPayload()
+    await Promise.all(userInfo.map(async (nft)=> {
+      try {
+        await axios.put(`api/all/${nft._id}`,
+          {
+            owner: currentUser.sub,
+            available: false,
+            transactions: {
+              type: 'sale',
+              from: nft.owner._id,
+              to: currentUser.sub,
+              price: nft.currentPrice
+            }
+          },
+          {
+            headers: { Authorization: `Bearer ${token}` }
+          }
+        )
+      } catch (error) {
+        console.log(error)
+        isError = true
+      }
+    }))
+    if (!isError) handleClearCart()
+  }
 
   console.log(userInfo)
   return (
@@ -152,13 +180,11 @@ const Cart = () => {
               <Icon name='arrow cart down'/>
             </Button.Content>
           </Button>
-
           <Button.Or></Button.Or>
-
           <Button
             positive
             animated='fade'
-
+            onClick={handleCheckOut}
           >
             <Button.Content visible>
               <Icon name='credit card outline'/>
@@ -168,7 +194,6 @@ const Cart = () => {
               <Icon name='payment'/>
             </Button.Content>
           </Button>
-
         </Button.Group>
       </Segment>
     </>
