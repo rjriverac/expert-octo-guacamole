@@ -11,7 +11,6 @@ const NftEdit = (_item) => {
 
   const { id } = useParams()
   const [displayMessage, setMessage] = useState(false)
-  const [notForSale, setNotForSale] = useState(false)
   const [formData, setFormData] = useState({
     available: undefined,
     currentPrice: undefined
@@ -31,26 +30,14 @@ const NftEdit = (_item) => {
           headers: { Authorization: `Bearer ${getTokenFromLocalStorage()}` }
         }
       )
-      if (formData.available === true) {
-        // console.log(displayMessage)
-        // console.log(formData.available)
-        setMessage(true)
-      } else if (formData.available === false) {
-        setNotForSale(true)
-        setMessage(false)
-        // console.log(displayMessage)
-      }
+      setMessage(true)
     } catch (err) {
       console.log(err.response.data)
       setMessage(false)
-      setNotForSale(false)
     }
-    // setFormData({ available: undefined, currentPrice: undefined })
+    setFormData({ available: undefined, currentPrice: undefined })
   }
 
-  // console.log(id)
-  // console.log(formData.available)
-  console.log(notForSale)
   return (
     <Container>
       <Form onSubmit={handleSubmit} success warning>
@@ -72,14 +59,10 @@ const NftEdit = (_item) => {
         {displayMessage ? (
           <Message 
             success
-            header='Price Updated!'
-            content='Your NFT has now been listed for sale!'
+            header='NFT Updated!'
+            content='Your NFT has now been updated!'
           />
-        ) : (notForSale && <Message 
-          warning
-          header='NFT not for sale!'
-          content='You have chosen not to list your NFT for sale'
-        />)}
+        ) : ''}
         {/* { displayMessage ? (
           displayMessage === 'Yes' ? (<Message 
             success
