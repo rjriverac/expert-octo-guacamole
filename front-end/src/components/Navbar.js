@@ -44,37 +44,38 @@ const Navbar = () => {
   // }, [token])
 
   return (
+
     <Menu color='violet' secondary inverted size='large'>
       <Container>
         <Menu.Item header as='a' href='/'>
-          <Image style={{ marginRight: '10px' }} size='mini' src='https://i.imgur.com/yCvLNgk.png'/>
+          <Image style={{ marginRight: '10px' }} size='mini' src='https://i.imgur.com/yCvLNgk.png' />
           <h3 style={{ marginTop: 'unset' }}>Tokenizer</h3>
         </Menu.Item>
         <Menu.Item as='a' href='/browse'>Browse</Menu.Item>
-        {!userIsAuthenticated() ? 
+        {!userIsAuthenticated() ?
           <>
             <Menu.Item position='right'><Button as='a' color='teal' href='/register'>Create an Account</Button></Menu.Item>
-            <Menu.Item><Button as='a' inverted color='teal'  href='/login'>Sign In</Button></Menu.Item>
+            <Menu.Item><Button as='a' inverted color='teal' href='/login'>Sign In</Button></Menu.Item>
           </>
           :
           <>
             <Menu.Item position='right' as='a' onClick={handleLogout}>Log Out</Menu.Item>
-            <Menu.Item as='a' href='/cart'><Icon name='shopping cart'/>Cart</Menu.Item>
+            <Menu.Item as='a' href='/cart'><Icon name='shopping cart' />Cart</Menu.Item>
             <Menu.Item><Icon name='user circle' size='large' />
               <Dropdown floating closeOnChange inline direction='left'>
                 <Dropdown.Menu>
-                  {/* <Dropdown.Header>Signed in as: {getUsername.username} </Dropdown.Header> */}
-                  <Dropdown.Divider/>
-                  <Dropdown.Item as='a' href='/profile' icon='user circle' text='Go to your profile'/>
-                  <Dropdown.Item as='a' href='/profile/add' icon='add' text='Add NFT'/>
+                  <Dropdown.Header>Signed in as: {getUsername.username} </Dropdown.Header>
+                  <Dropdown.Item as='a' href='/profile' icon='user circle' text='Go to your profile' />
+                  <Dropdown.Item as='a' href='/profile/add' icon='add' text='Add NFT' />
                 </Dropdown.Menu>
               </Dropdown>
             </Menu.Item>
           </>
         }
-        
+
       </Container>
     </Menu>
+
   )
 }
 

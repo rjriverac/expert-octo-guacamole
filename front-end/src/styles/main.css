@@ -63,3 +63,10 @@
   background-size:  cover;
   opacity: 0.8;
 }
+.cartpage {
+  
+  background-color: rgba(254, 181, 141, 0.8);
+}
+#root {
+  background-color: #eeecfb ;
+}
