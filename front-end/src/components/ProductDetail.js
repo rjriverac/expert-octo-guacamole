@@ -106,7 +106,7 @@ const ProductDetail = () => {
     }
   ]
 
-  console.log(isEmpty(item))
+
   
   return (
     

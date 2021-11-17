@@ -8,22 +8,18 @@ const PricingDetails = ({ item }) => {
 
   // const isEmpty = (object) => Object.keys(object).length === 0
 
+
+  
+  const dataArray = item.transactions.filter(item => item.type === 'sale').map(sale => {
+    const date = new Date(sale.createdAt)
+    const formattedDate = format(date, 'dd/MM/yy hh:mm')
+    const price = sale.price
+    return [formattedDate,price]
+  })
+  console.log('dataArray->',dataArray)
   
 
 
-  const priceData = item.transactions.filter(item => item.type === 'sale')
-  
-  // const dataArray = priceData.transactions.map(sale => {
-  //   const date = new Date(sale.createdAt)
-  //   const formattedDate = format(date, 'dd/mm/yy')
-  //   const price = sale.price
-  //   return [formattedDate,price]
-  // })
-  // console.log('dataArray',dataArray)
-  
-
-
-  console.log(priceData)
   console.log(item)
   return (
     <>
