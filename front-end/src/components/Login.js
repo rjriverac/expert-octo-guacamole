@@ -30,7 +30,7 @@ const Login = () => {
       setToken(data.token)
       setTimeout(() => {
         history.push('/browse')
-      }, 2000)
+      }, 2500)
       setMessage(true)
     } catch (err) {
       console.log(err)
@@ -42,9 +42,9 @@ const Login = () => {
   return (
     <div className='login'>
 
-      <Grid each style={{ height: '70vh' }} verticalAlign='middle'>
-        <Grid.Row centered style={{ margin: '70px 50px', alignItems: 'center', justifyContent: 'space-around' }}>
-          <Grid.Column width={5} textAlign='center' style={{ margin: '10px', maxWidth: 800 }}>
+      <Grid  each style={{ height: '70vh', paddingBottom: '50px' }} verticalAlign='middle'>
+        <Grid.Row centered style={{ margin: '0px 50px', alignItems: 'center', justifyContent: 'space-around' }}>
+          <Grid.Column className='animate__animated animate__flipInX animate__slow' width={5} textAlign='center' style={{ marginBottom: '10px', maxWidth: 800, height: '40vh' }}>
             <Header
               as='h1'
               content='Sign in to Tokenizer'
@@ -73,7 +73,7 @@ const Login = () => {
                 />
               </Form.Field>
               {displayMessage ? (
-                <Message 
+                <Message className='animate__animated animate__rollOut animate__slow animate__delay-s'
                   success
                   header='Login Successful'
                   content="You will now be redirected to the home page."
@@ -91,7 +91,7 @@ const Login = () => {
               </Button>
             </Form>
           </Grid.Column>
-          <Grid.Column style={{
+          <Grid.Column className='animate__animated animate__flipInX animate__slow' style={{
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',

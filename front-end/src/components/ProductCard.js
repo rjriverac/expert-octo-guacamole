@@ -1,6 +1,7 @@
 import React from 'react'
 import { Card, Divider, Icon, Image, Label } from 'semantic-ui-react'
 import { format } from 'date-fns'
+import 'animate.css'
 
 
 const ProductCard = ({ index, item }) => {
@@ -14,8 +15,8 @@ const ProductCard = ({ index, item }) => {
   
   
   return (
-    <Card as='a' href={`/browse/${address}`} key={index}>
-      <Image
+    <Card  as='a' href={`/browse/${address}`} key={index} className='animate__animated animate__slideInRight animate__slow'>
+      <Image 
         src={item.image}
         rounded
         size='large'

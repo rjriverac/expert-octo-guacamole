@@ -42,17 +42,17 @@ const NftForm = () => {
       <Grid each style={{ height: '80vh' }} verticalAlign='middle'>
         <Grid.Row centered style={{ margin: '70px 50px', alignItems: 'center', justifyContent: 'space-around' }}>
           <Grid.Column width={4}>
-            <Image size='massive' src='https://www.kraken.com/_assets/files/2019-01/kraken_body02_final_02/400.webp'></Image>
+            <Image className='animate__animated animate__bounceInRight animate__slow' size='massive' src='https://www.kraken.com/_assets/files/2019-01/kraken_body02_final_02/400.webp'></Image>
           </Grid.Column>
           <Grid.Column width={6} textAlign='center' style={{ margin: '10px', maxWidth: 800 }}>
-            <Header
+            <Header className='animate__animated animate__bounceInLeft animate__slow'
               color='inverted'
               as='h1'
               content='Add your NFT here!'
               textAlign='center'
               style={{ marginBottom: '40px', textWeight: 'bold' }}
             />
-            <Form size='big' inverted onSubmit={handleSubmit} success error>
+            <Form size='big' inverted onSubmit={handleSubmit} success error className='animate__animated animate__bounceInLeft animate__slow'>
               <Form.Field>
                 <label>Name </label>
                 <input

@@ -30,7 +30,7 @@ const Home = () => {
           <Grid width={3}>
             <Grid.Row centered style={{ margin: '70px 50px', alignItems: 'center', justifyContent: 'space-around' }}>
               <Grid.Column textAlign='center' style={{  alignItems: 'center' }} width={6}>
-                <CarouselProvider
+                <CarouselProvider className='animate__animated animate__backInLeft animate__slow'
                   naturalSlideWidth={1}
                   naturalSlideHeight={1.25}
                   totalSlides={4}
@@ -65,24 +65,24 @@ const Home = () => {
                   </Container>
                 </CarouselProvider>
               </Grid.Column>
-              <Grid.Column
+              <Grid.Column 
                 style={{
                   display: 'flex',
                   flexDirection: 'column',
                   alignItems: 'center',
                   justifyContent: 'flex-end'
                 }} width={6}>
-                <Header textAlign='center' as='h1'>
+                <Header className='animate__animated animate__backInUp animate__slow' textAlign='center' as='h1'>
                   Discover the world of NFTs
                 </Header>
-                <p style={{ fontSize: '1.33em' }}>
+                <p className='animate__animated animate__backInUp animate__slow' style={{ fontSize: '1.33em' }}>
                   Create, Buy or Sell Nfts
                 </p>
                 <Container textAlign='center' style={{ marginTop: '30px' }}>
-                  <Button style={{ marginRight: '30px' }} inverted color='violet' as='a' href='/register'>
+                  <Button style={{ marginRight: '30px' }} className='animate__animated animate__backInDown animate__slow' inverted color='violet' as='a' href='/register'>
                     Get Started
                   </Button>
-                  <Button color='violet' as='a' href='/browse'>
+                  <Button color='violet' as='a' className='animate__animated animate__backInDown animate__slow' href='/browse'>
                     Discover
                   </Button>
                 </Container>

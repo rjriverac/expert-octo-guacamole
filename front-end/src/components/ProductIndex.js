@@ -65,55 +65,55 @@ const ProductIndex = () => {
 
 
   return (
-    <div className='browse'>
-      <Container>
-        <Grid columns='equal' style={{
-          display: 'flex',
-          flexDirection: 'row',
-          padding: '0',
-          placeContent: 'flex-start flex-end',
-          flexWrap: 'nowrap',
-          alignItems: 'flex-start',
-          width: '80vw',
-          justifyContent: 'center'
-        }}>
-          <Grid.Column width={3} textAlign='left'>
-            <Container >
-              <Grid.Column >
-                <h1 style={{ margin: '10px 0em' }}> <Icon name='filter' size='small'></Icon>Filters</h1>
-              </Grid.Column>
-            </Container>
-            <Container >
-              <Menu compact style={{ margin: '10px 0em' }}>
-                <Dropdown placeholder='By Category' clearable onChange={handleDropDownCategory} options={category} simple item />
-              </Menu>
-              <Menu compact>
-                <Dropdown placeholder='By Price' clearable onChange={handleDropDownPrice} options={options} simple item />
-              </Menu>
-            </Container>
-          </Grid.Column>
-          <Grid.Column width={14} className='browse' floated='right' >
-            <Card.Group style={{ justifyContent: 'center' }}>
-              {filteredNfts.length ?
-                filteredNfts.map((item, index) => (
-                  <ProductCard
+    // <div className='browse'>
+    <Container >
+      <Grid columns='equal' style={{
+        display: 'flex',
+        flexDirection: 'row',
+        padding: '0',
+        placeContent: 'flex-start flex-end',
+        flexWrap: 'nowrap',
+        alignItems: 'flex-start',
+        width: '80vw',
+        justifyContent: 'center'
+      }}>
+        <Grid.Column className='animate__animated animate__slideInLeft' width={3} textAlign='left'>
+          <Container >
+            <Grid.Column >
+              <h1 style={{ margin: '10px 0em' }}> <Icon name='filter' size='small'></Icon>Filters</h1>
+            </Grid.Column>
+          </Container>
+          <Container className='animate__animated animate__slideInLeft' >
+            <Menu compact style={{ margin: '10px 0em' }}>
+              <Dropdown placeholder='By Category' clearable onChange={handleDropDownCategory} options={category} simple item />
+            </Menu>
+            <Menu compact>
+              <Dropdown placeholder='By Price' clearable onChange={handleDropDownPrice} options={options} simple item />
+            </Menu>
+          </Container>
+        </Grid.Column>
+        <Grid.Column style={{ marginBottom: '10px' }} width={14} className='browse' floated='right'  >
+          <Card.Group className='animate__animated animate__slideInRight' style={{ justifyContent: 'center' }}>
+            {filteredNfts.length ?
+              filteredNfts.map((item, index) => (
+                <ProductCard
 
-                    key={index}
-                    item={item}
-                  />
-                )
-                )
-                :
-                <Dimmer inverted active>
-                  <Loader content='Loading' />
-                </Dimmer>
-              }
-            </Card.Group>
-          </Grid.Column>
-        </Grid>
+                  key={index}
+                  item={item}
+                />
+              )
+              )
+              :
+              <Dimmer inverted active>
+                <Loader content='Loading' />
+              </Dimmer>
+            }
+          </Card.Group>
+        </Grid.Column>
+      </Grid>
 
-      </Container>
-    </div>
+    </Container>
+    // </div>
   )
 }
 export default ProductIndex

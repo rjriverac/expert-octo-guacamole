@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react'
 import { getPayload, getTokenFromLocalStorage } from './helpers/auth'
 import { useHistory, useLocation } from 'react-router-dom'
-import { Container, Image, Menu, Icon, Button, Dropdown } from 'semantic-ui-react'
+import { Container, Image, Menu, Icon, Button, Dropdown, Segment } from 'semantic-ui-react'
 import axios from 'axios'
 
 const Navbar = () => {
@@ -30,7 +30,7 @@ const Navbar = () => {
 
   useEffect(() => {
     const getData = async () => {
-      if (userIsAuthenticated()){
+      if (userIsAuthenticated()) {
         try {
           const { data } = await axios.get('api/profile',
             {
@@ -47,9 +47,9 @@ const Navbar = () => {
 
   return (
 
-    <Menu color='violet' secondary inverted size='large'>
+    <Menu style={{ padding: '0px 50px' }} color='violet' secondary inverted size='large' >
       <Container>
-        <Menu.Item header as='a' href='/'>
+        <Menu.Item header as='a' href='/' className='animate__animated animate__pulse animate__slow animate__infinite'>
           <Image style={{ marginRight: '10px' }} size='mini' src='https://i.imgur.com/yCvLNgk.png' />
           <h3 style={{ marginTop: 'unset' }}>Tokenizer</h3>
         </Menu.Item>
@@ -65,10 +65,10 @@ const Navbar = () => {
             <Menu.Item as='a' href='/cart'><Icon name='shopping cart' />Cart</Menu.Item>
             <Menu.Item><Icon name='user circle' size='large' />
               <Dropdown floating closeOnChange inline direction='left'>
-                <Dropdown.Menu>
+                <Dropdown.Menu size='mini'>
                   <Dropdown.Header>Signed in as: {getUsername.username} </Dropdown.Header>
-                  <Dropdown.Item as='a' href='/profile' icon='user circle' text='Go to your profile'/>
-                  <Dropdown.Item as='a' href='/profile/add' icon='add' text='Add NFT'/>
+                  <Dropdown.Item as='a' href='/profile' icon='user circle' text='Go to your profile' />
+                  <Dropdown.Item as='a' href='/profile/add' icon='add' text='Add NFT' />
                 </Dropdown.Menu>
               </Dropdown>
             </Menu.Item>
