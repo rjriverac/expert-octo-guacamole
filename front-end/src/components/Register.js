@@ -41,10 +41,10 @@ const Register = () => {
 
   return (
     <div className='register'>
-      <Grid each style={{ height: '80vh' }} verticalAlign='middle'>
-        <Grid.Row centered style={{ margin: '70px 50px', alignItems: 'center', justifyContent: 'space-around' }}>
-          <Grid.Column width={10} textAlign='center' style={{ margin: '10px', maxWidth: 800, height: '40vh' }}>
-            <Header
+      <Grid each style={{ height: '80vh', paddinBottom: '10px' }} verticalAlign='middle'>
+        <Grid.Row centered style={{ marginBottom: '70px', alignItems: 'center', justifyContent: 'space-around' }}>
+          <Grid.Column width={10} textAlign='center' style={{ maxWidth: 800, height: '40vh' }}>
+            <Header className='animate__animated animate__fadeInTopLeft animate__slow'
               color='inverted'
               as='h1'
               content='Register to Tokenizer!'
@@ -54,7 +54,7 @@ const Register = () => {
             <br />
             <Form inverted onSubmit={handleSubmit} size='big' success error>
               <Form.Group unstackable widths={2}>
-                <Form.Input label='Username' iconPosition='right'>
+                <Form.Input label='Username' iconPosition='right' className='animate__animated animate__fadeInTopLeft animate__slow'>
                   
                   {/* <label> <Icon name='user' /> Username </label> */}
                   <input
@@ -66,7 +66,7 @@ const Register = () => {
                   <Icon name='user' />
                 </Form.Input>
 
-                <Form.Input label='Email' iconPosition='right'>
+                <Form.Input label='Email' iconPosition='right' className='animate__animated animate__fadeInTopLeft animate__slow'>
                   {/* <label> <Icon name='mail' /> Email </label> */}
                   <input
                     name="email"
@@ -80,7 +80,7 @@ const Register = () => {
               <Form.Group widths={2}>
             
               
-                <Form.Input label='Password' iconPosition='right'>
+                <Form.Input label='Password' iconPosition='right' className='animate__animated animate__fadeInBottomRight animate__slow'>
                   {/* <label> <Icon name='lock' /> Password </label> */}
                   <input
                     name="password"
@@ -91,7 +91,7 @@ const Register = () => {
                   />
                   <Icon name='lock' />
                 </Form.Input>
-                <Form.Input label='Re-Enter Password' iconPosition='right'>
+                <Form.Input label='Re-Enter Password' iconPosition='right' className='animate__animated animate__fadeInBottomRight animate__slow'>
                   {/* <label> <Icon name='lock' /> Re-Enter Password </label> */}
                   <input
                     
@@ -106,7 +106,7 @@ const Register = () => {
                 
               </Form.Group>
               <br/>
-              <Button size='big' color='teal' type='submit'>Click to Register!</Button>
+              <Button className='animate__animated animate__fadeInBottomRight animate__slow' size='big' color='teal' type='submit'>Click to Register!</Button>
               
               {displayMessage ? (
                 <Message 
