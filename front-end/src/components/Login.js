@@ -42,7 +42,7 @@ const Login = () => {
   return (
     <div className='login'>
 
-      <Grid  each style={{ height: '70vh', paddingBottom: '50px' }} verticalAlign='middle'>
+      <Grid style={{ height: '70vh', paddingBottom: '50px' }} verticalAlign='middle'>
         <Grid.Row centered style={{ margin: '0px 50px', alignItems: 'center', justifyContent: 'space-around' }}>
           <Grid.Column className='animate__animated animate__flipInX animate__slow' width={5} textAlign='center' style={{ marginBottom: '10px', maxWidth: 800, height: '40vh' }}>
             <Header
