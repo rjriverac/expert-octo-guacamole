@@ -44,7 +44,7 @@ const Navbar = () => {
   // }, [token])
 
   return (
-    <Menu color='violet' secondary inverted size='large' >
+    <Menu color='violet' secondary inverted size='large'>
       <Container>
         <Menu.Item header as='a' href='/'>
           <Image style={{ marginRight: '10px' }} size='mini' src='https://i.imgur.com/yCvLNgk.png'/>

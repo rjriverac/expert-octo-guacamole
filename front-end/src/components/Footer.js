@@ -6,7 +6,7 @@ import { Segment, Grid, Image, Button, List, Icon, Divider, Container, Header } 
 const Footer = () => {
 
   return (
-    <Segment color='violet'inverted style={{ padding: '20px 0em 0 0' }}>
+    <Segment color='violet'inverted style={{ padding: '20px 0em 0 0', margin: 'revert' }}>
       <Container>
         <Grid inverted stackable>
           <Grid.Row centered>

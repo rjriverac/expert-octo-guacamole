@@ -58,3 +58,8 @@
 .browse {
   background-color: #eeecfb;
 }
+.addnft {
+  background-image: url('https://www.kraken.com/accounts/_next/static/media/pro.3363648c304aeebba9b42da66b6110dc.svg');
+  background-size:  cover;
+  opacity: 0.8;
+}

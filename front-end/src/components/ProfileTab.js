@@ -7,7 +7,7 @@ import ProductCard from './ProductCard'
 const ProfileTab = (user) => {
 
   const panes = [
-    { 
+    {
       menuItem: 'Owned', render: () => (
         <Tab.Pane>
           <Card.Group centered>
@@ -26,10 +26,10 @@ const ProfileTab = (user) => {
             }
           </Card.Group>
         </Tab.Pane>
-      ) 
+      )
     },
     {
-      menuItem: 'About', render: () => ( 
+      menuItem: 'About', render: () => (
         <Tab.Pane>
           <Card>
             <Card.Content>
@@ -49,10 +49,14 @@ const ProfileTab = (user) => {
     }
   ]
   return (
-    <Grid.Column>
-      <h3>{user.image}</h3>
-      {userIsAuthenticated() && <Tab menu={{ vertical: true, tabular: true, pointing: true, secondary: true }} panes={panes}/>}
-    </Grid.Column>
+    <Grid>
+      <Grid.Row>
+        <Grid.Column>
+          <h3>{user.image}</h3>
+          {userIsAuthenticated() && <Tab menu={{ vertical: true, tabular: true, pointing: true, secondary: true }} panes={panes} />}
+        </Grid.Column>
+      </Grid.Row>
+    </Grid>
   )
 }
 

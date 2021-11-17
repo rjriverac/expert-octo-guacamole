@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import { Grid, Image, Header, Container } from 'semantic-ui-react'
 import ProfileTab from './ProfileTab'
-import { getTokenFromLocalStorage,userIsAuthenticated } from './helpers/auth'
+import { getTokenFromLocalStorage, userIsAuthenticated } from './helpers/auth'
 import { format } from 'date-fns'
 
 const UserProfile = () => {
@@ -29,43 +29,44 @@ const UserProfile = () => {
   const isEmpty = (object) => Object.keys(object).length === 0
 
   return (
-    <div>
-      <div style={{ padding: '8em 0em' }} vertical>
+    <div className='browse'>
+      <Container>
         <Grid container stackable verticalAlign='middle'>
           {/* <Icon name='share alternate square' size='big' color='violet' floated='right' ></Icon> */}
-          <Grid.Row>
+          <Grid.Row style={{ margin: '60px 0px 30px 0'  }}>
             <Grid.Column floated='right' width={6}>
               <Image circular rounded size='large' src='https://static3.refinery29.com/bin/entry/7ba/x/1058234/8boqnt6yswk.jpg' />
             </Grid.Column>
-            <Grid.Column width={8}>
+            <Grid.Column width={6}>
               <Header as='h3' style={{ fontSize: '2em' }}>
-                { !isEmpty(userInfo) && userInfo.username}
+                {!isEmpty(userInfo) && userInfo.username}
               </Header>
               <p style={{ fontSize: '1.33em' }}>
-                { !isEmpty(userInfo) && (() => { 
+                {!isEmpty(userInfo) && (() => {
                   const date = new Date(userInfo.createdAt)
                   const formattedDate = format(date, 'dd MMM yyyy')
                   return `Member since ${formattedDate}`
-                })() }
+                })()}
               </p>
             </Grid.Column>
           </Grid.Row>
           <Grid.Row>
+            <Grid.Column width={15}>
+              {userIsAuthenticated() ?
+                <ProfileTab
+                  {...userInfo}
+                />
+                :
+                <h1>Please log in</h1>
+                /* // ! just put this in as a placeholder, we can refactor/add to this */
+              }
+
+
+            </Grid.Column>
           </Grid.Row>
         </Grid>
-        <Container >
-          {userIsAuthenticated() ? 
-            <ProfileTab
-              {...userInfo}
-            />
-            :
-            <h1>Please log in</h1>
-            /* // ! just put this in as a placeholder, we can refactor/add to this */
-          }
-          
-          
-        </Container>
-      </div>
+      </Container>
+
     </div>
   )
 
