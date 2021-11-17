@@ -13,7 +13,8 @@
   },
   "scripts": {
     "serve": "npx nodemon index.js",
-    "seed": "node db/seeds.js"
+    "seed": "node db/seeds.js",
+    "restart": "kill -9 $(lsof -ti:4000) && npx nodemon index.js"
   },
   "type": "module"
 }

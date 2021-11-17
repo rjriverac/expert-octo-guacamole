@@ -142,9 +142,7 @@ const ProductDetail = () => {
             <Container>
               <Tab menu={{ pointing: true, secondary: true }} panes={panes}/>
             </Container>          
-            {/* <PricingDetails { ...item }/> */}
-            {/* </Segment> */}
-            <Divider horizontal/>
+            {/* <Divider horizontal/> */}
             { !isEmpty(item) &&
               (!userIsOwner(item.owner.id) && (item.available === true) &&
                   <Segment raised>
