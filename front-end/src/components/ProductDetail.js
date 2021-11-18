@@ -117,6 +117,7 @@ const ProductDetail = () => {
     
     <>
       <Header
+        className='animate__animated animate__bounceInDown animate__slow'
         as='h1'
         content='Token Detail'
         textAlign='center'
@@ -128,7 +129,7 @@ const ProductDetail = () => {
         relaxed={'very'}
       >
         <Grid.Row>
-          <Grid.Column>
+          <Grid.Column className='animate__animated animate__bounceInLeft animate__slow'>
             {!isEmpty(item) ? 
               <Image
                 src={item.image}
@@ -142,7 +143,7 @@ const ProductDetail = () => {
               </Placeholder>
             }
           </Grid.Column>
-          <Grid.Column>
+          <Grid.Column className='animate__animated animate__bounceInRight animate__slow'>
             <Container>
               <Tab menu={{ pointing: true, secondary: true }} panes={panes}/>
             </Container>          
@@ -165,8 +166,8 @@ const ProductDetail = () => {
             }
           </Grid.Column>
         </Grid.Row>
-        <Grid.Row>
-          <Grid.Column>
+        <Grid.Row style={{ margin: '10px' }}>
+          <Grid.Column className='animate__animated animate__bounceInLeft animate__slow'>
             <Header
               as='h2'
               content={!isEmpty(item) && `${item.name}`}
