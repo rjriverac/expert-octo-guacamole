@@ -1,7 +1,7 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import { Tab, Button, Grid, Header, Icon, Image, Label, Placeholder, Segment, Table, Container } from 'semantic-ui-react'
+import { Tab, Button, Grid, Header, Icon, Image, Label, Placeholder, Segment, Table, Container, Message } from 'semantic-ui-react'
 import PricingDetails from './PricingDetail'
 import { getTokenFromLocalStorage, userIsAuthenticated, userIsOwner } from './helpers/auth'
 import { useHistory } from 'react-router-dom'
@@ -100,7 +100,11 @@ const ProductDetail = () => {
               id={id}
             />
             :
-            <p>You are not allowed to Edit this NFT</p>
+            <Message 
+              error
+              header='Permission Denied'
+              content='You are not allowed to edit this NFT.'
+            />
           }
         </Tab.Pane>
       )
