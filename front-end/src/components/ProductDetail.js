@@ -184,8 +184,12 @@ const ProductDetail = () => {
                     <Table.Cell>{!isEmpty(item) && item.owner.username}</Table.Cell>
                   </Table.Row>
                   <Table.Row>
+                    <Table.Cell>Last Transaction</Table.Cell>
+                    <Table.Cell>{!isEmpty(item) && item.transactions.slice(-1)[0].type} at {!isEmpty(item) && item.transactions.slice(-1)[0].createdAt}</Table.Cell>
+                  </Table.Row>
+                  <Table.Row>
                     <Table.Cell>Last Price</Table.Cell>
-                    <Table.Cell>{!isEmpty(item) && item.transactions.slice(-1)[0].price}</Table.Cell>
+                    <Table.Cell>{!isEmpty(item) && <Icon name='bitcoin'/>}{!isEmpty(item) && item.transactions.slice(-1)[0].price}</Table.Cell>
                   </Table.Row>
                 </Table.Body>
               </Table>

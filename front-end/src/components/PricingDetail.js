@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react'
-import { Header, Segment } from 'semantic-ui-react'
+import { Header, Segment, Icon } from 'semantic-ui-react'
 import { AreaChart, XAxis, YAxis, CartesianGrid, ResponsiveContainer, Area, Tooltip } from 'recharts'
 import { format } from 'date-fns'
 
@@ -20,7 +20,7 @@ const PricingDetails = ({ item }) => {
       const { x, y, stroke, payload } = this.props
       return (
         <g transform={`translate(${x},${y})`}>
-          <text x={0} y={0} dy={10} fill="#666" transform="rotate(-25)">
+          <text x={0} y={0} dy={10} fontSize={10} fill="#666" transform="rotate(-25)">
             <tspan textAnchor='end' x='0'>{payload.value.split(' ').slice(0,3).join(' ')}</tspan>
             <tspan textAnchor='end' x='0' dy='20'>{payload.value.split(' ').slice(-1).join('')}</tspan>
           </text>
@@ -30,7 +30,13 @@ const PricingDetails = ({ item }) => {
   }
 
   return (
-    <Segment style={{ width: '100%', height: 380 }} textAlign='center'>
+    <Segment style={{ width: '100%', height: 390 }} textAlign='center'>
+      { item.currentPrice ? 
+        <Header as='h3'>
+          Current Price {<Icon name='bitcoin'/>} {item.currentPrice}
+        </Header> 
+        : ''
+      }
       {dataArray.length ?
         <ResponsiveContainer>
           <AreaChart
