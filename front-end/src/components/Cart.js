@@ -107,14 +107,14 @@ const Cart = () => {
       <Grid.Row>
         <Container style={{ margin: '20px' }}>
           <Grid.Column >
-            <Header dividing as='h2' color='grey'>
-              <Icon color='grey' name='cart' />
+            <Header dividing as='h2' className='animate__animated animate__lightSpeedInRight animate__slow'>
+              <Icon name='cart' />
               Cart
             </Header>
-            <List divided relaxed>
+            <List divided relaxed className='animate__animated animate__zoomInUp animate__slower'>
               {
                 userInfo.map((cartItem, index) => (
-                  <List.Item key={index}>
+                  <List.Item key={index} >
                     <Card.Content>
                       <Image
                         style={{ borderRadius: '10px' }}
@@ -134,7 +134,7 @@ const Cart = () => {
                       </Container>
                     </Card.Content>
                     <Card.Content extra style={{}}>
-                      <Container textAlign='right'>
+                      <Container textAlign='right' className='animate__animated animate__zoomInDown animate__slower'>
                         <Button
                           negative
                           size='small'
@@ -158,6 +158,7 @@ const Cart = () => {
             </List>
             <Divider />
             <Segment compact floated='right'
+              className='animate__animated animate__zoomInDown animate__slower'
               raised
               style={{ 'height': '65px', display: 'flex', flexDirection: 'row', alignItems: 'baseline' }}
               textAlign='left'

@@ -69,7 +69,7 @@ const Login = () => {
                 />
               </Form.Field>
               {displayMessage ? (
-                <Message className='animate__animated animate__rollOut animate__slow animate__delay-s'
+                <Message className='animate__animated animate__rollOut animate__slow animate__delay-2s'
                   success
                   header='Login Successful'
                   content="You will now be redirected to the home page."
