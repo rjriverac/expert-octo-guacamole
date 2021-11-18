@@ -111,14 +111,10 @@ const Cart = () => {
               Cart
             </Header>
             <List divided relaxed>
-
               {
                 userInfo.map((cartItem, index) => (
-                  
                   <List.Item key={index}>
-
                     <Card.Content>
-
                       <Image
                         style={{ borderRadius: '10px' }}
                         floated='left'
@@ -135,12 +131,10 @@ const Cart = () => {
                           {`Price: ${cartItem.currentPrice}`}
                         </Card.Description>
                       </Container>
-
                     </Card.Content>
                     <Card.Content extra style={{}}>
                       <Container textAlign='right'>
                         <Button
-
                           negative
                           size='small'
                           compact
@@ -157,15 +151,11 @@ const Cart = () => {
                         </Button>
                       </Container>
                     </Card.Content>
-
                   </List.Item>
-
                 ))
               }
-
             </List>
             <Divider />
-
             <Segment compact floated='right'
               raised
               style={{ 'height': '65px', display: 'flex', flexDirection: 'row', alignItems: 'baseline' }}
@@ -208,15 +198,10 @@ const Cart = () => {
                 </Button>
               </Button.Group>
             </Segment>
-
           </Grid.Column>
         </Container>
       </Grid.Row>
-
     </Grid>
-
-
-
   )
 }
 

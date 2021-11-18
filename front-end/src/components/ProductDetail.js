@@ -1,8 +1,7 @@
-/* eslint-disable no-unused-vars */
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import { Tab, Button, Divider, Grid, Header, Icon, Image, Label, Placeholder, Segment, Table, Container } from 'semantic-ui-react'
+import { Tab, Button, Grid, Header, Icon, Image, Label, Placeholder, Segment, Table, Container } from 'semantic-ui-react'
 import PricingDetails from './PricingDetail'
 import { getTokenFromLocalStorage, userIsAuthenticated, userIsOwner } from './helpers/auth'
 import { useHistory } from 'react-router-dom'
@@ -138,11 +137,9 @@ const ProductDetail = () => {
             }
           </Grid.Column>
           <Grid.Column>
-            {/* <Segment raised>  */}
             <Container>
               <Tab menu={{ pointing: true, secondary: true }} panes={panes}/>
             </Container>          
-            {/* <Divider horizontal/> */}
             { !isEmpty(item) &&
               (!userIsOwner(item.owner.id) && (item.available === true) &&
                   <Segment raised>
@@ -167,7 +164,6 @@ const ProductDetail = () => {
             <Header
               as='h2'
               content={!isEmpty(item) && `${item.name}`}
-              // textAlign='justified'
             />
             <Segment raised attached compact>
               <Label attached='top'>Details</Label>

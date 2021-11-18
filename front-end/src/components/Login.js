@@ -1,4 +1,3 @@
-// /* eslint-disable no-unused-vars */ 
 import React, { useState } from 'react'
 import { Button, Form, Container, Header, Grid, Icon, Message } from 'semantic-ui-react'
 import axios from 'axios'
@@ -41,7 +40,6 @@ const Login = () => {
 
   return (
     <div className='login'>
-
       <Grid style={{ height: '70vh', paddingBottom: '50px' }} verticalAlign='middle'>
         <Grid.Row centered style={{ margin: '0px 50px', alignItems: 'center', justifyContent: 'space-around' }}>
           <Grid.Column className='animate__animated animate__flipInX animate__slow' width={5} textAlign='center' style={{ marginBottom: '10px', maxWidth: 800, height: '40vh' }}>
@@ -50,7 +48,6 @@ const Login = () => {
               content='Sign in to Tokenizer'
               textAlign='center'
             />
-
             <Form onSubmit={handleSubmit} size='big' success error>
               <Form.Field>
                 <label> <Icon name='user' /> Email </label>
@@ -61,7 +58,6 @@ const Login = () => {
                   onChange={handleChange}
                 />
               </Form.Field>
-
               <Form.Field>
                 <label> <Icon name='lock' /> Password </label>
                 <input
@@ -113,8 +109,6 @@ const Login = () => {
           </Grid.Column>
         </Grid.Row>
       </Grid>
-
-
     </div>
   )
 }

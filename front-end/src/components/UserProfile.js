@@ -25,17 +25,21 @@ const UserProfile = () => {
     getData()
   }, [])
 
-
   const isEmpty = (object) => Object.keys(object).length === 0
 
   return (
     <div className='browse'>
       <Container>
         <Grid container stackable verticalAlign='middle'>
-          {/* <Icon name='share alternate square' size='big' color='violet' floated='right' ></Icon> */}
           <Grid.Row style={{ margin: '60px 0px 30px 0'  }}>
             <Grid.Column floated='right' width={6}>
-              <Image className='animate__animated animate__rotateInDownLeft animate__slow' circular rounded size='large' src='https://static3.refinery29.com/bin/entry/7ba/x/1058234/8boqnt6yswk.jpg' />
+              <Image 
+                className='animate__animated animate__rotateInDownLeft animate__slow' 
+                circular 
+                rounded 
+                size='large' 
+                src='https://static3.refinery29.com/bin/entry/7ba/x/1058234/8boqnt6yswk.jpg' 
+              />
             </Grid.Column>
             <Grid.Column className='animate__animated animate__rotateInDownRight animate__slow' width={6}>
               <Header as='h3' style={{ fontSize: '2em' }}>
@@ -58,15 +62,11 @@ const UserProfile = () => {
                 />
                 :
                 <h1>Please log in</h1>
-                /* // ! just put this in as a placeholder, we can refactor/add to this */
               }
-
-
             </Grid.Column>
           </Grid.Row>
         </Grid>
       </Container>
-
     </div>
   )
 

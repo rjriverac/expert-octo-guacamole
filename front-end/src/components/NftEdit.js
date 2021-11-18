@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import React, { useState } from 'react'
 import { Button, Container, Form, Message } from 'semantic-ui-react'
 import { getTokenFromLocalStorage } from './helpers/auth'
@@ -7,7 +6,7 @@ import { useParams } from 'react-router-dom'
 
 
 
-const NftEdit = (_item) => {
+const NftEdit = () => {
 
   const { id } = useParams()
   const [displayMessage, setMessage] = useState(false)
@@ -55,7 +54,6 @@ const NftEdit = (_item) => {
             onChange={handleChange}
           />
         </Form.Field>
-
         {displayMessage ? (
           <Message 
             success
@@ -63,22 +61,8 @@ const NftEdit = (_item) => {
             content='Your NFT has now been updated!'
           />
         ) : ''}
-        {/* { displayMessage ? (
-          displayMessage === 'Yes' ? (<Message 
-            success
-            header='Price Updated!'
-            content='Your NFT has now been listed for sale'
-          />) : (<Message 
-            warning
-            header='NFT not for sale!'
-            content='You have chosen not to list your NFT for sale'
-          />)
-          
-        ) : ''
-        } */}
         <Button type='submit'>Update</Button>
       </Form>
-
     </Container>
   )
 }

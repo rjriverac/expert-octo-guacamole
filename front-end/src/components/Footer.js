@@ -1,6 +1,5 @@
-/* eslint-disable no-unused-vars */
 import React from 'react'
-import { Segment, Grid, Image, Button, List, Icon, Divider, Container, Header } from 'semantic-ui-react'
+import { Segment, Grid, List, Icon, Container, Header } from 'semantic-ui-react'
 
 
 const Footer = () => {

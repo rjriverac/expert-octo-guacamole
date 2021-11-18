@@ -1,8 +1,7 @@
-/* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from 'react'
 import { getPayload, getTokenFromLocalStorage } from './helpers/auth'
 import { useHistory, useLocation } from 'react-router-dom'
-import { Container, Image, Menu, Icon, Button, Dropdown, Segment } from 'semantic-ui-react'
+import { Container, Image, Menu, Icon, Button, Dropdown } from 'semantic-ui-react'
 import axios from 'axios'
 
 const Navbar = () => {

@@ -1,6 +1,5 @@
-/* eslint-disable no-unused-vars */
 import React from 'react'
-import { Card, Container, Dimmer, Grid, Loader, Segment, Menu, Dropdown, Icon } from 'semantic-ui-react'
+import { Card, Container, Dimmer, Grid, Loader, Menu, Dropdown, Icon } from 'semantic-ui-react'
 import axios from 'axios'
 import { useState, useEffect } from 'react'
 import ProductCard from './ProductCard'
@@ -36,11 +35,9 @@ const ProductIndex = () => {
   }
 
   const handleDropDownPrice = (_event, data) => {
-    console.log(data.value)
     const workingArray = [...filteredNfts]
     if (data.value === 1) {
       const sortedArray = workingArray.sort((a, b) => a.currentPrice - b.currentPrice)
-      console.log(sortedArray)
       setFilteredNfts(sortedArray)
     } else if (data.value === 2) {
       const sortedArray = workingArray.sort((a, b) => b.currentPrice - a.currentPrice)
@@ -65,7 +62,6 @@ const ProductIndex = () => {
 
 
   return (
-    // <div className='browse'>
     <Container >
       <Grid columns='equal' style={{
         display: 'flex',
@@ -97,7 +93,6 @@ const ProductIndex = () => {
             {filteredNfts.length ?
               filteredNfts.map((item, index) => (
                 <ProductCard
-
                   key={index}
                   item={item}
                 />
@@ -111,9 +106,7 @@ const ProductIndex = () => {
           </Card.Group>
         </Grid.Column>
       </Grid>
-
     </Container>
-    // </div>
   )
 }
 export default ProductIndex

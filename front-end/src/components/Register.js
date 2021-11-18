@@ -1,6 +1,5 @@
-/* eslint-disable no-unused-vars */
 import React, { useState } from 'react'
-import { Button, Container, Form, Header, Icon, Message, Segment, Grid } from 'semantic-ui-react'
+import { Button, Form, Header, Icon, Message, Grid } from 'semantic-ui-react'
 import axios from 'axios'
 import { useHistory } from 'react-router-dom'
 
@@ -54,9 +53,11 @@ const Register = () => {
             <br />
             <Form inverted onSubmit={handleSubmit} size='big' success error>
               <Form.Group unstackable widths={2}>
-                <Form.Input label='Username' iconPosition='right' className='animate__animated animate__fadeInTopLeft animate__slow'>
-                  
-                  {/* <label> <Icon name='user' /> Username </label> */}
+                <Form.Input 
+                  label='Username' 
+                  iconPosition='right' 
+                  className='animate__animated animate__fadeInTopLeft animate__slow'
+                >  
                   <input
                     name="username"
                     value={formData.username}
@@ -65,9 +66,11 @@ const Register = () => {
                   />
                   <Icon name='user' />
                 </Form.Input>
-
-                <Form.Input label='Email' iconPosition='right' className='animate__animated animate__fadeInTopLeft animate__slow'>
-                  {/* <label> <Icon name='mail' /> Email </label> */}
+                <Form.Input 
+                  label='Email' 
+                  iconPosition='right' 
+                  className='animate__animated animate__fadeInTopLeft animate__slow'
+                >
                   <input
                     name="email"
                     value={formData.email}
@@ -78,10 +81,11 @@ const Register = () => {
                 </Form.Input>
               </Form.Group>
               <Form.Group widths={2}>
-            
-              
-                <Form.Input label='Password' iconPosition='right' className='animate__animated animate__fadeInBottomRight animate__slow'>
-                  {/* <label> <Icon name='lock' /> Password </label> */}
+                <Form.Input 
+                  label='Password' 
+                  iconPosition='right' 
+                  className='animate__animated animate__fadeInBottomRight animate__slow'
+                >
                   <input
                     name="password"
                     value={formData.password}
@@ -91,10 +95,12 @@ const Register = () => {
                   />
                   <Icon name='lock' />
                 </Form.Input>
-                <Form.Input label='Re-Enter Password' iconPosition='right' className='animate__animated animate__fadeInBottomRight animate__slow'>
-                  {/* <label> <Icon name='lock' /> Re-Enter Password </label> */}
+                <Form.Input
+                  label='Re-Enter Password' 
+                  iconPosition='right' 
+                  className='animate__animated animate__fadeInBottomRight animate__slow'
+                >
                   <input
-                    
                     name="passwordConfirmation"
                     value={formData.passwordConfirmation}
                     onChange={handleChange}
@@ -103,11 +109,16 @@ const Register = () => {
                   />
                   <Icon name='lock' />
                 </Form.Input>
-                
               </Form.Group>
               <br/>
-              <Button className='animate__animated animate__fadeInBottomRight animate__slow' size='big' color='teal' type='submit'>Click to Register!</Button>
-              
+              <Button
+                className='animate__animated animate__fadeInBottomRight animate__slow' 
+                size='big' 
+                color='teal' 
+                type='submit'
+              >
+                Click to Register!
+              </Button>
               {displayMessage ? (
                 <Message 
                   success
@@ -122,13 +133,8 @@ const Register = () => {
               
             </Form>
           </Grid.Column>
-          {/* <Message color='yellow'>
-            <Icon name='help' />
-            already have an account? <a href='/login'>Login</a>
-          </Message> */}
         </Grid.Row>
       </Grid>
-
     </div>
   )
 }

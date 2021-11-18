@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from 'react'
 import { Grid, Button, Icon, Divider, Container, Header, Card, Label } from 'semantic-ui-react'
 import { CarouselProvider, Image, Slider, Slide, ButtonBack, ButtonNext } from 'pure-react-carousel'
@@ -25,7 +24,6 @@ const Home = () => {
   return (
     <>
       <div className='home' >
-
         <Container textAlign='center'>
           <Grid width={3}>
             <Grid.Row centered style={{ margin: '70px 50px', alignItems: 'center', justifyContent: 'space-around' }}>
@@ -95,7 +93,6 @@ const Home = () => {
           <Grid.Column>
           </Grid.Column>
         </Grid>
-
       </div>
     </>
   )
