@@ -55,7 +55,7 @@ const UserProfile = () => {
             </Grid.Column>
           </Grid.Row>
           <Grid.Row>
-            <Grid.Column width={15}>
+            <Grid.Column width={18}>
               {userIsAuthenticated() ?
                 <ProfileTab
                   {...userInfo}

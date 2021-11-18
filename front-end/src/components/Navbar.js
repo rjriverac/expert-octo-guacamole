@@ -49,7 +49,7 @@ const Navbar = () => {
     <Menu style={{ padding: '0px 50px' }} color='violet' secondary inverted size='large' >
       <Container>
         <Menu.Item header as='a' href='/' className='animate__animated animate__pulse animate__slow animate__infinite'>
-          <Image style={{ marginRight: '10px' }} size='mini' src='https://i.imgur.com/yCvLNgk.png' />
+          <Image style={{ marginRight: '10px' }} size='mini' src='https://i.imgur.com/BG3fxu7.png' />
           <h3 style={{ marginTop: 'unset' }}>Tokenizer</h3>
         </Menu.Item>
         <Menu.Item as='a' href='/browse'>Browse</Menu.Item>

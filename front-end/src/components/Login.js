@@ -40,7 +40,7 @@ const Login = () => {
 
   return (
     <div className='login'>
-      <Grid style={{ height: '70vh', paddingBottom: '50px' }} verticalAlign='middle'>
+      <Grid style={{ height: '70vh', paddingBottom: '20px' }} verticalAlign='middle'>
         <Grid.Row centered style={{ margin: '0px 50px', alignItems: 'center', justifyContent: 'space-around' }}>
           <Grid.Column className='animate__animated animate__flipInX animate__slow' width={5} textAlign='center' style={{ marginBottom: '10px', maxWidth: 800, height: '40vh' }}>
             <Header
@@ -69,7 +69,7 @@ const Login = () => {
                 />
               </Form.Field>
               {displayMessage ? (
-                <Message className='animate__animated animate__rollOut animate__slow animate__delay-s'
+                <Message className='animate__animated animate__rollOut animate__slow animate__delay-2s'
                   success
                   header='Login Successful'
                   content="You will now be redirected to the home page."

@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { Grid, Button, Icon, Divider, Container, Header, Card, Label } from 'semantic-ui-react'
-import { CarouselProvider, Image, Slider, Slide, ButtonBack, ButtonNext } from 'pure-react-carousel'
+import { CarouselProvider, Image, Slider, Slide } from 'pure-react-carousel'
 import 'pure-react-carousel/dist/react-carousel.es.css'
 import axios from 'axios'
+import CustomDotGroup from './CustomDotGroup'
 
 const Home = () => {
 
@@ -57,10 +58,8 @@ const Home = () => {
                       )
                     })}
                   </Slider>
-                  <Container textAlign='center'>
-                    <ButtonBack className='smallButtons'>Back</ButtonBack>
-                    <ButtonNext className='smallButtons'>Next</ButtonNext>
-                  </Container>
+                  <br/>
+                  <CustomDotGroup slides={4}/>
                 </CarouselProvider>
               </Grid.Column>
               <Grid.Column 
