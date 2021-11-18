@@ -6,6 +6,7 @@ import PricingDetails from './PricingDetail'
 import { getTokenFromLocalStorage, userIsAuthenticated, userIsOwner } from './helpers/auth'
 import { useHistory } from 'react-router-dom'
 import NftEdit from './NftEdit'
+import { format } from 'date-fns'
 
 
 const ProductDetail = () => {
@@ -185,7 +186,16 @@ const ProductDetail = () => {
                   </Table.Row>
                   <Table.Row>
                     <Table.Cell>Last Transaction</Table.Cell>
-                    <Table.Cell>{!isEmpty(item) && item.transactions.slice(-1)[0].type} at {!isEmpty(item) && item.transactions.slice(-1)[0].createdAt}</Table.Cell>
+                    <Table.Cell>
+                      {(()=> {
+                        if (isEmpty(item)) return
+                        const date = new Date(item.transactions.slice(-1)[0].createdAt)
+                        const formattedDate = format(date, 'do MMMM yy H:mm OOOO')
+                        const transactionText = item.transactions.slice(-1)[0].type
+                        const formattedText = transactionText.charAt(0).toUpperCase() + transactionText.slice(1)
+                        return `${formattedText} at ${formattedDate}`
+                      })()}
+                    </Table.Cell>
                   </Table.Row>
                   <Table.Row>
                     <Table.Cell>Last Price</Table.Cell>
