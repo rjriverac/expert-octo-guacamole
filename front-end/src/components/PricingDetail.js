@@ -28,7 +28,7 @@ const PricingDetails = ({ item }) => {
       )
     }
   }
-  console.log(item)
+
   return (
     <Segment style={{ width: '100%', height: 390 }} textAlign='center'>
       {item.currentPrice ?

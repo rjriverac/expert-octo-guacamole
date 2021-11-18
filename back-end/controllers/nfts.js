@@ -19,7 +19,6 @@ export const addNft = async(req, res) => {
         price: 0
       } }
     const nftToAdd = await Nft.create(newNft)
-    console.log('NFT to add ->', nftToAdd)
     if (!nftToAdd) throw new Error()
     return res.status(201).json(nftToAdd)
   } catch (err) {

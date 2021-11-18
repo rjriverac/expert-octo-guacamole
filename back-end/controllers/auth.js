@@ -2,7 +2,6 @@ import User from '../models/user.js'
 import jwt from 'jsonwebtoken'
 import { secret } from '../config/environment.js'
 
-//create the user
 export const registeredUser = async  (req, res) => {
   try {
     const newUser = await User.create(req.body)
@@ -16,17 +15,11 @@ export const registeredUser = async  (req, res) => {
 export const loginUser = async (req, res) => {
   try {
     const userToLogin = await User.findOne({ email: req.body.email })
-    // console.log('USER TO LOG IN ->', userToLogin)
     if (!userToLogin || !userToLogin.validatepw(req.body.password)) {
       throw new Error()
     }
-
-    //generate a token for the user
     const token = jwt.sign({ sub: userToLogin._id }, secret, { expiresIn: '20 day' })
-    // console.log('TOKEN -> ', token)
-    return res.status(200).json({ 'message': `Welcome back ${userToLogin.username}`, token })
-    
-    
+    return res.status(200).json({ 'message': `Welcome back ${userToLogin.username}`, token })  
   } catch (err) {
     console.log(err)
     return res.status(422).json({ 'message': 'Unauthorised' })

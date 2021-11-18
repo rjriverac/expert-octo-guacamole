@@ -34,7 +34,7 @@ const Register = () => {
       setMessage(false)
     }
   }
-  console.log(error)
+
 
   
 

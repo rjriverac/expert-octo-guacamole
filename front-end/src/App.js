@@ -14,7 +14,6 @@ import UserProfile from './components/UserProfile'
 const App = () => {
 
   return (
-    // <h1> Hello World</h1>
     <BrowserRouter>
       <Navbar />
       <Switch>
