@@ -106,8 +106,8 @@ const Cart = () => {
       <Grid.Row>
         <Container style={{ margin: '20px' }}>
           <Grid.Column >
-            <Header dividing as='h2' color='grey'>
-              <Icon color='grey' name='cart' />
+            <Header dividing as='h2'>
+              <Icon name='cart' />
               Cart
             </Header>
             <List divided relaxed>
