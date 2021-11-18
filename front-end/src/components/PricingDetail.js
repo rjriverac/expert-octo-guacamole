@@ -16,24 +16,27 @@ const PricingDetails = ({ item }) => {
 
   return (
     <Segment style={{ width: '100%', height: 380 }} textAlign='center'>
-      <Header as='h2'>Price History</Header>
-      <ResponsiveContainer>
-        <AreaChart
-          data={dataArray}
-          margin={{
-            top: 10,
-            right: 10,
-            left: 0,
-            bottom: 20
-          }}
-        >
-          <CartesianGrid strokeDasharray='3 3' />
-          <XAxis dataKey='date' />
-          <YAxis />
-          <Tooltip />
-          <Area type='monotone' dataKey='price' stroke='#8884d8' fill='#8884d8' />
-        </AreaChart>
-      </ResponsiveContainer>
+      {dataArray.length ?
+        <ResponsiveContainer>
+          <AreaChart
+            data={dataArray}
+            margin={{
+              top: 10,
+              right: 10,
+              left: 0,
+              bottom: 20
+            }}
+          >
+            <CartesianGrid strokeDasharray='3 3' />
+            <XAxis dataKey='date' />
+            <YAxis />
+            <Tooltip />
+            <Area type='monotone' dataKey='price' stroke='#8884d8' fill='#8884d8' />
+          </AreaChart>
+        </ResponsiveContainer>
+        :
+        <Header as='h2'>No transactions yet!</Header>
+      }
     </Segment>
 
   )
