@@ -49,8 +49,8 @@ const ProfileTab = (user) => {
     }
   ]
   return (
-    <Grid>
-      <Grid.Row>
+    <Grid >
+      <Grid.Row className='animate__animated animate__rotateInUpLeft animate__slow'>
         <Grid.Column width={14}>
           <h3>{user.image}</h3>
           {userIsAuthenticated() && <Tab menu={{ vertical: true, tabular: true, pointing: true, secondary: true }} panes={panes} />}

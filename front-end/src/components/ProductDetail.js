@@ -6,6 +6,7 @@ import PricingDetails from './PricingDetail'
 import { getTokenFromLocalStorage, userIsAuthenticated, userIsOwner } from './helpers/auth'
 import { useHistory } from 'react-router-dom'
 import NftEdit from './NftEdit'
+import { format } from 'date-fns'
 
 
 const ProductDetail = () => {
@@ -117,6 +118,7 @@ const ProductDetail = () => {
     
     <>
       <Header
+        className='animate__animated animate__bounceInDown animate__slow'
         as='h1'
         content='Token Detail'
         textAlign='center'
@@ -128,7 +130,7 @@ const ProductDetail = () => {
         relaxed={'very'}
       >
         <Grid.Row>
-          <Grid.Column>
+          <Grid.Column className='animate__animated animate__bounceInLeft animate__slow'>
             {!isEmpty(item) ? 
               <Image
                 src={item.image}
@@ -142,7 +144,7 @@ const ProductDetail = () => {
               </Placeholder>
             }
           </Grid.Column>
-          <Grid.Column>
+          <Grid.Column className='animate__animated animate__bounceInRight animate__slow'>
             <Container>
               <Tab menu={{ pointing: true, secondary: true }} panes={panes}/>
             </Container>          
@@ -165,8 +167,8 @@ const ProductDetail = () => {
             }
           </Grid.Column>
         </Grid.Row>
-        <Grid.Row>
-          <Grid.Column>
+        <Grid.Row style={{ margin: '10px' }}>
+          <Grid.Column className='animate__animated animate__bounceInLeft animate__slow'>
             <Header
               as='h2'
               content={!isEmpty(item) && `${item.name}`}
@@ -184,8 +186,21 @@ const ProductDetail = () => {
                     <Table.Cell>{!isEmpty(item) && item.owner.username}</Table.Cell>
                   </Table.Row>
                   <Table.Row>
+                    <Table.Cell>Last Transaction</Table.Cell>
+                    <Table.Cell>
+                      {(()=> {
+                        if (isEmpty(item)) return
+                        const date = new Date(item.transactions.slice(-1)[0].createdAt)
+                        const formattedDate = format(date, 'do MMMM yy H:mm OOOO')
+                        const transactionText = item.transactions.slice(-1)[0].type
+                        const formattedText = transactionText.charAt(0).toUpperCase() + transactionText.slice(1)
+                        return `${formattedText} at ${formattedDate}`
+                      })()}
+                    </Table.Cell>
+                  </Table.Row>
+                  <Table.Row>
                     <Table.Cell>Last Price</Table.Cell>
-                    <Table.Cell>{!isEmpty(item) && item.transactions.slice(-1)[0].price}</Table.Cell>
+                    <Table.Cell>{!isEmpty(item) && <Icon name='bitcoin'/>}{!isEmpty(item) && item.transactions.slice(-1)[0].price}</Table.Cell>
                   </Table.Row>
                 </Table.Body>
               </Table>

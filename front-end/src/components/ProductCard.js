@@ -26,7 +26,7 @@ const ProductCard = ({ index, item }) => {
         <Card.Meta>{item.category}</Card.Meta>
       </Card.Content>
       <Card.Content extra>
-        <Label><Icon name='bitcoin'/>Price: {item.currentPrice}</Label>
+        <Label><Icon name='bitcoin'/>Price: {item.available ? item.currentPrice : 'Unlisted'}</Label>
         <Divider />
         <Label>
           <Icon name='barcode' />
