@@ -32,7 +32,7 @@ const Navbar = () => {
     const getData = async () => {
       if (userIsAuthenticated()) {
         try {
-          const { data } = await axios.get('api/profile',
+          const { data } = await axios.get('/api/profile',
             {
               headers: { Authorization: `Bearer ${token}` }
             })

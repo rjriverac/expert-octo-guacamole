@@ -32,8 +32,6 @@ const Footer = () => {
               <Header inverted as='h4' content='Marketplace' />
               <List link inverted>
                 <List.Item as='a' href='/browse'>All Nfts</List.Item>
-                <List.Item as='a' href='/browse'>New</List.Item>
-                <List.Item as='a'>Trending</List.Item>
                 <List.Item as='a' href='https://cryptonews.com/news/nft-news/'>Nft News</List.Item>
               </List>
             </Grid.Column>
