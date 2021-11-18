@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Button, Container, Form, Message } from 'semantic-ui-react'
 import { getTokenFromLocalStorage } from './helpers/auth'
 import axios from 'axios'
-import { useParams } from 'react-router-dom'
+import { useParams,useHistory } from 'react-router-dom'
 
 
 
@@ -14,11 +14,15 @@ const NftEdit = () => {
     available: undefined,
     currentPrice: undefined
   })
+  const history = useHistory()
 
   const handleChange = (event) => {
     const newFormData = { ...formData, [event.target.name]: event.target.value }
-    // console.log('NEW FORM DATA ->', newFormData)
-    setFormData(newFormData)
+    if (newFormData.available === 'false') {
+      setFormData({ ...newFormData, currentPrice: null })
+    } else {
+      setFormData(newFormData)
+    }
   }
 
   const handleSubmit = async (event) => {
@@ -35,6 +39,9 @@ const NftEdit = () => {
       setMessage(false)
     }
     setFormData({ available: undefined, currentPrice: undefined })
+    setTimeout(()=> {
+      history.go(0)
+    },500)
   }
 
   return (
@@ -46,9 +53,19 @@ const NftEdit = () => {
           <option value={false}>No</option>
         </Form.Field>
         <Form.Field>
-          <Form.Field 
+          <Form.Field
+            required = {(()=> {
+              if (formData.available === 'true'){
+                return true
+              } else return false
+            } )()}
+            disabled= {(()=> {
+              if (formData.available === 'true') return false
+              else return true
+            })()}
             label='Input your sale price' 
-            control='input' 
+            control='input'
+            min={0.0000} 
             name='currentPrice'
             value={formData.name}
             onChange={handleChange}

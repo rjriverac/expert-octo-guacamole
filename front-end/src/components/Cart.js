@@ -78,6 +78,7 @@ const Cart = () => {
           {
             owner: currentUser.sub,
             available: false,
+            currentPrice: null,
             transactions: {
               type: 'sale',
               from: nft.owner._id,
