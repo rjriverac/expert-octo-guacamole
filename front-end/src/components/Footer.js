@@ -58,7 +58,7 @@ const Footer = () => {
                 <List.Item as='a' href='https://www.youtube.com/'><Icon  name='youtube' size='big' color='red' /></List.Item>
               </List.Item>
             </List>
-            <p style={{ margin: '5px 0em 5px 0em' }}>© 2021, Tokenizer.com, General Assembely Project 3</p>
+            <p style={{ margin: '5px 0em 5px 0em' }}>© 2021, Tokenizer.com, General Assembly Project 3</p>
           </Segment>
         </Container>
       </Container>

@@ -98,7 +98,6 @@ const Cart = () => {
     if (!isError) handleClearCart()
   }
 
-  console.log(userInfo)
   return (
 
 
