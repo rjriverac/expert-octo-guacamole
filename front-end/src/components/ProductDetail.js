@@ -29,15 +29,17 @@ const ProductDetail = () => {
       }
     }
     const getUser = async () => {
-      try {
-        const { data: { cart } } = await axios.get('/api/profile',
-          {
-            headers: { Authorization: `Bearer ${getTokenFromLocalStorage()}` }
-          }
-        ) 
-        settheCart(cart)
-      } catch (error) {
-        console.log(error)
+      if (userIsAuthenticated()) {
+        try {
+          const { data: { cart } } = await axios.get('/api/profile',
+            {
+              headers: { Authorization: `Bearer ${getTokenFromLocalStorage()}` }
+            }
+          ) 
+          settheCart(cart)
+        } catch (error) {
+          console.log(error)
+        }
       }
     }
     getData()
