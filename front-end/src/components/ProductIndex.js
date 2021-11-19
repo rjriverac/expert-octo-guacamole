@@ -1,8 +1,10 @@
 import React from 'react'
-import { Card, Container, Dimmer, Grid, Loader, Menu, Dropdown, Icon } from 'semantic-ui-react'
+import { Card, Container, Dimmer, Grid, Loader, Menu, Dropdown, Icon, Button } from 'semantic-ui-react'
 import axios from 'axios'
 import { useState, useEffect } from 'react'
 import ProductCard from './ProductCard'
+import Sound, { handleSongPlaying,handleSongLoading,handleSongFinishedPlaying } from 'react-sound'
+import Music from '../assets/elevator-Music.opus'
 
 const ProductIndex = () => {
 
@@ -22,6 +24,7 @@ const ProductIndex = () => {
   ]
   const [nft, setNft] = useState([])
   const [filteredNfts, setFilteredNfts] = useState([])
+  const [isPlaying,setIsPlaying] = useState(false)
 
   const handleDropDownCategory = (_event, data) => {
     if (!data.value) {
@@ -79,6 +82,20 @@ const ProductIndex = () => {
               <Menu compact>
                 <Dropdown placeholder='By Price' clearable onChange={handleDropDownPrice} options={options} simple item />
               </Menu>
+              <Sound
+                url={Music}
+                playStatus={isPlaying ? Sound.status.PLAYING : Sound.status.STOPPED}
+                playFromPosition={300}
+                onLoading={handleSongLoading}
+                onPlaying={handleSongPlaying}
+                onFinishedPlaying={handleSongFinishedPlaying}
+                loop={true}
+              />
+              <Button
+                onClick={()=>setIsPlaying(!isPlaying) }
+              >
+                {!isPlaying ? 'Play' : 'Stop'}
+              </Button>
             </Container>
           </Grid.Column>
           <Grid.Column style={{ marginBottom: '10px' }} width={13} className='browse' floated='right'  >
