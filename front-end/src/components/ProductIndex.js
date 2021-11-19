@@ -82,21 +82,21 @@ const ProductIndex = () => {
               <Menu compact>
                 <Dropdown placeholder='By Price' clearable onChange={handleDropDownPrice} options={options} simple item />
               </Menu>
-              <Sound
-                url={Music}
-                playStatus={isPlaying ? Sound.status.PLAYING : Sound.status.STOPPED}
-                playFromPosition={300}
-                onLoading={handleSongLoading}
-                onPlaying={handleSongPlaying}
-                onFinishedPlaying={handleSongFinishedPlaying}
-                loop={true}
-              />
-              <Button
-                onClick={()=>setIsPlaying(!isPlaying) }
-              >
-                {!isPlaying ? 'Play' : 'Stop'}
-              </Button>
             </Container>
+            <Sound
+              url={Music}
+              playStatus={isPlaying ? Sound.status.PLAYING : Sound.status.STOPPED}
+              playFromPosition={300}
+              onLoading={handleSongLoading}
+              onPlaying={handleSongPlaying}
+              onFinishedPlaying={handleSongFinishedPlaying}
+              loop={true}
+            />
+            <Button size='small' color='violet' icon toggle active={isPlaying} circular style={{ margin: '5px' }}
+              onClick={()=>setIsPlaying(!isPlaying) }
+            >
+              <Icon name={!isPlaying ? 'music' : 'mute'} />
+            </Button>
           </Grid.Column>
           <Grid.Column style={{ marginBottom: '10px' }} width={13} className='browse' floated='right'  >
             <Card.Group className='animate__animated animate__slideInRight' style={{ justifyContent: 'center' }}>

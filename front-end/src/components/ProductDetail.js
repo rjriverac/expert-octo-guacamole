@@ -101,11 +101,18 @@ const ProductDetail = () => {
               id={id}
             />
             :
-            <Message 
+            <Message  
               error
-              header='Permission Denied'
-              content='You are not allowed to edit this NFT.'
-            />
+              icon
+            >
+              <Icon name='meh outline' />
+              <Message.Content>
+                <Message.Header>
+                  Permission Denied!
+                </Message.Header>
+                You do not have permission to edit this NFT.
+              </Message.Content>
+            </Message>
           }
         </Tab.Pane>
       )
