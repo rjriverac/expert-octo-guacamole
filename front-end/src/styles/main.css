@@ -1,0 +1,72 @@
+.facebookicon {
+  color: #4267B2
+}
+.home {
+  background-image: url('https://www.kraken.com/_assets/files/2021-01/k_hp_retail_kelp_bkg_left_v3/1536.webp');
+  background-size: cover;
+}
+.smallButtons {
+  margin: 0px 5px;
+  box-shadow: 0 0 0 0 rgb(34 36 38 / 15%) inset;
+  background-color: #6435c9;
+  color: white;
+  padding: 6px;
+  border-radius: 5px;
+    text-shadow: none;
+    background-image: none;
+    cursor: pointer;
+    display: inline-block;
+    min-height: 1;
+    outline: 0;
+    border: none;
+    vertical-align: baseline;
+    background: #6435c9 none;
+    
+    font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;
+    margin: 0 0.25;
+    text-transform: none;
+    text-shadow: none;
+    font-weight: 700;
+    line-height: 1em;
+    font-style: normal;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 0.28571429;
+    box-shadow: 0 0 0 1px transparent inset, 0 0 0 0 rgb(34 36 38 / 15%) inset;
+    -webkit-user-select: none;
+    user-select: none;
+    transition: opacity .1s ease,background-color .1s ease,color .1s ease,box-shadow .1s ease, .1s ease;
+    will-change: '';
+    -webkit-tap-highlight-color: transparent;
+}
+.smallButtons:hover {
+  background-color: #7142d6;
+}
+.login {
+  background-image: url('https://www.kraken.com/accounts/_next/static/media/sign-in.be3cefee3310f6615ae46fb1f9bc99c1.svg');
+  background-size: cover;
+}
+.register {
+  background-size: cover;
+  background-image: url('https://www.kraken.com/_assets/files/2021-10/kraken_hero_institutions/1536.webp');
+  background-color: rgba(254, 181, 141, 0.8);
+  opacity: 0.75;
+}
+.navbar {
+  color: #5741d9;
+}
+.browse {
+  background-color: #eeecfb;
+}
+.addnft {
+  background-image: url('https://www.kraken.com/accounts/_next/static/media/pro.3363648c304aeebba9b42da66b6110dc.svg');
+  background-size:  cover;
+  opacity: 0.8;
+}
+.cartpage {
+  
+  background-color: rgba(254, 181, 141, 0.8);
+}
+#root {
+  background-color: #eeecfb ;
+}
