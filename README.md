@@ -450,7 +450,7 @@ From here the challenge was to properly set up the requests from the front end, 
 
 ```
 
-This use of the Promise object  was also used to populate multiple item details once the contents of the cart were retrieved on every re-render due to a cart change.
+This use of the Promise object was also used to populate multiple item details once the contents of the cart were retrieved on every re-render due to a cart change.
 
 Additionally, finding that I could send a body to the back end with a delete request was very helpful in avoiding additional changes or unnecessary boolean statements being added into the request to handle the deletion of a single cart item vs clearing the entire cart.
 ```javascript
@@ -494,6 +494,6 @@ const handleRemoveOne = async (cartItem) => {
 ## Future functionality 
 ---
 
-* Account maintenance - specifically the ability to delete an account or change a password
-* Working payment feature - we had wanted to implement Stripe, but ended up not having the time to do so
-* Image upload - in the current implementation adding an NFT takes a URL of an already hosted image, but being able to directly upload one was another of our stretch goals
+* Account maintenance - specifically the ability to delete an account or change a password.
+* Working payment feature - we had wanted to implement Stripe, but ended up not having the time to do so.
+* Image upload - in the current implementation adding an NFT takes a URL of an already hosted image, but being able to directly upload one was another of our stretch goals.
