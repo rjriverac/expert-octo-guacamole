@@ -1,5 +1,5 @@
 # Tokenizer
----
+
 
 ## Overview
 
@@ -10,7 +10,7 @@ Built together with [Lukacs Papp](https://github.com/lukacspapp) and [Gayatri Ra
 [Tokenizer](https://tokenized.herokuapp.com/)
 
 ## Brief
----
+
 * Build a full-stack application.
 * Use an Express API to serve data from a Mongo database.
 * Consume the API with a separate, React front end.
@@ -18,7 +18,7 @@ Built together with [Lukacs Papp](https://github.com/lukacspapp) and [Gayatri Ra
 * Be deployed online so it’s publicly accessible.
 
 ## Technologies Used
----
+
 ### Back end:
 * MongoDB
 * Mongoose
@@ -45,7 +45,7 @@ Built together with [Lukacs Papp](https://github.com/lukacspapp) and [Gayatri Ra
 * Insomnia
 
 ## Approach
----
+
 
 ### Planning
 As we were taking design cues from an existing site, we created some simple wireframes using Google Jamboard to serve as a reference.
@@ -483,25 +483,24 @@ const handleRemoveOne = async (cartItem) => {
 ```
 
 ## Wins
----
+
 * This was my first time working with a new CSS framework, and becoming comfortable with its conventions and shorthands took some adjustment, but at the end I was really enjoying what I could create with it.
 * Cart functionality - As we set out to create an e-commerce site this was a hard requirement for our MVP. While challenging, I found coding the back end functions and the front end requests we needed for this to be very interesting and a huge relief once working
 * Collaboration and Organization - Spending some time at the beginning to outline what we wanted, as well as jointly coding most of the back end so we would all be familiar with the requests and the database I think was really helpful. Additionally, being on zoom to resolve blockers and work through merge conflicts I think helped us stay on track.
 	
 ## Challenges
----
 
 * Conditional rendering and error handling - there was a lot of errors at the beginning that were due to our app attempting to render data that hadn’t yet been loaded, and as we added features and data that we only wanted displayed under certain conditions the code became increasingly complex, with a few places where there were a conditional render that included a ternary, where one of the options was an array map that itself had an if/then statement.
 * Non-default methods for the back end - Implementing the cart required using the `$pull` ,  `$set` , and  `$push`  methods for removing and adding items to the cart, which was unfamiliar at first. Moreover, I encountered a lot of errors until reading more about the default behavior of the database and finding out the models required revisions to make it work.
 
 ## Key Takeaways
----
+
 * Team workflow - Given the scale of the project, it was key for us to split our efforts, and keeping track of who was working on what task as well as how any changes could affect other team members (particularly when revising the back end) was crucial. This was also my first time working on a project requiring multiple branches (and merging, where we had a few conflicts).
 * Semantic UI - This was my first time working with a different CSS framework without structured guidance, and going through and reading the documentation to find ways to accomplish our objectives had a bit of a learning curve but by the end I think everyone was a fan of the framework.
 * External packages - There were some things we could not accomplish without external packages/libraries, and I think getting comfortable with finding and adapting a solution was a good takeaway. In this instance I used an external library to format JavaScript dates and another to build charts,  and in particular with the latter, being adapting them to suit the project’s needs would be a skill I will use going forward.
 	
 ## Future functionality 
----
+
 
 * Account maintenance - specifically the ability to delete an account or change a password.
 * Working payment feature - we had wanted to implement Stripe, but ended up not having the time to do so.
