@@ -494,7 +494,7 @@ const handleRemoveOne = async (cartItem) => {
 * Conditional rendering and error handling - there was a lot of errors at the beginning that were due to our app attempting to render data that hadn’t yet been loaded, and as we added features and data that we only wanted displayed under certain conditions the code became increasingly complex, with a few places where there were a conditional render that included a ternary, where one of the options was an array map that itself had an if/then statement.
 * Non-default methods for the back end - Implementing the cart required using the `$pull` ,  `$set` , and  `$push`  methods for removing and adding items to the cart, which was unfamiliar at first. Moreover, I encountered a lot of errors until reading more about the default behavior of the database and finding out the models required revisions to make it work.
 
-## Key Learnings
+## Key Takeaways
 ---
 * Team workflow - Given the scale of the project, it was key for us to split our efforts, and keeping track of who was working on what task as well as how any changes could affect other team members (particularly when revising the back end) was crucial. This was also my first time working on a project requiring multiple branches (and merging, where we had a few conflicts).
 * Semantic UI - This was my first time working with a different CSS framework without structured guidance, and going through and reading the documentation to find ways to accomplish our objectives had a bit of a learning curve but by the end I think everyone was a fan of the framework.
