@@ -48,7 +48,9 @@ Built together with [Lukacs Papp](https://github.com/lukacspapp) and [Gayatri Ra
 ---
 
 ### Planning
-As we were taking design cues from an existing site, we created some simple wireframes using Google Jamboard to serve as a reference. 
+As we were taking design cues from an existing site, we created some simple wireframes using Google Jamboard to serve as a reference.
+
+![](jamboard.png)
 
 We anticipated most of our time would need to be spent on the front end, and so we decided to jointly code the back-end while screen sharing so that we would all be familiar with the data our API would serve to the front end.
 
@@ -91,6 +93,7 @@ Initially we wrote a bit of pseudocode so that we could track what we thought wo
 ```
 
 Following this, we decided on using Asana to track what work remained to be done and who would be doing it. Additionally, we would all stay in touch via Slack or Zoom, and to all be on zoom when merging so that we could quickly solve any merge conflicts or git errors.
+![](asana.png)
 
 ### Back end
 ---
@@ -490,6 +493,12 @@ const handleRemoveOne = async (cartItem) => {
 
 * Conditional rendering and error handling - there was a lot of errors at the beginning that were due to our app attempting to render data that hadn’t yet been loaded, and as we added features and data that we only wanted displayed under certain conditions the code became increasingly complex, with a few places where there were a conditional render that included a ternary, where one of the options was an array map that itself had an if/then statement.
 * Non-default methods for the back end - Implementing the cart required using the `$pull` ,  `$set` , and  `$push`  methods for removing and adding items to the cart, which was unfamiliar at first. Moreover, I encountered a lot of errors until reading more about the default behavior of the database and finding out the models required revisions to make it work.
+
+## Key Learnings
+---
+* Team workflow - Given the scale of the project, it was key for us to split our efforts, and keeping track of who was working on what task as well as how any changes could affect other team members (particularly when revising the back end) was crucial. This was also my first time working on a project requiring multiple branches (and merging, where we had a few conflicts).
+* Semantic UI - This was my first time working with a different CSS framework without structured guidance, and going through and reading the documentation to find ways to accomplish our objectives had a bit of a learning curve but by the end I think everyone was a fan of the framework.
+* External packages - There were some things we could not accomplish without external packages/libraries, and I think getting comfortable with finding and adapting a solution was a good takeaway. In this instance I used an external library to format JavaScript dates and another to build charts,  and in particular with the latter, being adapting them to suit the project’s needs would be a skill I will use going forward.
 	
 ## Future functionality 
 ---
